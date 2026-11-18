@@ -6,62 +6,51 @@
 <title>Chalets Sauble Beach 2027</title>
 <meta name="description" content="Comparatif de 5 chalets à Sauble Beach, 24 au 31 juillet 2027, pour 5 personnes.">
 <style>
-:root{--bg:#fafaf8;--card:#fff;--ink:#1c1f1e;--soft:#6b716f;--line:#e8e8e3;--accent:#1d6a80;--ok:#2e8b57;--may:#d9921c;--no:#c4473f}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#151716;--card:#1d201f;--ink:#ececea;--soft:#9a9f9d;--line:#2d302f;--accent:#6bbad1;--ok:#5ccf8f;--may:#efb04f;--no:#ec7a72}}
-:root[data-theme="dark"]{--bg:#151716;--card:#1d201f;--ink:#ececea;--soft:#9a9f9d;--line:#2d302f;--accent:#6bbad1;--ok:#5ccf8f;--may:#efb04f;--no:#ec7a72}
+:root{--bg:#fbfbf9;--ink:#222524;--soft:#8a8f8d;--line:#ececE8;--no:#b5534c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161817;--ink:#e6e7e5;--soft:#868b89;--line:#2a2d2c;--no:#e08b84}}
+:root[data-theme="dark"]{--bg:#161817;--ink:#e6e7e5;--soft:#868b89;--line:#2a2d2c;--no:#e08b84}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
-main{max-width:1080px;margin:auto;padding:56px 16px 64px}
-header{margin-bottom:40px}
-.eyebrow{font-size:13px;color:var(--soft);letter-spacing:.3px}
-h1{font-size:clamp(30px,5vw,44px);line-height:1.1;letter-spacing:-1px;margin:8px 0 10px;font-weight:700}
-.lead{color:var(--soft);margin:0}
-h2{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--soft);font-weight:600;margin:48px 0 16px}
-/* tableau */
-.wrap{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:14px}
-table{border-collapse:collapse;width:100%;min-width:780px;font-size:15px}
-th,td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-tr:last-child td{border-bottom:0}
-thead th{font-size:14px;font-weight:650;border-bottom:1px solid var(--line)}
-thead th span{display:block;color:var(--soft);font-weight:400;font-size:12px}
-td:first-child{color:var(--soft);font-size:14px;width:130px;position:sticky;left:0;background:var(--card)}
-th:first-child{position:sticky;left:0;background:var(--card)}
-.price{font-size:20px;font-weight:700;letter-spacing:-.3px}
-.tot{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
-.d{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px}
-.ok .d{background:var(--ok)}.may .d{background:var(--may)}.no .d{background:var(--no)}
-.n{display:block;font-size:12.5px;color:var(--soft);margin-top:2px}
-.legend{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--soft);margin-top:12px}
-/* fiches */
-.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:16px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px;display:flex;flex-direction:column}
-.card .no-{font-size:12px;color:var(--soft)}
-.card h3{font-size:20px;margin:2px 0 2px;letter-spacing:-.3px}
-.card .tag{font-size:13.5px;color:var(--accent);font-weight:600}
-.card .cp{margin:14px 0 4px;font-size:26px;font-weight:700;letter-spacing:-.5px}
-.card .cp small{font-size:14px;font-weight:400;color:var(--soft);letter-spacing:0}
-.card .beds{font-size:14px;color:var(--soft);margin:0 0 16px}
-.card ul{list-style:none;padding:0;margin:0 0 14px}
-.card li{font-size:14.5px;padding:3px 0 3px 18px;position:relative}
-.card li::before{content:"";position:absolute;left:2px;top:12px;width:7px;height:7px;border-radius:50%}
-.pros li::before{background:var(--ok)}.cons li::before{background:var(--no)}
-.card a{margin-top:auto;color:var(--accent);font-weight:600;font-size:14.5px;text-decoration:none}
-.card a:hover{text-decoration:underline}
-.rooms{margin:0 0 16px;padding:0;list-style:none;border-top:1px solid var(--line)}
-.rooms li{display:flex;justify-content:space-between;font-size:14.5px;padding:7px 0 !important;border-bottom:1px solid var(--line)}
-.rooms li::before{display:none}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;-webkit-font-smoothing:antialiased}
+main{max-width:1040px;margin:auto;padding:64px 16px 72px}
+header{margin-bottom:56px}
+.eyebrow{font-size:14px;color:var(--soft)}
+h1{font-size:clamp(28px,4.5vw,38px);line-height:1.15;letter-spacing:-.6px;margin:6px 0 6px;font-weight:600}
+.lead{color:var(--soft);margin:0;font-size:15px}
+h2{font-size:15px;font-weight:600;margin:64px 0 18px}
+.wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:14.5px}
+th,td{padding:12px 14px 12px 0;text-align:left;border-bottom:1px solid var(--line);vertical-align:top;font-weight:400}
+thead th{font-weight:600;font-size:14.5px}
+thead th span{display:none}
+td:first-child,th:first-child{color:var(--soft);width:128px;position:sticky;left:0;background:var(--bg)}
+.price{font-weight:600}
+.tot,.n{display:block;font-size:12.5px;color:var(--soft)}
+td.may{color:var(--soft)}
+td.no{color:var(--no)}
+.legend{font-size:13px;color:var(--soft);margin:14px 0 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:48px 40px}
+.card{display:flex;flex-direction:column}
+.card .no-{display:none}
+.card h3{font-size:18px;font-weight:600;margin:0}
+.card .tag{font-size:14px;color:var(--soft)}
+.card .cp{margin:10px 0 14px;font-size:16px;font-weight:600}
+.card .cp small{font-weight:400;color:var(--soft);font-size:14px}
+.rooms{margin:0 0 18px;padding:0;list-style:none}
+.rooms li{display:flex;justify-content:space-between;font-size:14px;padding:5px 0;border-bottom:1px solid var(--line)}
 .rooms li span{color:var(--soft)}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:14px;margin:0 0 16px}
-.facts div{display:flex;flex-direction:column}
-.facts b{font-size:12px;color:var(--soft);font-weight:500}
-.lbl{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--soft);margin:4px 0 4px}
-details{border-top:1px solid var(--line);margin:4px 0 14px;padding-top:10px;font-size:14px}
-summary{cursor:pointer;color:var(--accent);font-weight:600;list-style:none}
+.lbl{font-size:13px;color:var(--soft);margin:0 0 2px}
+.card ul.pros,.card ul.cons{list-style:none;padding:0;margin:0 0 14px}
+.pros li,.cons li{font-size:14px;padding:2px 0 2px 16px;position:relative}
+.pros li::before{content:"+";position:absolute;left:0;color:var(--soft)}
+.cons li::before{content:"–";position:absolute;left:0;color:var(--soft)}
+details{margin:0 0 12px;font-size:14px}
+summary{cursor:pointer;color:var(--soft);list-style:none}
 summary::-webkit-details-marker{display:none}
-summary::after{content:" +"}details[open] summary::after{content:" −"}
-details p{margin:10px 0 0;color:var(--ink)}details p b{color:var(--soft);font-weight:500}
-footer{margin-top:48px;font-size:13px;color:var(--soft);line-height:1.6}
-@media(max-width:560px){main{padding-top:36px}.cards{grid-template-columns:1fr}}
+summary::after{content:" ›"}details[open] summary::after{content:" ‹"}
+details p{margin:10px 0 0}details p b{color:var(--soft);font-weight:400}
+.card a{margin-top:auto;color:var(--ink);font-size:14px;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+footer{margin-top:72px;font-size:13px;color:var(--soft);line-height:1.6;max-width:640px}
+@media(max-width:560px){main{padding-top:40px}.cards{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -77,25 +66,24 @@ footer{margin-top:48px;font-size:13px;color:var(--soft);line-height:1.6}
 <thead><tr><th></th><th>Chippewa Trail<span>no 1</span></th><th>Sunset Villa<span>no 2</span></th><th>Four Season<span>no 3</span></th><th>Beach Lookout<span>no 4</span></th><th>Three Bears<span>no 5</span></th></tr></thead>
 <tbody>
 <tr><td>Par personne</td><td><span class="price">766 $</span><span class="tot">3 830 $ au total</span></td><td><span class="price">614 $</span><span class="tot">3 069 $ au total</span></td><td><span class="price">330 $</span><span class="tot">1 651 $ au total</span></td><td><span class="price">978 $</span><span class="tot">4 891 $ au total</span></td><td><span class="price">≈ 416 $</span><span class="tot">≈ 2 080 $ au total</span></td></tr>
-<tr><td>Chambres</td><td class="ok"><span class="d"></span>3 doubles<span class="n">+ 1 ch. superposés</span></td><td class="may"><span class="d"></span>3 lits<span class="n">tailles inconnues</span></td><td class="no"><span class="d"></span>Queen, double, 2 simples<span class="n">+ divan-lit au salon</span></td><td class="no"><span class="d"></span>Queen, double, superposés</td><td class="may"><span class="d"></span>Queen, 2 doubles<span class="n">répartition inconnue</span></td></tr>
-<tr><td>Toilettes</td><td class="no"><span class="d"></span>1</td><td class="ok"><span class="d"></span>2</td><td class="ok"><span class="d"></span>2</td><td class="no"><span class="d"></span>1</td><td class="ok"><span class="d"></span>2</td></tr>
-<tr><td>Climatisation</td><td class="may"><span class="d"></span>À confirmer</td><td class="may"><span class="d"></span>À confirmer</td><td class="may"><span class="d"></span>À confirmer</td><td class="ok"><span class="d"></span>Oui</td><td class="ok"><span class="d"></span>Oui</td></tr>
-<tr><td>Feu extérieur</td><td class="ok"><span class="d"></span>Oui</td><td class="ok"><span class="d"></span>Oui</td><td class="may"><span class="d"></span>À confirmer</td><td class="ok"><span class="d"></span>Oui</td><td class="ok"><span class="d"></span>Oui</td></tr>
-<tr><td>Foyer intérieur</td><td class="may"><span class="d"></span>À confirmer</td><td class="may"><span class="d"></span>À confirmer</td><td class="may"><span class="d"></span>À confirmer</td><td class="ok"><span class="d"></span>Oui</td><td class="ok"><span class="d"></span>Oui</td></tr>
-<tr><td>Bidet</td><td class="may"><span class="d"></span>Non mentionné</td><td class="may"><span class="d"></span>Non mentionné</td><td class="may"><span class="d"></span>Non mentionné</td><td class="may"><span class="d"></span>Non mentionné</td><td class="may"><span class="d"></span>Non mentionné</td></tr>
-<tr><td>Plage</td><td class="ok"><span class="d"></span>En face</td><td class="ok"><span class="d"></span>10 min à pied</td><td class="ok"><span class="d"></span>8 min à pied</td><td class="ok"><span class="d"></span>1 min à pied</td><td class="may"><span class="d"></span>Courte marche</td></tr>
-<tr><td>Carson's Camp</td><td class="may"><span class="d"></span>Inconnu</td><td class="may"><span class="d"></span>≈ 5 min en auto</td><td class="may"><span class="d"></span>≈ 5 min en auto</td><td class="ok"><span class="d"></span>≈ 3 min en auto</td><td class="may"><span class="d"></span>Inconnu</td></tr>
+<tr><td>Chambres</td><td class="ok">3 doubles<span class="n">+ 1 ch. superposés</span></td><td class="may">3 lits<span class="n">tailles inconnues</span></td><td class="no">Queen, double, 2 simples<span class="n">+ divan-lit au salon</span></td><td class="no">Queen, double, superposés</td><td class="may">Queen, 2 doubles<span class="n">répartition inconnue</span></td></tr>
+<tr><td>Toilettes</td><td class="no">1</td><td class="ok">2</td><td class="ok">2</td><td class="no">1</td><td class="ok">2</td></tr>
+<tr><td>Climatisation</td><td class="may">À confirmer</td><td class="may">À confirmer</td><td class="may">À confirmer</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+<tr><td>Feu extérieur</td><td class="ok">Oui</td><td class="ok">Oui</td><td class="may">À confirmer</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+<tr><td>Foyer intérieur</td><td class="may">À confirmer</td><td class="may">À confirmer</td><td class="may">À confirmer</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
+<tr><td>Bidet</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td></tr>
+<tr><td>Plage</td><td class="ok">En face</td><td class="ok">10 min à pied</td><td class="ok">8 min à pied</td><td class="ok">1 min à pied</td><td class="may">Courte marche</td></tr>
+<tr><td>Carson's Camp</td><td class="may">Inconnu</td><td class="may">≈ 5 min en auto</td><td class="may">≈ 5 min en auto</td><td class="ok">≈ 3 min en auto</td><td class="may">Inconnu</td></tr>
 <tr><td>Capacité</td><td>8</td><td>6</td><td>8</td><td>6</td><td>8</td></tr>
 <tr><td>Avis</td><td>4,8 / 5<span class="n">21 avis</span></td><td>4,6 / 5<span class="n">13 avis</span></td><td>9,6 / 10<span class="n">4 avis</span></td><td>9,8 / 10<span class="n">19 avis</span></td><td>4 / 5<span class="n">8 avis, plaintes</span></td></tr>
 </tbody></table></div>
-<div class="legend"><span class="ok"><span class="d"></span>Correspond</span><span class="may"><span class="d"></span>À confirmer</span><span class="no"><span class="d"></span>Ne correspond pas</span></div>
+<p class="legend">En gris : pas indiqué dans l'annonce. En rouge : ne correspond pas à ce qu'on cherche.</p>
 
 <h2>Les chalets</h2>
 <div class="cards">
 <article class="card"><div class="no-">No 1</div><h3>Chippewa Trail</h3><div class="tag">La plage en face</div>
 <div class="cp">766 $ <small>/ personne · 3 830 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Double</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Double</span></li><li>Chambre 4<span>Superposés</span></li></ul>
-<div class="facts"><div><b>Toilettes</b>1</div><div><b>Clim</b>À confirmer</div><div><b>Feu extérieur</b>Portatif, sur la pelouse</div><div><b>Foyer intérieur</b>À confirmer</div><div><b>Plage</b>En face</div><div><b>Carson's Camp</b>Inconnu</div></div>
 <div class="lbl">Avantages</div><ul class="pros"><li>Plage juste de l'autre côté de la rue</li><li>2 kayaks, planche à pagaie, 4 vélos, chaises de plage</li><li>2 barbecues, table de 8, hamac</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Une seule toilette</li><li>Eau de puits, eau potable en cruches</li><li>2 places de stationnement seulement</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>4,76/5 sur 21 avis. Commentaires individuels non accessibles; propreté 4,5/5.</p><p><b>Bon à savoir</b><br>Courant fort au rivage, pas de sauveteurs. Loué aux familles et couples matures.</p><p><b>À vérifier</b><br>Climatisation, et lire les avis moins bons.</p></details>
@@ -103,7 +91,6 @@ footer{margin-top:48px;font-size:13px;color:var(--soft);line-height:1.6}
 <article class="card"><div class="no-">No 2</div><h3>Sunset Villa</h3><div class="tag">Bon compromis, à vérifier</div>
 <div class="cp">614 $ <small>/ personne · 3 069 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Taille ?</span></li><li>Chambre 2<span>Taille ?</span></li><li>Chambre 3<span>Taille ?</span></li></ul>
-<div class="facts"><div><b>Toilettes</b>2</div><div><b>Clim</b>À confirmer</div><div><b>Feu extérieur</b>Foyer, cour privée</div><div><b>Foyer intérieur</b>À confirmer</div><div><b>Plage</b>10 min à pied</div><div><b>Carson's Camp</b>≈ 5 min en auto</div></div>
 <div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain</li><li>Cour privée : foyer, barbecue au gaz, repas dehors</li><li>Rue principale à pied, hôte Superhôte</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Tailles des lits inconnues</li><li>Climatisation non confirmée</li><li>Maximum 6 personnes</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>4,62/5 sur 13 avis. Un avis à 3 étoiles, motif inconnu. Qualité-prix 4,5/5.</p><p><b>À vérifier</b><br>Un grand lit dans chaque chambre, la clim, les avis moins bons.</p></details>
@@ -111,7 +98,6 @@ footer{margin-top:48px;font-size:13px;color:var(--soft);line-height:1.6}
 <article class="card"><div class="no-">No 3</div><h3>Four Season Escape</h3><div class="tag">Le moins cher</div>
 <div class="cp">330 $ <small>/ personne · 1 651 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>2 simples</span></li><li>Salon<span>Divan-lit queen</span></li></ul>
-<div class="facts"><div><b>Toilettes</b>2 (1 complète + 1 demi)</div><div><b>Clim</b>À confirmer</div><div><b>Feu extérieur</b>À confirmer</div><div><b>Foyer intérieur</b>À confirmer</div><div><b>Plage</b>8 min à pied</div><div><b>Carson's Camp</b>≈ 5 min en auto</div></div>
 <div class="lbl">Avantages</div><ul class="pros"><li>De loin le moins cher</li><li>Deux toilettes</li><li>Divan-lit queen en plus au salon</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Troisième chambre en lits simples</li><li>Clim et feu non confirmés</li><li>Seulement 4 avis</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>9,6/10 sur 4 avis : entretien, espace, hôtes réactifs.</p><p><b>Bon à savoir</b><br>Secteur South Sauble Beach. Barbecue, terrasse, stationnement. Animaux non admis.</p><p><b>À vérifier</b><br>Climatisation, feu extérieur, accepter les lits simples.</p></details>
@@ -119,7 +105,6 @@ footer{margin-top:48px;font-size:13px;color:var(--soft);line-height:1.6}
 <article class="card"><div class="no-">No 4</div><h3>Beach Lookout</h3><div class="tag">Sur la plage, au village</div>
 <div class="cp">978 $ <small>/ personne · 4 891 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Superposés simples</span></li></ul>
-<div class="facts"><div><b>Toilettes</b>1</div><div><b>Clim</b>Oui</div><div><b>Feu extérieur</b>Sur la terrasse</div><div><b>Foyer intérieur</b>Oui, au salon</div><div><b>Plage</b>1 min à pied</div><div><b>Carson's Camp</b>≈ 3 min en auto</div></div>
 <div class="lbl">Avantages</div><ul class="pros"><li>Clim, foyer et feu sur la terrasse</li><li>Plage à une minute, au cœur du village</li><li>Grande terrasse, hamac, vue sur le lac</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Le plus cher</li><li>Une seule toilette, troisième chambre en superposés</li><li>Draps et serviettes à apporter</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>9,8/10 sur 19 avis : emplacement, cuisine, confort. Un 4/10 sur la communication (différend sur une chaise, selon l'hôte).</p><p><b>Bon à savoir</b><br>Maximum 6 personnes. Chiens acceptés.</p><p><b>À vérifier</b><br>Linge à apporter, couchages.</p></details>
@@ -127,7 +112,6 @@ footer{margin-top:48px;font-size:13px;color:var(--soft);line-height:1.6}
 <article class="card"><div class="no-">No 5</div><h3>Three Bears' Cottage</h3><div class="tag">Bien équipé, avis mitigés</div>
 <div class="cp">≈ 416 $ <small>/ personne · ≈ 2 080 $ au total</small></div>
 <ul class="rooms"><li>Lits annoncés<span>Queen, 2 doubles</span></li><li>En plus<span>2 simples, divan-lit</span></li><li>Répartition<span>Non précisée</span></li></ul>
-<div class="facts"><div><b>Toilettes</b>2</div><div><b>Clim</b>Oui</div><div><b>Feu extérieur</b>Foyer + gazebo</div><div><b>Foyer intérieur</b>Oui</div><div><b>Plage</b>Courte marche (avis)</div><div><b>Carson's Camp</b>Inconnu</div></div>
 <div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain, clim, foyer et feu</li><li>Grande cour privée, gazebo, barbecue</li><li>Laveuse-sécheuse, cuisine complète</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Avis : matelas queen affaissé, photos dépassées</li><li>Lits par chambre non confirmés</li><li>Dépôt de 500 $ (remboursable) et 30 % à la réservation</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>4/5 sur 8 avis. Juillet 2025 : matelas affaissé, sécheuse non branchée, frais contestés. 2023 : odeurs, différend. Le propriétaire conteste une partie. D'autres aiment l'espace et la cour.</p><p><b>Prix</b><br>Calculé : 5 nuits × 250 $ + 2 × 300 $ + ménage 150 $ + taxe 4 %. Pas un devis.</p><p><b>À vérifier</b><br>Prix exact, photos récentes, lits par chambre, état du matelas.</p></details>
