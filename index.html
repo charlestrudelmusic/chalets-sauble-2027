@@ -47,6 +47,19 @@ th:first-child{position:sticky;left:0;background:var(--card)}
 .pros li::before{background:var(--ok)}.cons li::before{background:var(--no)}
 .card a{margin-top:auto;color:var(--accent);font-weight:600;font-size:14.5px;text-decoration:none}
 .card a:hover{text-decoration:underline}
+.rooms{margin:0 0 16px;padding:0;list-style:none;border-top:1px solid var(--line)}
+.rooms li{display:flex;justify-content:space-between;font-size:14.5px;padding:7px 0 !important;border-bottom:1px solid var(--line)}
+.rooms li::before{display:none}
+.rooms li span{color:var(--soft)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;font-size:14px;margin:0 0 16px}
+.facts div{display:flex;flex-direction:column}
+.facts b{font-size:12px;color:var(--soft);font-weight:500}
+.lbl{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--soft);margin:4px 0 4px}
+details{border-top:1px solid var(--line);margin:4px 0 14px;padding-top:10px;font-size:14px}
+summary{cursor:pointer;color:var(--accent);font-weight:600;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after{content:" +"}details[open] summary::after{content:" −"}
+details p{margin:10px 0 0;color:var(--ink)}details p b{color:var(--soft);font-weight:500}
 footer{margin-top:48px;font-size:13px;color:var(--soft);line-height:1.6}
 @media(max-width:560px){main{padding-top:36px}.cards{grid-template-columns:1fr}}
 </style>
@@ -69,45 +82,56 @@ footer{margin-top:48px;font-size:13px;color:var(--soft);line-height:1.6}
 <tr><td>Climatisation</td><td class="may"><span class="d"></span>À confirmer</td><td class="may"><span class="d"></span>À confirmer</td><td class="may"><span class="d"></span>À confirmer</td><td class="ok"><span class="d"></span>Oui</td><td class="ok"><span class="d"></span>Oui</td></tr>
 <tr><td>Feu extérieur</td><td class="ok"><span class="d"></span>Oui</td><td class="ok"><span class="d"></span>Oui</td><td class="may"><span class="d"></span>À confirmer</td><td class="ok"><span class="d"></span>Oui</td><td class="ok"><span class="d"></span>Oui</td></tr>
 <tr><td>Foyer intérieur</td><td class="may"><span class="d"></span>À confirmer</td><td class="may"><span class="d"></span>À confirmer</td><td class="may"><span class="d"></span>À confirmer</td><td class="ok"><span class="d"></span>Oui</td><td class="ok"><span class="d"></span>Oui</td></tr>
+<tr><td>Bidet</td><td class="may"><span class="d"></span>Non mentionné</td><td class="may"><span class="d"></span>Non mentionné</td><td class="may"><span class="d"></span>Non mentionné</td><td class="may"><span class="d"></span>Non mentionné</td><td class="may"><span class="d"></span>Non mentionné</td></tr>
 <tr><td>Plage</td><td class="ok"><span class="d"></span>En face</td><td class="ok"><span class="d"></span>10 min à pied</td><td class="ok"><span class="d"></span>8 min à pied</td><td class="ok"><span class="d"></span>1 min à pied</td><td class="may"><span class="d"></span>Courte marche</td></tr>
 <tr><td>Carson's Camp</td><td class="may"><span class="d"></span>Inconnu</td><td class="may"><span class="d"></span>≈ 5 min en auto</td><td class="may"><span class="d"></span>≈ 5 min en auto</td><td class="ok"><span class="d"></span>≈ 3 min en auto</td><td class="may"><span class="d"></span>Inconnu</td></tr>
+<tr><td>Capacité</td><td>8</td><td>6</td><td>8</td><td>6</td><td>8</td></tr>
 <tr><td>Avis</td><td>4,8 / 5<span class="n">21 avis</span></td><td>4,6 / 5<span class="n">13 avis</span></td><td>9,6 / 10<span class="n">4 avis</span></td><td>9,8 / 10<span class="n">19 avis</span></td><td>4 / 5<span class="n">8 avis, plaintes</span></td></tr>
 </tbody></table></div>
 <div class="legend"><span class="ok"><span class="d"></span>Correspond</span><span class="may"><span class="d"></span>À confirmer</span><span class="no"><span class="d"></span>Ne correspond pas</span></div>
 
 <h2>Les chalets</h2>
 <div class="cards">
-
 <article class="card"><div class="no-">No 1</div><h3>Chippewa Trail</h3><div class="tag">La plage en face</div>
-<div class="cp">766 $ <small>/ personne</small></div><p class="beds">Double · Double · Double · Superposés</p>
-<ul class="pros"><li>Plage juste de l'autre côté de la rue</li><li>Kayaks, planche à pagaie et vélos inclus</li></ul>
-<ul class="cons"><li>Une seule toilette</li><li>Eau de puits, eau potable en cruches</li></ul>
+<div class="cp">766 $ <small>/ personne · 3 830 $ au total</small></div>
+<ul class="rooms"><li>Chambre 1<span>Double</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Double</span></li><li>Chambre 4<span>Superposés</span></li></ul>
+<div class="facts"><div><b>Toilettes</b>1</div><div><b>Clim</b>À confirmer</div><div><b>Feu extérieur</b>Portatif, sur la pelouse</div><div><b>Foyer intérieur</b>À confirmer</div><div><b>Plage</b>En face</div><div><b>Carson's Camp</b>Inconnu</div></div>
+<div class="lbl">Avantages</div><ul class="pros"><li>Plage juste de l'autre côté de la rue</li><li>2 kayaks, planche à pagaie, 4 vélos, chaises de plage</li><li>2 barbecues, table de 8, hamac</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Une seule toilette</li><li>Eau de puits, eau potable en cruches</li><li>2 places de stationnement seulement</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>4,76/5 sur 21 avis. Commentaires individuels non accessibles; propreté 4,5/5.</p><p><b>Bon à savoir</b><br>Courant fort au rivage, pas de sauveteurs. Loué aux familles et couples matures.</p><p><b>À vérifier</b><br>Climatisation, et lire les avis moins bons.</p></details>
 <a href="https://fr.airbnb.ca/rooms/49229179" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-
 <article class="card"><div class="no-">No 2</div><h3>Sunset Villa</h3><div class="tag">Bon compromis, à vérifier</div>
-<div class="cp">614 $ <small>/ personne</small></div><p class="beds">3 lits, tailles à confirmer</p>
-<ul class="pros"><li>Deux salles de bain</li><li>Cour privée avec foyer et barbecue</li></ul>
-<ul class="cons"><li>Tailles des lits inconnues</li><li>Climatisation non confirmée</li></ul>
+<div class="cp">614 $ <small>/ personne · 3 069 $ au total</small></div>
+<ul class="rooms"><li>Chambre 1<span>Taille ?</span></li><li>Chambre 2<span>Taille ?</span></li><li>Chambre 3<span>Taille ?</span></li></ul>
+<div class="facts"><div><b>Toilettes</b>2</div><div><b>Clim</b>À confirmer</div><div><b>Feu extérieur</b>Foyer, cour privée</div><div><b>Foyer intérieur</b>À confirmer</div><div><b>Plage</b>10 min à pied</div><div><b>Carson's Camp</b>≈ 5 min en auto</div></div>
+<div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain</li><li>Cour privée : foyer, barbecue au gaz, repas dehors</li><li>Rue principale à pied, hôte Superhôte</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Tailles des lits inconnues</li><li>Climatisation non confirmée</li><li>Maximum 6 personnes</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>4,62/5 sur 13 avis. Un avis à 3 étoiles, motif inconnu. Qualité-prix 4,5/5.</p><p><b>À vérifier</b><br>Un grand lit dans chaque chambre, la clim, les avis moins bons.</p></details>
 <a href="https://fr.airbnb.ca/rooms/1433381894774584865" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-
 <article class="card"><div class="no-">No 3</div><h3>Four Season Escape</h3><div class="tag">Le moins cher</div>
-<div class="cp">330 $ <small>/ personne</small></div><p class="beds">Queen · Double · 2 simples · divan-lit queen au salon</p>
-<ul class="pros"><li>Deux toilettes</li><li>Moitié prix des autres</li></ul>
-<ul class="cons"><li>Troisième chambre en lits simples</li><li>Clim et feu non confirmés, seulement 4 avis</li></ul>
+<div class="cp">330 $ <small>/ personne · 1 651 $ au total</small></div>
+<ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>2 simples</span></li><li>Salon<span>Divan-lit queen</span></li></ul>
+<div class="facts"><div><b>Toilettes</b>2 (1 complète + 1 demi)</div><div><b>Clim</b>À confirmer</div><div><b>Feu extérieur</b>À confirmer</div><div><b>Foyer intérieur</b>À confirmer</div><div><b>Plage</b>8 min à pied</div><div><b>Carson's Camp</b>≈ 5 min en auto</div></div>
+<div class="lbl">Avantages</div><ul class="pros"><li>De loin le moins cher</li><li>Deux toilettes</li><li>Divan-lit queen en plus au salon</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Troisième chambre en lits simples</li><li>Clim et feu non confirmés</li><li>Seulement 4 avis</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>9,6/10 sur 4 avis : entretien, espace, hôtes réactifs.</p><p><b>Bon à savoir</b><br>Secteur South Sauble Beach. Barbecue, terrasse, stationnement. Animaux non admis.</p><p><b>À vérifier</b><br>Climatisation, feu extérieur, accepter les lits simples.</p></details>
 <a href="https://www.vrbo.com/en-ca/cottage-rental/p20193024" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-
 <article class="card"><div class="no-">No 4</div><h3>Beach Lookout</h3><div class="tag">Sur la plage, au village</div>
-<div class="cp">978 $ <small>/ personne</small></div><p class="beds">Queen · Double · Superposés</p>
-<ul class="pros"><li>Clim, foyer et feu sur la terrasse</li><li>Plage à une minute, très bons avis</li></ul>
-<ul class="cons"><li>Le plus cher, une seule toilette</li><li>Draps et serviettes à apporter</li></ul>
+<div class="cp">978 $ <small>/ personne · 4 891 $ au total</small></div>
+<ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Superposés simples</span></li></ul>
+<div class="facts"><div><b>Toilettes</b>1</div><div><b>Clim</b>Oui</div><div><b>Feu extérieur</b>Sur la terrasse</div><div><b>Foyer intérieur</b>Oui, au salon</div><div><b>Plage</b>1 min à pied</div><div><b>Carson's Camp</b>≈ 3 min en auto</div></div>
+<div class="lbl">Avantages</div><ul class="pros"><li>Clim, foyer et feu sur la terrasse</li><li>Plage à une minute, au cœur du village</li><li>Grande terrasse, hamac, vue sur le lac</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Le plus cher</li><li>Une seule toilette, troisième chambre en superposés</li><li>Draps et serviettes à apporter</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>9,8/10 sur 19 avis : emplacement, cuisine, confort. Un 4/10 sur la communication (différend sur une chaise, selon l'hôte).</p><p><b>Bon à savoir</b><br>Maximum 6 personnes. Chiens acceptés.</p><p><b>À vérifier</b><br>Linge à apporter, couchages.</p></details>
 <a href="https://www.vrbo.com/en-ca/cottage-rental/p20265714" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-
 <article class="card"><div class="no-">No 5</div><h3>Three Bears' Cottage</h3><div class="tag">Bien équipé, avis mitigés</div>
-<div class="cp">≈ 416 $ <small>/ personne</small></div><p class="beds">Queen · Double · Double (+ 2 simples et un divan-lit)</p>
-<ul class="pros"><li>Deux salles de bain, clim, foyer et feu</li><li>Grande cour, gazebo, laveuse-sécheuse</li></ul>
-<ul class="cons"><li>Avis : matelas affaissé, photos dépassées</li><li>Lits par chambre non confirmés</li></ul>
+<div class="cp">≈ 416 $ <small>/ personne · ≈ 2 080 $ au total</small></div>
+<ul class="rooms"><li>Lits annoncés<span>Queen, 2 doubles</span></li><li>En plus<span>2 simples, divan-lit</span></li><li>Répartition<span>Non précisée</span></li></ul>
+<div class="facts"><div><b>Toilettes</b>2</div><div><b>Clim</b>Oui</div><div><b>Feu extérieur</b>Foyer + gazebo</div><div><b>Foyer intérieur</b>Oui</div><div><b>Plage</b>Courte marche (avis)</div><div><b>Carson's Camp</b>Inconnu</div></div>
+<div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain, clim, foyer et feu</li><li>Grande cour privée, gazebo, barbecue</li><li>Laveuse-sécheuse, cuisine complète</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Avis : matelas queen affaissé, photos dépassées</li><li>Lits par chambre non confirmés</li><li>Dépôt de 500 $ (remboursable) et 30 % à la réservation</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>4/5 sur 8 avis. Juillet 2025 : matelas affaissé, sécheuse non branchée, frais contestés. 2023 : odeurs, différend. Le propriétaire conteste une partie. D'autres aiment l'espace et la cour.</p><p><b>Prix</b><br>Calculé : 5 nuits × 250 $ + 2 × 300 $ + ménage 150 $ + taxe 4 %. Pas un devis.</p><p><b>À vérifier</b><br>Prix exact, photos récentes, lits par chambre, état du matelas.</p></details>
 <a href="https://www.cottagesincanada.com/fr/27958" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-
 </div>
 
 <footer>
