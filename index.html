@@ -55,6 +55,33 @@ details p{margin:12px 0 0;line-height:1.6}details p b{color:var(--soft);font-wei
 .card a{margin-top:auto;align-self:flex-start;background:var(--accentbg);color:var(--accent);font-weight:600;font-size:14.5px;text-decoration:none;border-radius:30px;padding:10px 20px}
 footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max-width:640px;text-align:center}
 @media(max-width:560px){main{padding-top:48px}.cards{grid-template-columns:1fr}.card{padding:26px 22px}.wrap{padding:6px 18px}h2{margin-top:64px}}
+
+.rank{background:var(--card);border-radius:22px;padding:32px 30px;box-shadow:var(--shadow)}
+.verdict{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:36px}
+.verdict div{border-radius:16px;padding:20px 22px;background:var(--bg)}
+.verdict .k{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft)}
+.verdict .t{font-size:19px;font-weight:600;margin:6px 0 6px;display:flex;align-items:center;gap:10px}
+.verdict p{margin:0;font-size:14.5px;color:var(--ink);line-height:1.55}
+.presets{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 22px}
+.presets button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:30px;padding:8px 16px;font:inherit;font-size:14px;cursor:pointer}
+.presets button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+.rgrid{display:grid;grid-template-columns:300px 1fr;gap:40px}
+.weights{display:flex;flex-direction:column;gap:14px}
+.w label{display:flex;justify-content:space-between;font-size:14.5px}
+.w label span{color:var(--soft);font-size:13px}
+.w input{width:100%;accent-color:var(--accent);margin:4px 0 0}
+.res{display:flex;flex-direction:column;gap:18px}
+.row .top{display:flex;align-items:center;gap:12px}
+.row .nm{font-weight:600;flex:1}
+.row .pc{font-weight:600;font-variant-numeric:tabular-nums}
+.bar{height:8px;background:var(--line);border-radius:6px;margin:8px 0 6px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:6px;transition:width .3s}
+.row.first .bar i{background:#2a9d6b}
+.why{font-size:13.5px;color:var(--soft);line-height:1.5}
+.why b{color:var(--ink);font-weight:500}
+.row .num{width:28px;height:28px;font-size:14px}
+.how{margin-top:26px;font-size:14px}
+@media(max-width:760px){.rgrid{grid-template-columns:1fr;gap:28px}.verdict{grid-template-columns:1fr}.rank{padding:26px 20px}}
 </style>
 </head>
 <body>
@@ -82,6 +109,23 @@ footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max
 <tr><td>Avis</td><td>4,8 / 5<span class="n">21 avis</span></td><td>4,6 / 5<span class="n">13 avis</span></td><td>9,6 / 10<span class="n">4 avis</span></td><td>9,8 / 10<span class="n">19 avis</span></td><td>4 / 5<span class="n">8 avis, plaintes</span></td></tr>
 </tbody></table></div>
 <p class="legend">En gris : pas indiqué dans l'annonce. En rouge : ne correspond pas à ce qu'on cherche.</p>
+
+
+<h2>Lequel nous convient le mieux?</h2>
+<div class="rank">
+<div class="verdict">
+<div><div class="k">Le plus probable</div><div class="t"><span class="num">5</span>Three Bears, ou <span class="num">2</span>Sunset Villa</div>
+<p>Le no 5 coche presque tout (2 salles de bain, clim, foyer, feu, grands lits) pour ≈ 416 $ chacun, mais ses avis obligent à poser des questions au propriétaire. Si ses réponses ne rassurent pas, le no 2 est le plan B : 2 salles de bain et une cour avec feu, à condition que les lits soient grands.</p></div>
+<div><div class="k">Le moins probable</div><div class="t"><span class="num">4</span>Beach Lookout</div>
+<p>Le plus cher (978 $ chacun) avec une seule toilette pour 5 et une chambre en lits superposés. Superbe emplacement, mais il rate deux de nos critères de base.</p></div>
+</div>
+<p style="margin:0 0 6px;font-weight:600">Teste selon ce qui compte pour vous</p>
+<p style="margin:0 0 16px;color:var(--soft);font-size:14.5px">Glisse les curseurs : le classement se refait tout seul.</p>
+<div class="presets" role="group" aria-label="Préréglages"><button data-p="eq" aria-pressed="true">Équilibré</button><button data-p="cash">Budget d'abord</button><button data-p="conf">Confort d'abord</button><button data-p="lieu">Plage et camping</button></div>
+<div class="rgrid"><div class="weights" id="weights"></div><div class="res" id="res"></div></div>
+<details class="how"><summary>Comment c'est calculé</summary>
+<p>Chaque chalet reçoit une note de 0 à 10 par critère, puis on fait la moyenne selon l'importance choisie. Ce qui est « à confirmer » vaut 5 sur 10 : ni bonus ni pénalité. Prix : le moins cher a 10, le plus cher 0. Avis : tient compte de la note, du nombre d'avis et des plaintes (no 5 pénalisé, no 3 peu d'avis). Les temps vers Carson's Camp sont estimés.</p></details>
+</div>
 
 <h2>Les chalets</h2>
 <div class="cards">
@@ -126,5 +170,45 @@ footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max
 Infos tirées des annonces le 17 novembre 2026. « À confirmer » veut dire que l'annonce n'en parle pas. Aucune annonce ne mentionne de bidet. Le prix du no 5 est calculé à partir du tarif affiché. Les temps vers Carson's Camp sont estimés, les adresses des chalets n'étant pas publiées. Disponibilité aux dates à confirmer.
 </footer>
 </main>
+<script>
+(function(){
+var C=[{n:1,nm:"Chippewa Trail"},{n:2,nm:"Sunset Villa"},{n:3,nm:"Four Season"},{n:4,nm:"Beach Lookout"},{n:5,nm:"Three Bears"}];
+// notes /10 par critère : [no1,no2,no3,no4,no5]
+var K=[
+ {id:"prix",l:"Prix",v:[3.3,5.6,10,0,8.7],good:"le prix",bad:"le prix"},
+ {id:"lits",l:"Grands lits",v:[10,5,3,2,6],good:"3 grands lits",bad:"les lits"},
+ {id:"toil",l:"2 toilettes",v:[0,10,8.5,0,10],good:"2 toilettes",bad:"1 seule toilette"},
+ {id:"clim",l:"Clim",v:[5,5,5,10,10],good:"la clim",bad:"clim non confirmée"},
+ {id:"feu",l:"Feu (dehors et dedans)",v:[7.5,7.5,5,10,10],good:"feu dehors et foyer",bad:"feu non confirmé"},
+ {id:"plage",l:"Plage proche",v:[10,6,6.5,10,5],good:"la plage tout près",bad:"plus loin de la plage"},
+ {id:"camp",l:"Près de Carson's Camp",v:[4,7,7,10,4],good:"près du camping",bad:"distance du camping inconnue"},
+ {id:"avis",l:"Avis fiables",v:[8.5,7,6,9.5,3],good:"de bons avis",bad:"des avis inquiétants"}
+];
+var P={eq:{prix:2,lits:3,toil:2,clim:2,feu:1,plage:1,camp:1,avis:2},
+ cash:{prix:3,lits:1,toil:1,clim:1,feu:1,plage:1,camp:1,avis:1},
+ conf:{prix:1,lits:3,toil:3,clim:3,feu:2,plage:1,camp:1,avis:2},
+ lieu:{prix:1,lits:1,toil:1,clim:1,feu:1,plage:3,camp:3,avis:1}};
+var lab=["Pas important","Un peu","Important","Essentiel"];
+var W=Object.assign({},P.eq),wb=document.getElementById("weights"),rb=document.getElementById("res");
+K.forEach(function(k){var d=document.createElement("div");d.className="w";
+ d.innerHTML='<label for="w-'+k.id+'">'+k.l+' <span id="t-'+k.id+'"></span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'">';
+ wb.appendChild(d);var r=d.querySelector("input");r.value=W[k.id];
+ r.addEventListener("input",function(){W[k.id]=+r.value;mark(null);draw();});});
+function draw(){
+ K.forEach(function(k){document.getElementById("w-"+k.id).value=W[k.id];document.getElementById("t-"+k.id).textContent=lab[W[k.id]];});
+ var tw=K.reduce(function(a,k){return a+W[k.id];},0)||1;
+ var out=C.map(function(c,i){var sc=K.reduce(function(a,k){return a+W[k.id]*k.v[i];},0)/tw*10;
+  var imp=K.filter(function(k){return W[k.id]>0;});
+  var g=imp.filter(function(k){return k.v[i]>=8.5;}).sort(function(a,b){return W[b.id]*b.v[i]-W[a.id]*a.v[i];}).slice(0,3).map(function(k){return k.good;});
+  var b=imp.filter(function(k){return k.v[i]<=4;}).sort(function(a,b){return W[b.id]*(10-b.v[i])-W[a.id]*(10-a.v[i]);}).slice(0,2).map(function(k){return k.bad;});
+  return {c:c,sc:sc,g:g,b:b};}).sort(function(a,b){return b.sc-a.sc;});
+ rb.innerHTML=out.map(function(o,j){return '<div class="row'+(j==0?' first':'')+'"><div class="top"><span class="num">'+o.c.n+'</span><span class="nm">'+o.c.nm+'</span><span class="pc">'+Math.round(o.sc)+' %</span></div><div class="bar"><i style="width:'+o.sc+'%"></i></div><div class="why">'+(o.g.length?'<b>Pour :</b> '+o.g.join(", ")+'. ':'')+(o.b.length?'<b>Contre :</b> '+o.b.join(", ")+'.':'')+'</div></div>';}).join("");
+}
+var pb=document.querySelectorAll(".presets button");
+function mark(btn){pb.forEach(function(x){x.setAttribute("aria-pressed",x===btn?"true":"false");});}
+pb.forEach(function(btn){btn.addEventListener("click",function(){W=Object.assign({},P[btn.dataset.p]);mark(btn);draw();});});
+draw();
+})();
+</script>
 </body>
 </html>
