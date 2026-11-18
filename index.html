@@ -182,6 +182,15 @@ html{scroll-behavior:smooth}
 .np{display:inline-block;border:1.5px solid;border-radius:20px;padding:2px 11px;font-size:13.5px;color:var(--ink);font-weight:500;white-space:nowrap}
 .mename{font-size:15px;color:var(--soft);margin:18px 0 0}
 .vote{transition:box-shadow .2s}
+.sec[hidden]{display:none !important}
+#s1,#s2,#s3{margin-top:0 !important}
+.band{margin-left:-20px;margin-right:-20px}
+html{scroll-behavior:auto}
+.topnav a[aria-selected="true"]{background:var(--accent);color:#fff}
+.topnav a[aria-selected="true"] b{background:#fff;color:var(--accent)}
+.next{display:flex;justify-content:flex-end;margin-top:40px}
+.next a{background:var(--accent);color:#fff;text-decoration:none;font-weight:600;border-radius:30px;padding:12px 22px;font-size:15px}
+.band .next a{background:#fff;color:#245f73}
 </style>
 </head>
 <body>
@@ -191,7 +200,7 @@ html{scroll-behavior:smooth}
 <h1>Cinq chalets à comparer</h1>
 <p class="lead">7 nuits · 5 personnes · prix en dollars canadiens</p>
 </header>
-<nav class="topnav" aria-label="Sections"><a href="#s1"><b>1</b>Les chalets</a><a href="#s2"><b>2</b>Ma page</a><a href="#s3"><b>3</b>Le groupe</a></nav>
+<nav class="topnav" aria-label="Onglets" role="tablist"><a href="#s1" role="tab" data-t="s1"><b>1</b>Les chalets</a><a href="#s2" role="tab" data-t="s2"><b>2</b>Ma page</a><a href="#s3" role="tab" data-t="s3"><b>3</b>Le groupe</a></nav>
 
 <section class="sec" id="s1">
 <div class="sechead"><span class="secnum">1</span><div><h2>Les chalets</h2><p>Les 5 options, leurs fiches et la comparaison point par point.</p></div></div>
@@ -254,6 +263,7 @@ html{scroll-behavior:smooth}
 <p class="legend">En gris : pas indiqué dans l'annonce. En rouge : ne correspond pas à ce qu'on cherche.</p>
 
 
+<div class="next"><a href="#s2">Étape suivante : Ma page →</a></div>
 </section>
 <section class="band sec" id="s2"><div class="bandin">
 <div class="bandhead"><div class="sechead light"><span class="secnum">2</span><div><h2 class="bh">Ma page</h2><p>Clique sur ton nom : ton vote et tes priorités, au même endroit.</p></div></div></div>
@@ -276,6 +286,7 @@ html{scroll-behavior:smooth}
 <div class="vstatus" id="vstatus"></div>
 </div>
 </div>
+<div class="next"><a href="#s3">Voir le résultat du groupe →</a></div>
 </div></section>
 <section class="sec" id="s3">
 <div class="sechead"><span class="secnum">3</span><div><h2>Le groupe</h2><p>Le résultat de tout le monde, mis à jour en direct. Rien à modifier ici.</p></div></div>
@@ -362,7 +373,7 @@ function votes(){
  var top=any?Math.max.apply(null,tot.map(function(t){return t.s;})):-1;
  var best=tot.filter(function(t){return any&&t.s===top;});
  var vs=NOMS.filter(voted);
- $("winner").innerHTML=!any?'<div class="k">Choix du groupe</div><div class="t">Personne n\'a encore voté</div><p>Chacun vote dans « Ma page », plus haut.</p>'
+ $("winner").innerHTML=!any?'<div class="k">Choix du groupe</div><div class="t">Personne n\'a encore voté</div><p>Chacun vote dans l\'onglet « Ma page ».</p>'
   :'<div class="k">Choix du groupe'+(best.length>1?' (égalité)':'')+'</div><div class="t">'+best.map(function(t){return '<span class="num">'+t.c.n+'</span>'+t.c.nm;}).join(' · ')+'</div><p>'+top+' points · '+vs.length+' personne'+(vs.length>1?'s ont':' a')+' voté sur 5</p>';
  $("vnote").textContent=vs.length<5?"En attente de : "+NOMS.filter(function(n){return !voted(n);}).join(", ")+".":"Tout le monde a voté.";
  var bn=best.map(function(t){return t.c.n;});
@@ -396,6 +407,18 @@ function load(first){return Promise.all([fetch(BASE+"/votes",{cache:"no-store"})
  .then(function(d){V=d[0];if(first||!timer)PW=d[1];all(!first);}).catch(function(){st("Données indisponibles pour l'instant.");});}
 all();load(true);
 setInterval(function(){if(!document.hidden)load(false);},20000);
+})();
+</script>
+<script>
+(function(){
+var secs=["s1","s2","s3"],links=document.querySelectorAll(".topnav a");
+function show(h,scroll){var id=(h||"").replace("#","");var t=secs.indexOf(id)>=0?id:"s1";
+ secs.forEach(function(x){document.getElementById(x).hidden=(x!==t);});
+ links.forEach(function(a){a.setAttribute("aria-selected",a.dataset.t===t?"true":"false");});
+ if(/^c[1-5]$/.test(id)){var el=document.getElementById(id);if(el){el.scrollIntoView({block:"start"});return;}}
+ if(scroll)window.scrollTo(0,0);}
+window.addEventListener("hashchange",function(){show(location.hash,true);});
+show(location.hash,false);
 })();
 </script>
 </body>
