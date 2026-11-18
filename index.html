@@ -176,6 +176,12 @@ html{scroll-behavior:smooth}
 .bn{display:inline-flex !important;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:var(--accentbg);color:var(--accent) !important;font-weight:700;font-size:15px !important;flex:none}
 .who .ck{color:#2a9d6b;font-weight:700}
 .who button[aria-pressed="true"] .ck{color:#fff}
+.who button{color:var(--ink) !important;border:2px solid transparent}
+.who button[aria-pressed="true"]{font-weight:600}
+.who button[aria-pressed="true"] .ck{color:#2a9d6b}
+.np{display:inline-block;border:1.5px solid;border-radius:20px;padding:2px 11px;font-size:13.5px;color:var(--ink);font-weight:500;white-space:nowrap}
+.mename{font-size:15px;color:var(--soft);margin:18px 0 0}
+.vote{transition:box-shadow .2s}
 </style>
 </head>
 <body>
@@ -256,6 +262,7 @@ html{scroll-behavior:smooth}
 <div class="who" id="who" role="group" aria-label="Choisir ton nom"></div>
 <p class="hint0" id="hint0">Choisis ton nom pour commencer.</p>
 <div id="mePanel" hidden>
+<p class="mename" id="meName"></p>
 <div class="block">
 <div class="bt"><span class="bn">A</span><div><b>Mon vote</b><span>Une note par chalet. Clique de nouveau pour l'effacer.</span></div></div>
 <p class="scale"><span>1 = non merci</span><span>5 = coup de cœur</span></p>
@@ -308,6 +315,8 @@ Infos tirées des annonces le 17 novembre 2026. « À confirmer » veut dire que
 (function(){
 var BASE="https://chalets-votes.devoirs-theorie-serveur.workers.dev";
 var NOMS=["Charles","Marianne","Serge","Vickye","Vincent"];
+var COL={Charles:["#e6f0fd","#a9c9f2"],Marianne:["#fde9f2","#f0b3cf"],Serge:["#e5f6ea","#a6dcb6"],Vickye:["#fdf3dc","#ecd08c"],Vincent:["#efeafc","#c6b8ef"]};
+function pill(n){return '<span class="np" style="background:'+COL[n][0]+';border-color:'+COL[n][1]+'">'+n+'</span>';}
 var C=[{n:1,nm:"Chippewa Trail"},{n:2,nm:"Sunset Villa"},{n:3,nm:"Four Season"},{n:4,nm:"Beach Lookout"},{n:5,nm:"Three Bears"}];
 var K=[
  {id:"prix",l:"Prix",v:[3.3,5.6,10,0,8.7],good:"le prix",bad:"le prix"},
@@ -338,8 +347,10 @@ function rank(w){var tw=K.reduce(function(a,k){return a+w[k.id];},0)||1;
   return {c:c,sc:sc,g:g,b:b};}).sort(function(a,b){return b.sc-a.sc;});}
 function rows(el,out){el.innerHTML=out.map(function(o,j){return '<div class="row'+(j==0?' first':'')+'"><div class="top"><span class="num">'+o.c.n+'</span><span class="nm">'+o.c.nm+'</span><span class="pc">'+Math.round(o.sc)+' %</span></div><div class="bar"><i style="width:'+o.sc+'%"></i></div><div class="why">'+(o.g.length?'<b>Pour :</b> '+o.g.join(", ")+'. ':'')+(o.b.length?'<b>Contre :</b> '+o.b.join(", ")+'.':'')+'</div></div>';}).join("");}
 /* --- Ma page --- */
-function who(){$("who").innerHTML=NOMS.map(function(n){var d=(voted(n)?1:0)+(has(PW[n])?1:0);return '<button data-n="'+n+'" aria-pressed="'+(n===moi)+'">'+n+(d?' <span class="ck" title="'+(d==2?'Vote et priorités faits':'En partie rempli')+'">'+(d==2?'✓':'·')+'</span>':'')+'</button>';}).join("");}
-function mine(){var on=!!moi;$("mePanel").hidden=!on;$("hint0").hidden=on;if(!on)return;var mv=V[moi]||{};
+function who(){$("who").innerHTML=NOMS.map(function(n){var d=(voted(n)?1:0)+(has(PW[n])?1:0);return '<button data-n="'+n+'" aria-pressed="'+(n===moi)+'" style="background:'+COL[n][0]+';border-color:'+(n===moi?COL[n][1]:'transparent')+'">'+n+(d?' <span class="ck" title="'+(d==2?'Vote et priorités faits':'En partie rempli')+'">'+(d==2?'✓':'·')+'</span>':'')+'</button>';}).join("");}
+function mine(){var on=!!moi;$("mePanel").hidden=!on;$("hint0").hidden=on;var box=$("mePanel").closest(".vote");
+ box.style.boxShadow=on?"0 0 0 3px "+COL[moi][1]+", 0 20px 50px rgba(0,0,0,.18)":"";box.style.background=on?"linear-gradient("+COL[moi][0]+",#fff 180px)":"";
+ $("meName").innerHTML=on?"Page de "+pill(moi):"";if(!on)return;var mv=V[moi]||{};
  $("mine").innerHTML=C.map(function(c){return '<div class="r"><span class="num">'+c.n+'</span><span class="nm">'+c.nm+'</span><div class="pick">'+[1,2,3,4,5].map(function(k){return '<button data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+k+' sur 5" aria-pressed="'+(mv[c.n]===k)+'">'+k+'</button>';}).join("")+'</div></div>';}).join("");}
 function sliders(){if(!moi)return;var w=myW();
  $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
@@ -356,7 +367,7 @@ function votes(){
  $("vnote").textContent=vs.length<5?"En attente de : "+NOMS.filter(function(n){return !voted(n);}).join(", ")+".":"Tout le monde a voté.";
  var bn=best.map(function(t){return t.c.n;});
  var h='<thead><tr><th></th>'+C.map(function(c){return '<th class="'+(bn.indexOf(c.n)>=0?'win':'')+'" title="'+c.nm+'"><span class="num">'+c.n+'</span></th>';}).join("")+'</tr></thead><tbody>';
- NOMS.forEach(function(p){h+='<tr><td>'+p+'</td>'+C.map(function(c){var v=(V[p]||{})[c.n];return '<td class="'+(v?'':'e ')+(bn.indexOf(c.n)>=0?'win':'')+'">'+(v||'–')+'</td>';}).join("")+'</tr>';});
+ NOMS.forEach(function(p){h+='<tr><td>'+pill(p)+'</td>'+C.map(function(c){var v=(V[p]||{})[c.n];return '<td class="'+(v?'':'e ')+(bn.indexOf(c.n)>=0?'win':'')+'">'+(v||'–')+'</td>';}).join("")+'</tr>';});
  h+='<tr class="tot"><td>Total</td>'+tot.map(function(t){return '<td class="'+(bn.indexOf(t.c.n)>=0?'win':'')+'">'+(t.n?t.s:'–')+'</td>';}).join("")+'</tr></tbody>';
  $("vt").innerHTML=h;}
 function group(){var ws=NOMS.filter(function(n){return has(PW[n]);});var w={};
@@ -364,7 +375,7 @@ function group(){var ws=NOMS.filter(function(n){return has(PW[n]);});var w={};
  $("gnote").textContent=ws.length?"Moyenne des priorités de "+ws.join(", ")+" ("+ws.length+" sur 5).":"Personne n'a encore réglé ses priorités : réglage « Équilibré » en attendant.";
  rows($("gres"),rank(w));
  var sh=["–","Un peu","Important","Essentiel"];
- $("ptable").innerHTML='<thead><tr><th></th>'+K.map(function(k){return '<th>'+k.l+'</th>';}).join("")+'</tr></thead><tbody>'+NOMS.map(function(n){var x=PW[n];return '<tr><td>'+n+'</td>'+K.map(function(k){var v=has(x)?x[k.id]:null;return '<td class="p'+(v==null?'e':v)+'">'+(v==null?'–':sh[v])+'</td>';}).join("")+'</tr>';}).join("")+'</tbody>';}
+ $("ptable").innerHTML='<thead><tr><th></th>'+K.map(function(k){return '<th>'+k.l+'</th>';}).join("")+'</tr></thead><tbody>'+NOMS.map(function(n){var x=PW[n];return '<tr><td>'+pill(n)+'</td>'+K.map(function(k){var v=has(x)?x[k.id]:null;return '<td class="p'+(v==null?'e':v)+'">'+(v==null?'–':sh[v])+'</td>';}).join("")+'</tr>';}).join("")+'</tbody>';}
 function all(keepSliders){who();mine();if(!keepSliders)sliders();votes();group();}
 /* --- événements --- */
 $("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;try{localStorage.setItem("chalets-moi",moi);}catch(x){}st("");all();});
