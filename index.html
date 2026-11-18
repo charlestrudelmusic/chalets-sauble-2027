@@ -167,6 +167,8 @@ html{scroll-behavior:smooth}
 .pstatus{font-size:13px;color:var(--soft);margin-top:14px;min-height:1em}
 .band{margin-top:96px}
 @media(max-width:560px){.topnav{top:8px;gap:2px}.topnav a{padding:8px 10px;font-size:13px}.sechead h2{font-size:27px !important}.secnum{width:46px;height:46px;font-size:21px;border-radius:14px}}
+.pt{min-width:720px;font-size:13.5px}.pt th{font-size:12.5px;font-weight:600;color:var(--soft)}
+.pt td.pe{color:var(--line)}.pt td.p0{color:var(--soft)}.pt td.p2{color:var(--accent)}.pt td.p3{color:var(--accent);font-weight:600}
 </style>
 </head>
 <body>
@@ -262,6 +264,11 @@ html{scroll-behavior:smooth}
 <h3 class="subh left">Classement selon les priorités du groupe</h3>
 <p class="gnote" id="gnote"></p>
 <div class="res" id="gres"></div>
+</div>
+<div class="rank" style="margin-top:24px">
+<h3 class="subh left">Les priorités de tout le monde</h3>
+<p class="gnote">Visible par tous. Clique sur un nom plus bas pour régler les tiennes.</p>
+<div style="overflow-x:auto"><table class="vt pt" id="ptable"></table></div>
 </div>
 <div class="rank" style="margin-top:24px">
 <h3 class="subh left">Mes priorités</h3>
@@ -369,8 +376,10 @@ function tabs(){$("ptabs").innerHTML=NOMS.map(function(n){return '<button role="
 function sliders(){var w=W();
  $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
  rows($("res"),rank(w));}
-function all(){tabs();sliders();group();}
-function set(w){PW[cur]=w;tabs();sliders();group();$("pstatus").textContent="Enregistrement…";clearTimeout(timer);
+function ptable(){var sh=["–","Un peu","Important","Essentiel"];
+ $("ptable").innerHTML='<thead><tr><th></th>'+K.map(function(k){return '<th>'+k.l.replace(" (dehors et dedans)","").replace("Près de ","")+'</th>';}).join("")+'</tr></thead><tbody>'+NOMS.map(function(n){var w=PW[n];return '<tr><td>'+n+'</td>'+K.map(function(k){var v=has(w)?w[k.id]:null;return '<td class="p'+(v==null?'e':v)+'">'+(v==null?'–':sh[v])+'</td>';}).join("")+'</tr>';}).join("")+'</tbody>';}
+function all(){tabs();sliders();group();ptable();}
+function set(w){PW[cur]=w;tabs();sliders();group();ptable();$("pstatus").textContent="Enregistrement…";clearTimeout(timer);
  var who=cur;timer=setTimeout(function(){fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who,poids:w})})
  .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){PW=d;all();$("pstatus").textContent="Enregistré pour "+who+".";})
  .catch(function(){$("pstatus").textContent="Pas pu enregistrer. Vérifie ta connexion et réessaie.";});},600);}
