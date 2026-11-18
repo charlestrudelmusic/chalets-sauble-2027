@@ -21,6 +21,10 @@ th,td{padding:16px 14px 16px 0;text-align:left;border-bottom:1px solid var(--lin
 tr:last-child td{border-bottom:0}
 thead th{font-family:var(--head);font-weight:500;font-size:17px;padding-top:20px}
 thead th span{display:none}
+.num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font:600 15px/1 var(--body);letter-spacing:0;flex:none}
+thead th .num{display:flex;margin-bottom:8px}
+.card .head{display:flex;gap:14px;align-items:center}
+.card .head .num{width:40px;height:40px;font-size:19px}
 td:first-child,th:first-child{color:var(--soft);width:130px;position:sticky;left:0;background:var(--card);font-size:14px}
 .price{font-weight:600;font-size:17px}
 .tot,.n{display:block;font-size:13px;color:var(--soft)}
@@ -63,7 +67,7 @@ footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max
 
 <h2>Comparaison</h2>
 <div class="wrap"><table>
-<thead><tr><th></th><th>Chippewa Trail<span>no 1</span></th><th>Sunset Villa<span>no 2</span></th><th>Four Season<span>no 3</span></th><th>Beach Lookout<span>no 4</span></th><th>Three Bears<span>no 5</span></th></tr></thead>
+<thead><tr><th></th><th><span class="num" aria-label="Chalet 1">1</span>Chippewa Trail</th><th><span class="num" aria-label="Chalet 2">2</span>Sunset Villa</th><th><span class="num" aria-label="Chalet 3">3</span>Four Season</th><th><span class="num" aria-label="Chalet 4">4</span>Beach Lookout</th><th><span class="num" aria-label="Chalet 5">5</span>Three Bears</th></tr></thead>
 <tbody>
 <tr><td>Par personne</td><td><span class="price">766 $</span><span class="tot">3 830 $ au total</span></td><td><span class="price">614 $</span><span class="tot">3 069 $ au total</span></td><td><span class="price">330 $</span><span class="tot">1 651 $ au total</span></td><td><span class="price">978 $</span><span class="tot">4 891 $ au total</span></td><td><span class="price">≈ 416 $</span><span class="tot">≈ 2 080 $ au total</span></td></tr>
 <tr><td>Chambres</td><td class="ok">3 doubles<span class="n">+ 1 ch. superposés</span></td><td class="may">3 lits<span class="n">tailles inconnues</span></td><td class="no">Queen, double, 2 simples<span class="n">+ divan-lit au salon</span></td><td class="no">Queen, double, superposés</td><td class="may">Queen, 2 doubles<span class="n">répartition inconnue</span></td></tr>
@@ -81,35 +85,35 @@ footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max
 
 <h2>Les chalets</h2>
 <div class="cards">
-<article class="card"><div class="no-">No 1</div><h3>Chippewa Trail</h3><div class="tag">La plage en face</div>
+<article class="card"><div class="head"><span class="num">1</span><div><h3>Chippewa Trail</h3><div class="tag">La plage en face</div></div></div>
 <div class="cp">766 $ <small>/ personne · 3 830 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Double</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Double</span></li><li>Chambre 4<span>Superposés</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>Plage juste de l'autre côté de la rue</li><li>2 kayaks, planche à pagaie, 4 vélos, chaises de plage</li><li>2 barbecues, table de 8, hamac</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Une seule toilette</li><li>Eau de puits, eau potable en cruches</li><li>2 places de stationnement seulement</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>4,76/5 sur 21 avis. Commentaires individuels non accessibles; propreté 4,5/5.</p><p><b>Bon à savoir</b><br>Courant fort au rivage, pas de sauveteurs. Loué aux familles et couples matures.</p><p><b>À vérifier</b><br>Climatisation, et lire les avis moins bons.</p></details>
 <a href="https://fr.airbnb.ca/rooms/49229179" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card"><div class="no-">No 2</div><h3>Sunset Villa</h3><div class="tag">Bon compromis, à vérifier</div>
+<article class="card"><div class="head"><span class="num">2</span><div><h3>Sunset Villa</h3><div class="tag">Bon compromis, à vérifier</div></div></div>
 <div class="cp">614 $ <small>/ personne · 3 069 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Taille ?</span></li><li>Chambre 2<span>Taille ?</span></li><li>Chambre 3<span>Taille ?</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain</li><li>Cour privée : foyer, barbecue au gaz, repas dehors</li><li>Rue principale à pied, hôte Superhôte</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Tailles des lits inconnues</li><li>Climatisation non confirmée</li><li>Maximum 6 personnes</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>4,62/5 sur 13 avis. Un avis à 3 étoiles, motif inconnu. Qualité-prix 4,5/5.</p><p><b>À vérifier</b><br>Un grand lit dans chaque chambre, la clim, les avis moins bons.</p></details>
 <a href="https://fr.airbnb.ca/rooms/1433381894774584865" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card"><div class="no-">No 3</div><h3>Four Season Escape</h3><div class="tag">Le moins cher</div>
+<article class="card"><div class="head"><span class="num">3</span><div><h3>Four Season Escape</h3><div class="tag">Le moins cher</div></div></div>
 <div class="cp">330 $ <small>/ personne · 1 651 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>2 simples</span></li><li>Salon<span>Divan-lit queen</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>De loin le moins cher</li><li>Deux toilettes</li><li>Divan-lit queen en plus au salon</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Troisième chambre en lits simples</li><li>Clim et feu non confirmés</li><li>Seulement 4 avis</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>9,6/10 sur 4 avis : entretien, espace, hôtes réactifs.</p><p><b>Bon à savoir</b><br>Secteur South Sauble Beach. Barbecue, terrasse, stationnement. Animaux non admis.</p><p><b>À vérifier</b><br>Climatisation, feu extérieur, accepter les lits simples.</p></details>
 <a href="https://www.vrbo.com/en-ca/cottage-rental/p20193024" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card"><div class="no-">No 4</div><h3>Beach Lookout</h3><div class="tag">Sur la plage, au village</div>
+<article class="card"><div class="head"><span class="num">4</span><div><h3>Beach Lookout</h3><div class="tag">Sur la plage, au village</div></div></div>
 <div class="cp">978 $ <small>/ personne · 4 891 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Superposés simples</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>Clim, foyer et feu sur la terrasse</li><li>Plage à une minute, au cœur du village</li><li>Grande terrasse, hamac, vue sur le lac</li></ul>
 <div class="lbl">Désavantages</div><ul class="cons"><li>Le plus cher</li><li>Une seule toilette, troisième chambre en superposés</li><li>Draps et serviettes à apporter</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>9,8/10 sur 19 avis : emplacement, cuisine, confort. Un 4/10 sur la communication (différend sur une chaise, selon l'hôte).</p><p><b>Bon à savoir</b><br>Maximum 6 personnes. Chiens acceptés.</p><p><b>À vérifier</b><br>Linge à apporter, couchages.</p></details>
 <a href="https://www.vrbo.com/en-ca/cottage-rental/p20265714" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card"><div class="no-">No 5</div><h3>Three Bears' Cottage</h3><div class="tag">Bien équipé, avis mitigés</div>
+<article class="card"><div class="head"><span class="num">5</span><div><h3>Three Bears' Cottage</h3><div class="tag">Bien équipé, avis mitigés</div></div></div>
 <div class="cp">≈ 416 $ <small>/ personne · ≈ 2 080 $ au total</small></div>
 <ul class="rooms"><li>Lits annoncés<span>Queen, 2 doubles</span></li><li>En plus<span>2 simples, divan-lit</span></li><li>Répartition<span>Non précisée</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain, clim, foyer et feu</li><li>Grande cour privée, gazebo, barbecue</li><li>Laveuse-sécheuse, cuisine complète</li></ul>
