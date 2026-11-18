@@ -105,7 +105,7 @@ footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max
 .vt th:first-child,.vt td:first-child{text-align:left;color:var(--soft);position:static;background:none;width:auto}
 .vt thead th .num{width:28px;height:28px;font-size:14px;display:inline-flex;margin:0}
 .vt td.e{color:var(--line)}
-.vt tr.tot td{font-weight:600;border-bottom:0;color:var(--ink)}
+.vt tr.tot{display:table-row}.vt tr.tot td{font-size:15px;font-weight:600;border-bottom:0;color:var(--ink)}
 .vt .win{background:#eef8f2}
 .vstatus{font-size:13px;color:var(--soft);margin-top:12px;min-height:1em}
 @media(max-width:560px){.vote{padding:26px 18px}.pick button{width:36px;height:36px}}
@@ -169,6 +169,13 @@ html{scroll-behavior:smooth}
 @media(max-width:560px){.topnav{top:8px;gap:2px}.topnav a{padding:8px 10px;font-size:13px}.sechead h2{font-size:27px !important}.secnum{width:46px;height:46px;font-size:21px;border-radius:14px}}
 .pt{min-width:720px;font-size:13.5px}.pt th{font-size:12.5px;font-weight:600;color:var(--soft)}
 .pt td.pe{color:var(--line)}.pt td.p0{color:var(--soft)}.pt td.p2{color:var(--accent)}.pt td.p3{color:var(--accent);font-weight:600}
+.hint0{color:var(--soft);font-size:14.5px;margin:0}
+.block{border-top:1px solid var(--line);padding-top:26px;margin-top:8px;margin-bottom:26px}
+.bt{display:flex;gap:14px;align-items:center;margin-bottom:16px}
+.bt b{display:block;font-size:19px}.bt span{color:var(--soft);font-size:14px}
+.bn{display:inline-flex !important;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:var(--accentbg);color:var(--accent) !important;font-weight:700;font-size:15px !important;flex:none}
+.who .ck{color:#2a9d6b;font-weight:700}
+.who button[aria-pressed="true"] .ck{color:#fff}
 </style>
 </head>
 <body>
@@ -178,7 +185,7 @@ html{scroll-behavior:smooth}
 <h1>Cinq chalets à comparer</h1>
 <p class="lead">7 nuits · 5 personnes · prix en dollars canadiens</p>
 </header>
-<nav class="topnav" aria-label="Sections"><a href="#s1"><b>1</b>Les chalets</a><a href="#s2"><b>2</b>Le vote</a><a href="#s3"><b>3</b>Nos priorités</a></nav>
+<nav class="topnav" aria-label="Sections"><a href="#s1"><b>1</b>Les chalets</a><a href="#s2"><b>2</b>Ma page</a><a href="#s3"><b>3</b>Le groupe</a></nav>
 
 <section class="sec" id="s1">
 <div class="sechead"><span class="secnum">1</span><div><h2>Les chalets</h2><p>Les 5 options, leurs fiches et la comparaison point par point.</p></div></div>
@@ -243,43 +250,44 @@ html{scroll-behavior:smooth}
 
 </section>
 <section class="band sec" id="s2"><div class="bandin">
-<div class="bandhead"><div class="sechead light"><span class="secnum">2</span><div><h2 class="bh">Le vote</h2><p>Chacun donne sa note à chaque chalet.</p></div></div>
-<ol class="steps"><li><b>1</b>Choisis ton nom</li><li><b>2</b>Note chaque chalet de 1 à 5</li><li><b>3</b>Le choix du groupe se calcule tout seul</li></ol></div>
+<div class="bandhead"><div class="sechead light"><span class="secnum">2</span><div><h2 class="bh">Ma page</h2><p>Clique sur ton nom : ton vote et tes priorités, au même endroit.</p></div></div></div>
 <div class="vote">
-<div class="winner" id="winner"></div>
 <p class="vq">Qui es-tu?</p>
 <div class="who" id="who" role="group" aria-label="Choisir ton nom"></div>
-<div id="mineWrap" hidden>
+<p class="hint0" id="hint0">Choisis ton nom pour commencer.</p>
+<div id="mePanel" hidden>
+<div class="block">
+<div class="bt"><span class="bn">A</span><div><b>Mon vote</b><span>Une note par chalet. Clique de nouveau pour l'effacer.</span></div></div>
 <p class="scale"><span>1 = non merci</span><span>5 = coup de cœur</span></p>
 <div class="mine" id="mine"></div>
 </div>
-<p class="vq">Les choix de tout le monde</p>
-<div style="overflow-x:auto"><table class="vt" id="vt"></table></div>
+<div class="block">
+<div class="bt"><span class="bn">B</span><div><b>Mes priorités</b><span>Ce qui compte pour toi. Un préréglage ou les curseurs.</span></div></div>
+<div class="presets" role="group" aria-label="Préréglages"><button data-p="eq">Équilibré</button><button data-p="cash">Budget d'abord</button><button data-p="conf">Confort d'abord</button><button data-p="lieu">Plage et camping</button></div>
+<div class="rgrid"><div class="weights" id="weights"></div><div><p class="mini">Mon classement selon mes priorités</p><div class="res" id="res"></div></div></div>
+</div>
 <div class="vstatus" id="vstatus"></div>
+</div>
 </div>
 </div></section>
 <section class="sec" id="s3">
-<div class="sechead"><span class="secnum">3</span><div><h2>Nos priorités</h2><p>Chacun indique ce qui compte pour lui. Le classement du groupe en tient compte.</p></div></div>
+<div class="sechead"><span class="secnum">3</span><div><h2>Le groupe</h2><p>Le résultat de tout le monde, mis à jour en direct. Rien à modifier ici.</p></div></div>
 <div class="rank">
-<h3 class="subh left">Classement selon les priorités du groupe</h3>
+<div class="winner" id="winner"></div>
+<h3 class="subh left">Les votes de tout le monde</h3>
+<p class="gnote" id="vnote"></p>
+<div style="overflow-x:auto"><table class="vt" id="vt"></table></div>
+</div>
+<div class="rank" style="margin-top:24px">
+<h3 class="subh left">Classement selon les priorités de tout le monde</h3>
 <p class="gnote" id="gnote"></p>
 <div class="res" id="gres"></div>
 </div>
 <div class="rank" style="margin-top:24px">
-<h3 class="subh left">Les priorités de tout le monde</h3>
-<p class="gnote">Visible par tous. Clique sur un nom plus bas pour régler les tiennes.</p>
+<h3 class="subh left">Les priorités de chacun</h3>
 <div style="overflow-x:auto"><table class="vt pt" id="ptable"></table></div>
-</div>
-<div class="rank" style="margin-top:24px">
-<h3 class="subh left">Mes priorités</h3>
-<div class="ptabs" id="ptabs" role="tablist" aria-label="Choisir la personne"></div>
-<p class="pnote">Glisse les curseurs selon ce qui compte pour toi. C'est enregistré automatiquement.</p>
-<div class="presets" role="group" aria-label="Préréglages"><button data-p="eq">Équilibré</button><button data-p="cash">Budget d'abord</button><button data-p="conf">Confort d'abord</button><button data-p="lieu">Plage et camping</button></div>
-<div class="rgrid"><div class="weights" id="weights"></div><div><p class="mini">Ton classement</p><div class="res" id="res"></div></div></div>
-<div class="pstatus" id="pstatus"></div>
 <details class="how"><summary>Comment c'est calculé</summary>
 <p>Chaque chalet reçoit une note de 0 à 10 par critère, puis on fait la moyenne selon l'importance choisie. Ce qui est « à confirmer » vaut 5 sur 10 : ni bonus ni pénalité. Prix : le moins cher a 10, le plus cher 0. Avis : tient compte de la note, du nombre d'avis et des plaintes (no 5 pénalisé, no 3 peu d'avis). Les temps vers Carson's Camp sont estimés.</p></details>
-
 </div>
 <div class="rank" style="margin-top:24px">
 <h3 class="subh left">Notre lecture</h3>
@@ -298,48 +306,7 @@ Infos tirées des annonces le 17 novembre 2026. « À confirmer » veut dire que
 
 <script>
 (function(){
-var API="https://chalets-votes.devoirs-theorie-serveur.workers.dev/votes";
-var NOMS=["Charles","Marianne","Serge","Vickye","Vincent"];
-var CH=[{n:1,nm:"Chippewa Trail"},{n:2,nm:"Sunset Villa"},{n:3,nm:"Four Season"},{n:4,nm:"Beach Lookout"},{n:5,nm:"Three Bears"}];
-var V={},moi=null;
-try{moi=localStorage.getItem("chalets-moi");}catch(e){}
-if(NOMS.indexOf(moi)<0)moi=null;
-var $=function(id){return document.getElementById(id);};
-function st(t){$("vstatus").textContent=t;}
-function who(){$("who").innerHTML=NOMS.map(function(n){return '<button data-n="'+n+'" aria-pressed="'+(n===moi)+'">'+n+'</button>';}).join("");}
-$("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;try{localStorage.setItem("chalets-moi",moi);}catch(x){}who();mine();});
-function mine(){
- $("mineWrap").hidden=!moi;if(!moi)return;var mv=V[moi]||{};
- $("mine").innerHTML=CH.map(function(c){return '<div class="r"><span class="num">'+c.n+'</span><span class="nm">'+c.nm+'</span><div class="pick">'+[1,2,3,4,5].map(function(k){return '<button data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+k+' sur 5" aria-pressed="'+(mv[c.n]===k)+'">'+k+'</button>';}).join("")+'</div></div>';}).join("");
-}
-$("mine").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!moi)return;
- var c=b.dataset.c,k=+b.dataset.k,mv=V[moi]=V[moi]||{};var note=mv[c]===k?0:k;
- if(note)mv[c]=note;else delete mv[c];mine();table();st("Enregistrement…");
- fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:moi,chalet:+c,note:note})})
- .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){V=d;mine();table();st("Enregistré.");})
- .catch(function(){st("Pas pu enregistrer. Vérifie ta connexion et réessaie.");});});
-function table(){
- var tot=CH.map(function(c){var s=0,n=0;NOMS.forEach(function(p){var v=(V[p]||{})[c.n];if(v){s+=v;n++;}});return {c:c,s:s,n:n};});
- var best=tot.slice().sort(function(a,b){return b.s-a.s||(b.n?b.s/b.n:0)-(a.n?a.s/a.n:0);})[0];
- var any=tot.some(function(t){return t.n>0;});
- var tie=any&&tot.filter(function(t){return t.s===best.s;}).length>1;
- var votants=NOMS.filter(function(p){return Object.keys(V[p]||{}).length;}).length;
- $("winner").innerHTML=!any?'<div class="k">Choix du groupe</div><div class="t">Personne n\'a encore voté</div><p>Choisis ton nom ci-dessous et donne tes notes.</p>'
-  :'<div class="k">Choix du groupe'+(tie?' (égalité)':'')+'</div><div class="t">'+tot.filter(function(t){return t.s===best.s;}).map(function(t){return '<span class="num">'+t.c.n+'</span>'+t.c.nm;}).join(' · ')+'</div><p>'+best.s+' points · '+votants+' personne'+(votants>1?'s ont':' a')+' voté sur 5</p>';
- var bestN=tot.filter(function(t){return any&&t.s===best.s;}).map(function(t){return t.c.n;});
- var h='<thead><tr><th></th>'+CH.map(function(c){return '<th class="'+(bestN.indexOf(c.n)>=0?'win':'')+'" title="'+c.nm+'"><span class="num">'+c.n+'</span></th>';}).join("")+'</tr></thead><tbody>';
- NOMS.forEach(function(p){h+='<tr><td>'+p+'</td>'+CH.map(function(c){var v=(V[p]||{})[c.n];return '<td class="'+(v?'':'e ')+(bestN.indexOf(c.n)>=0?'win':'')+'">'+(v||'–')+'</td>';}).join("")+'</tr>';});
- h+='<tr class="tot"><td>Total</td>'+tot.map(function(t){return '<td class="'+(bestN.indexOf(t.c.n)>=0?'win':'')+'">'+(t.n?t.s:'–')+'</td>';}).join("")+'</tr></tbody>';
- $("vt").innerHTML=h;
-}
-function load(){return fetch(API,{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){V=d;mine();table();}).catch(function(){st("Votes indisponibles pour l'instant.");});}
-who();mine();table();load();
-setInterval(function(){if(!document.hidden)load();},20000);
-})();
-</script>
-<script>
-(function(){
-var API="https://chalets-votes.devoirs-theorie-serveur.workers.dev/priorites";
+var BASE="https://chalets-votes.devoirs-theorie-serveur.workers.dev";
 var NOMS=["Charles","Marianne","Serge","Vickye","Vincent"];
 var C=[{n:1,nm:"Chippewa Trail"},{n:2,nm:"Sunset Villa"},{n:3,nm:"Four Season"},{n:4,nm:"Beach Lookout"},{n:5,nm:"Three Bears"}];
 var K=[
@@ -347,20 +314,22 @@ var K=[
  {id:"lits",l:"Grands lits",v:[10,5,3,2,6],good:"3 grands lits",bad:"les lits"},
  {id:"toil",l:"2 toilettes",v:[0,10,8.5,0,10],good:"2 toilettes",bad:"1 seule toilette"},
  {id:"clim",l:"Clim",v:[5,5,5,10,10],good:"la clim",bad:"clim non confirmée"},
- {id:"feu",l:"Feu (dehors et dedans)",v:[7.5,7.5,5,10,10],good:"feu dehors et foyer",bad:"feu non confirmé"},
+ {id:"feu",l:"Feu",v:[7.5,7.5,5,10,10],good:"feu dehors et foyer",bad:"feu non confirmé"},
  {id:"plage",l:"Plage proche",v:[10,6,6.5,10,5],good:"la plage tout près",bad:"plus loin de la plage"},
- {id:"camp",l:"Près de Carson's Camp",v:[4,7,7,10,4],good:"près du camping",bad:"distance du camping inconnue"},
+ {id:"camp",l:"Carson's Camp",v:[4,7,7,10,4],good:"près du camping",bad:"distance du camping inconnue"},
  {id:"avis",l:"Avis fiables",v:[8.5,7,6,9.5,3],good:"de bons avis",bad:"des avis inquiétants"}];
 var P={eq:{prix:2,lits:3,toil:2,clim:2,feu:1,plage:1,camp:1,avis:2},
  cash:{prix:3,lits:1,toil:1,clim:1,feu:1,plage:1,camp:1,avis:1},
  conf:{prix:1,lits:3,toil:3,clim:3,feu:2,plage:1,camp:1,avis:2},
  lieu:{prix:1,lits:1,toil:1,clim:1,feu:1,plage:3,camp:3,avis:1}};
 var lab=["Pas important","Un peu","Important","Essentiel"];
-var PW={},cur=null,timer=null,$=function(i){return document.getElementById(i);};
-try{cur=localStorage.getItem("chalets-moi");}catch(e){}
-if(NOMS.indexOf(cur)<0)cur=NOMS[0];
-function has(w){return w&&Object.keys(w).length===K.length;}
-function W(){return has(PW[cur])?PW[cur]:P.eq;}
+var V={},PW={},moi=null,timer=null,$=function(i){return document.getElementById(i);};
+try{moi=localStorage.getItem("chalets-moi");}catch(e){}
+if(NOMS.indexOf(moi)<0)moi=null;
+function has(w){return !!w&&Object.keys(w).length===K.length;}
+function voted(n){return Object.keys(V[n]||{}).length>0;}
+function myW(){return has(PW[moi])?PW[moi]:P.eq;}
+function st(t){$("vstatus").textContent=t;}
 function rank(w){var tw=K.reduce(function(a,k){return a+w[k.id];},0)||1;
  return C.map(function(c,i){var sc=K.reduce(function(a,k){return a+w[k.id]*k.v[i];},0)/tw*10;
   var imp=K.filter(function(k){return w[k.id]>0;});
@@ -368,27 +337,54 @@ function rank(w){var tw=K.reduce(function(a,k){return a+w[k.id];},0)||1;
   var b=imp.filter(function(k){return k.v[i]<=4;}).sort(function(a,b){return w[b.id]*(10-b.v[i])-w[a.id]*(10-a.v[i]);}).slice(0,2).map(function(k){return k.bad;});
   return {c:c,sc:sc,g:g,b:b};}).sort(function(a,b){return b.sc-a.sc;});}
 function rows(el,out){el.innerHTML=out.map(function(o,j){return '<div class="row'+(j==0?' first':'')+'"><div class="top"><span class="num">'+o.c.n+'</span><span class="nm">'+o.c.nm+'</span><span class="pc">'+Math.round(o.sc)+' %</span></div><div class="bar"><i style="width:'+o.sc+'%"></i></div><div class="why">'+(o.g.length?'<b>Pour :</b> '+o.g.join(", ")+'. ':'')+(o.b.length?'<b>Contre :</b> '+o.b.join(", ")+'.':'')+'</div></div>';}).join("");}
-function group(){var who=NOMS.filter(function(n){return has(PW[n]);});var w={};
- K.forEach(function(k){w[k.id]=who.length?who.reduce(function(a,n){return a+PW[n][k.id];},0)/who.length:P.eq[k.id];});
- $("gnote").textContent=who.length?"Moyenne des priorités de "+who.join(", ")+" ("+who.length+" sur 5).":"Personne n'a encore réglé ses priorités : réglage « Équilibré » en attendant.";
- rows($("gres"),rank(w));}
-function tabs(){$("ptabs").innerHTML=NOMS.map(function(n){return '<button role="tab" data-n="'+n+'" aria-selected="'+(n===cur)+'">'+n+(has(PW[n])?' <span class="ck">✓</span>':'')+'</button>';}).join("");}
-function sliders(){var w=W();
+/* --- Ma page --- */
+function who(){$("who").innerHTML=NOMS.map(function(n){var d=(voted(n)?1:0)+(has(PW[n])?1:0);return '<button data-n="'+n+'" aria-pressed="'+(n===moi)+'">'+n+(d?' <span class="ck" title="'+(d==2?'Vote et priorités faits':'En partie rempli')+'">'+(d==2?'✓':'·')+'</span>':'')+'</button>';}).join("");}
+function mine(){var on=!!moi;$("mePanel").hidden=!on;$("hint0").hidden=on;if(!on)return;var mv=V[moi]||{};
+ $("mine").innerHTML=C.map(function(c){return '<div class="r"><span class="num">'+c.n+'</span><span class="nm">'+c.nm+'</span><div class="pick">'+[1,2,3,4,5].map(function(k){return '<button data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+k+' sur 5" aria-pressed="'+(mv[c.n]===k)+'">'+k+'</button>';}).join("")+'</div></div>';}).join("");}
+function sliders(){if(!moi)return;var w=myW();
  $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
  rows($("res"),rank(w));}
-function ptable(){var sh=["–","Un peu","Important","Essentiel"];
- $("ptable").innerHTML='<thead><tr><th></th>'+K.map(function(k){return '<th>'+k.l.replace(" (dehors et dedans)","").replace("Près de ","")+'</th>';}).join("")+'</tr></thead><tbody>'+NOMS.map(function(n){var w=PW[n];return '<tr><td>'+n+'</td>'+K.map(function(k){var v=has(w)?w[k.id]:null;return '<td class="p'+(v==null?'e':v)+'">'+(v==null?'–':sh[v])+'</td>';}).join("")+'</tr>';}).join("")+'</tbody>';}
-function all(){tabs();sliders();group();ptable();}
-function set(w){PW[cur]=w;tabs();sliders();group();ptable();$("pstatus").textContent="Enregistrement…";clearTimeout(timer);
- var who=cur;timer=setTimeout(function(){fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who,poids:w})})
- .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){PW=d;all();$("pstatus").textContent="Enregistré pour "+who+".";})
- .catch(function(){$("pstatus").textContent="Pas pu enregistrer. Vérifie ta connexion et réessaie.";});},600);}
-$("ptabs").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;cur=b.dataset.n;$("pstatus").textContent="";all();});
-$("weights").addEventListener("input",function(e){var r=e.target;if(!r.dataset.k)return;var w=Object.assign({},W());w[r.dataset.k]=+r.value;
- r.previousElementSibling.querySelector("span").textContent=lab[w[r.dataset.k]];set(w);});
-document.querySelectorAll(".presets button").forEach(function(b){b.addEventListener("click",function(){set(Object.assign({},P[b.dataset.p]));});});
-all();
-fetch(API,{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){PW=d;all();}).catch(function(){$("gnote").textContent="Priorités indisponibles pour l'instant.";});
+/* --- Le groupe --- */
+function votes(){
+ var tot=C.map(function(c){var s=0,n=0;NOMS.forEach(function(p){var v=(V[p]||{})[c.n];if(v){s+=v;n++;}});return {c:c,s:s,n:n};});
+ var any=tot.some(function(t){return t.n>0;});
+ var top=any?Math.max.apply(null,tot.map(function(t){return t.s;})):-1;
+ var best=tot.filter(function(t){return any&&t.s===top;});
+ var vs=NOMS.filter(voted);
+ $("winner").innerHTML=!any?'<div class="k">Choix du groupe</div><div class="t">Personne n\'a encore voté</div><p>Chacun vote dans « Ma page », plus haut.</p>'
+  :'<div class="k">Choix du groupe'+(best.length>1?' (égalité)':'')+'</div><div class="t">'+best.map(function(t){return '<span class="num">'+t.c.n+'</span>'+t.c.nm;}).join(' · ')+'</div><p>'+top+' points · '+vs.length+' personne'+(vs.length>1?'s ont':' a')+' voté sur 5</p>';
+ $("vnote").textContent=vs.length<5?"En attente de : "+NOMS.filter(function(n){return !voted(n);}).join(", ")+".":"Tout le monde a voté.";
+ var bn=best.map(function(t){return t.c.n;});
+ var h='<thead><tr><th></th>'+C.map(function(c){return '<th class="'+(bn.indexOf(c.n)>=0?'win':'')+'" title="'+c.nm+'"><span class="num">'+c.n+'</span></th>';}).join("")+'</tr></thead><tbody>';
+ NOMS.forEach(function(p){h+='<tr><td>'+p+'</td>'+C.map(function(c){var v=(V[p]||{})[c.n];return '<td class="'+(v?'':'e ')+(bn.indexOf(c.n)>=0?'win':'')+'">'+(v||'–')+'</td>';}).join("")+'</tr>';});
+ h+='<tr class="tot"><td>Total</td>'+tot.map(function(t){return '<td class="'+(bn.indexOf(t.c.n)>=0?'win':'')+'">'+(t.n?t.s:'–')+'</td>';}).join("")+'</tr></tbody>';
+ $("vt").innerHTML=h;}
+function group(){var ws=NOMS.filter(function(n){return has(PW[n]);});var w={};
+ K.forEach(function(k){w[k.id]=ws.length?ws.reduce(function(a,n){return a+PW[n][k.id];},0)/ws.length:P.eq[k.id];});
+ $("gnote").textContent=ws.length?"Moyenne des priorités de "+ws.join(", ")+" ("+ws.length+" sur 5).":"Personne n'a encore réglé ses priorités : réglage « Équilibré » en attendant.";
+ rows($("gres"),rank(w));
+ var sh=["–","Un peu","Important","Essentiel"];
+ $("ptable").innerHTML='<thead><tr><th></th>'+K.map(function(k){return '<th>'+k.l+'</th>';}).join("")+'</tr></thead><tbody>'+NOMS.map(function(n){var x=PW[n];return '<tr><td>'+n+'</td>'+K.map(function(k){var v=has(x)?x[k.id]:null;return '<td class="p'+(v==null?'e':v)+'">'+(v==null?'–':sh[v])+'</td>';}).join("")+'</tr>';}).join("")+'</tbody>';}
+function all(keepSliders){who();mine();if(!keepSliders)sliders();votes();group();}
+/* --- événements --- */
+$("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;try{localStorage.setItem("chalets-moi",moi);}catch(x){}st("");all();});
+$("mine").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!moi)return;
+ var c=b.dataset.c,k=+b.dataset.k,mv=V[moi]=V[moi]||{};var note=mv[c]===k?0:k;var who_=moi;
+ if(note)mv[c]=note;else delete mv[c];all(true);st("Enregistrement…");
+ fetch(BASE+"/votes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who_,chalet:+c,note:note})})
+ .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){V=d;all(true);st("Vote enregistré.");})
+ .catch(function(){st("Pas pu enregistrer. Vérifie ta connexion et réessaie.");});});
+function saveW(w,redraw){if(!moi)return;PW[moi]=w;var who_=moi;if(redraw)sliders();else rows($("res"),rank(w));who();group();st("Enregistrement…");clearTimeout(timer);
+ timer=setTimeout(function(){fetch(BASE+"/priorites",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who_,poids:w})})
+ .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){PW=d;who();group();st("Priorités enregistrées.");})
+ .catch(function(){st("Pas pu enregistrer. Vérifie ta connexion et réessaie.");});},600);}
+$("weights").addEventListener("input",function(e){var r=e.target;if(!r.dataset.k)return;var w=Object.assign({},myW());w[r.dataset.k]=+r.value;
+ r.previousElementSibling.querySelector("span").textContent=lab[w[r.dataset.k]];saveW(w,false);});
+document.querySelectorAll(".presets button").forEach(function(b){b.addEventListener("click",function(){saveW(Object.assign({},P[b.dataset.p]),true);});});
+function load(first){return Promise.all([fetch(BASE+"/votes",{cache:"no-store"}).then(function(r){return r.json();}),fetch(BASE+"/priorites",{cache:"no-store"}).then(function(r){return r.json();})])
+ .then(function(d){V=d[0];if(first||!timer)PW=d[1];all(!first);}).catch(function(){st("Données indisponibles pour l'instant.");});}
+all();load(true);
+setInterval(function(){if(!document.hidden)load(false);},20000);
 })();
 </script>
 </body>
