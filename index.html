@@ -263,6 +263,16 @@ html{scroll-behavior:auto}
 <p class="legend">En gris : pas indiqué dans l'annonce. En rouge : ne correspond pas à ce qu'on cherche.</p>
 
 
+<div class="rank" style="margin-top:64px">
+<h3 class="subh left">Première analyse</h3>
+<p class="gnote">Mon avis de départ, avec un réglage « équilibré ». Ce n'est pas le résultat : le résultat, c'est votre vote (onglet 3).</p>
+<div class="verdict">
+<div><div class="k">Le plus probable</div><div class="t"><span class="num">5</span>Three Bears, ou <span class="num">2</span>Sunset Villa</div>
+<p>Le no 5 coche presque tout (2 salles de bain, clim, foyer, feu, grands lits) pour ≈ 416 $ chacun, mais ses avis obligent à poser des questions au propriétaire. Si ses réponses ne rassurent pas, le no 2 est le plan B : 2 salles de bain et une cour avec feu, à condition que les lits soient grands.</p></div>
+<div><div class="k">Le moins probable</div><div class="t"><span class="num">4</span>Beach Lookout</div>
+<p>Le plus cher (978 $ chacun) avec une seule toilette pour 5 et une chambre en lits superposés. Superbe emplacement, mais il rate deux de nos critères de base.</p></div>
+</div>
+</div>
 <div class="next"><a href="#s2">Étape suivante : Ma page →</a></div>
 </section>
 <section class="band sec" id="s2"><div class="bandin">
@@ -274,14 +284,14 @@ html{scroll-behavior:auto}
 <div id="mePanel" hidden>
 <p class="mename" id="meName"></p>
 <div class="block">
-<div class="bt"><span class="bn">A</span><div><b>Mon vote</b><span>Une note par chalet. Clique de nouveau pour l'effacer.</span></div></div>
-<p class="scale"><span>1 = non merci</span><span>5 = coup de cœur</span></p>
+<div class="bt"><span class="bn">A</span><div><b>Mon vote : mon ordre de préférence</b><span>Classe les chalets du 1er (ton préféré) au 5e. Chaque rang une seule fois.</span></div></div>
+<p class="scale"><span>1er = mon premier choix</span><span>5e = mon dernier choix</span></p>
 <div class="mine" id="mine"></div>
 </div>
 <div class="block">
 <div class="bt"><span class="bn">B</span><div><b>Mes priorités</b><span>Ce qui compte pour toi. Un préréglage ou les curseurs.</span></div></div>
 <div class="presets" role="group" aria-label="Préréglages"><button data-p="eq">Équilibré</button><button data-p="cash">Budget d'abord</button><button data-p="conf">Confort d'abord</button><button data-p="lieu">Plage et camping</button></div>
-<div class="rgrid"><div class="weights" id="weights"></div><div><p class="mini">Mon classement selon mes priorités</p><div class="res" id="res"></div></div></div>
+<div class="rgrid"><div class="weights" id="weights"></div><div><p class="mini">Ce que mes priorités suggèrent</p><div class="res" id="res"></div></div></div>
 </div>
 <div class="vstatus" id="vstatus"></div>
 </div>
@@ -289,15 +299,16 @@ html{scroll-behavior:auto}
 <div class="next"><a href="#s3">Voir le résultat du groupe →</a></div>
 </div></section>
 <section class="sec" id="s3">
-<div class="sechead"><span class="secnum">3</span><div><h2>Le groupe</h2><p>Le résultat de tout le monde, mis à jour en direct. Rien à modifier ici.</p></div></div>
+<div class="sechead"><span class="secnum">3</span><div><h2>Le groupe</h2><p>Le résultat, c'est le vote. Mis à jour en direct, rien à modifier ici.</p></div></div>
 <div class="rank">
 <div class="winner" id="winner"></div>
-<h3 class="subh left">Les votes de tout le monde</h3>
+<h3 class="subh left">Le détail des votes</h3>
 <p class="gnote" id="vnote"></p>
 <div style="overflow-x:auto"><table class="vt" id="vt"></table></div>
 </div>
 <div class="rank" style="margin-top:24px">
-<h3 class="subh left">Classement selon les priorités de tout le monde</h3>
+<h3 class="subh left">Ce que nos priorités suggèrent</h3>
+<p class="gnote">Un repère seulement : un calcul fait à partir des commodités que chacun juge importantes. Il peut différer du vote, et c'est normal.</p>
 <p class="gnote" id="gnote"></p>
 <div class="res" id="gres"></div>
 </div>
@@ -306,15 +317,6 @@ html{scroll-behavior:auto}
 <div style="overflow-x:auto"><table class="vt pt" id="ptable"></table></div>
 <details class="how"><summary>Comment c'est calculé</summary>
 <p>Chaque chalet reçoit une note de 0 à 10 par critère, puis on fait la moyenne selon l'importance choisie. Ce qui est « à confirmer » vaut 5 sur 10 : ni bonus ni pénalité. Prix : le moins cher a 10, le plus cher 0. Avis : tient compte de la note, du nombre d'avis et des plaintes (no 5 pénalisé, no 3 peu d'avis). Les temps vers Carson's Camp sont estimés.</p></details>
-</div>
-<div class="rank" style="margin-top:24px">
-<h3 class="subh left">Notre lecture</h3>
-<div class="verdict">
-<div><div class="k">Le plus probable</div><div class="t"><span class="num">5</span>Three Bears, ou <span class="num">2</span>Sunset Villa</div>
-<p>Le no 5 coche presque tout (2 salles de bain, clim, foyer, feu, grands lits) pour ≈ 416 $ chacun, mais ses avis obligent à poser des questions au propriétaire. Si ses réponses ne rassurent pas, le no 2 est le plan B : 2 salles de bain et une cour avec feu, à condition que les lits soient grands.</p></div>
-<div><div class="k">Le moins probable</div><div class="t"><span class="num">4</span>Beach Lookout</div>
-<p>Le plus cher (978 $ chacun) avec une seule toilette pour 5 et une chambre en lits superposés. Superbe emplacement, mais il rate deux de nos critères de base.</p></div>
-</div>
 </div>
 </section>
 
@@ -328,6 +330,7 @@ var BASE="https://chalets-votes.devoirs-theorie-serveur.workers.dev";
 var NOMS=["Charles","Marianne","Serge","Vickye","Vincent"];
 var COL={Charles:["#e6f0fd","#a9c9f2"],Marianne:["#fde9f2","#f0b3cf"],Serge:["#e5f6ea","#a6dcb6"],Vickye:["#fdf3dc","#ecd08c"],Vincent:["#efeafc","#c6b8ef"]};
 function pill(n){return '<span class="np" style="background:'+COL[n][0]+';border-color:'+COL[n][1]+'">'+n+'</span>';}
+var ORD=["","1er","2e","3e","4e","5e"];
 var C=[{n:1,nm:"Chippewa Trail"},{n:2,nm:"Sunset Villa"},{n:3,nm:"Four Season"},{n:4,nm:"Beach Lookout"},{n:5,nm:"Three Bears"}];
 var K=[
  {id:"prix",l:"Prix",v:[3.3,5.6,10,0,8.7],good:"le prix",bad:"le prix"},
@@ -362,24 +365,24 @@ function who(){$("who").innerHTML=NOMS.map(function(n){var d=(voted(n)?1:0)+(has
 function mine(){var on=!!moi;$("mePanel").hidden=!on;$("hint0").hidden=on;var box=$("mePanel").closest(".vote");
  box.style.boxShadow=on?"0 0 0 3px "+COL[moi][1]+", 0 20px 50px rgba(0,0,0,.18)":"";box.style.background=on?"linear-gradient("+COL[moi][0]+",#fff 180px)":"";
  $("meName").innerHTML=on?"Page de "+pill(moi):"";if(!on)return;var mv=V[moi]||{};
- $("mine").innerHTML=C.map(function(c){return '<div class="r"><span class="num">'+c.n+'</span><span class="nm">'+c.nm+'</span><div class="pick">'+[1,2,3,4,5].map(function(k){return '<button data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+k+' sur 5" aria-pressed="'+(mv[c.n]===k)+'">'+k+'</button>';}).join("")+'</div></div>';}).join("");}
+ $("mine").innerHTML=C.map(function(c){return '<div class="r"><span class="num">'+c.n+'</span><span class="nm">'+c.nm+'</span><div class="pick">'+[1,2,3,4,5].map(function(k){return '<button data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+ORD[k]+' choix" aria-pressed="'+(mv[c.n]===k)+'">'+ORD[k]+'</button>';}).join("")+'</div></div>';}).join("");}
 function sliders(){if(!moi)return;var w=myW();
  $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
  rows($("res"),rank(w));}
 /* --- Le groupe --- */
 function votes(){
- var tot=C.map(function(c){var s=0,n=0;NOMS.forEach(function(p){var v=(V[p]||{})[c.n];if(v){s+=v;n++;}});return {c:c,s:s,n:n};});
+ var tot=C.map(function(c){var s=0,n=0;NOMS.forEach(function(p){var v=(V[p]||{})[c.n];if(v){s+=6-v;n++;}});return {c:c,s:s,n:n};});
  var any=tot.some(function(t){return t.n>0;});
  var top=any?Math.max.apply(null,tot.map(function(t){return t.s;})):-1;
  var best=tot.filter(function(t){return any&&t.s===top;});
  var vs=NOMS.filter(voted);
- $("winner").innerHTML=!any?'<div class="k">Choix du groupe</div><div class="t">Personne n\'a encore voté</div><p>Chacun vote dans l\'onglet « Ma page ».</p>'
-  :'<div class="k">Choix du groupe'+(best.length>1?' (égalité)':'')+'</div><div class="t">'+best.map(function(t){return '<span class="num">'+t.c.n+'</span>'+t.c.nm;}).join(' · ')+'</div><p>'+top+' points · '+vs.length+' personne'+(vs.length>1?'s ont':' a')+' voté sur 5</p>';
- $("vnote").textContent=vs.length<5?"En attente de : "+NOMS.filter(function(n){return !voted(n);}).join(", ")+".":"Tout le monde a voté.";
+ $("winner").innerHTML=!any?'<div class="k">Résultat du vote</div><div class="t">Personne n\'a encore voté</div><p>Chacun vote dans l\'onglet « Ma page ».</p>'
+  :'<div class="k">Résultat du vote'+(best.length>1?' (égalité)':'')+(vs.length<5?' · provisoire':'')+'</div><div class="t">'+best.map(function(t){return '<span class="num">'+t.c.n+'</span>'+t.c.nm;}).join(' · ')+'</div><p>'+top+' points · '+vs.length+' personne'+(vs.length>1?'s ont':' a')+' voté sur 5'+(vs.length<5?' · en attente de '+NOMS.filter(function(n){return !voted(n);}).join(", "):'')+'</p>';
+ $("vnote").textContent="Points : 1er choix = 5 points, 2e = 4, 3e = 3, 4e = 2, 5e = 1."+(vs.length<5?"":" Tout le monde a voté.");
  var bn=best.map(function(t){return t.c.n;});
  var h='<thead><tr><th></th>'+C.map(function(c){return '<th class="'+(bn.indexOf(c.n)>=0?'win':'')+'" title="'+c.nm+'"><span class="num">'+c.n+'</span></th>';}).join("")+'</tr></thead><tbody>';
- NOMS.forEach(function(p){h+='<tr><td>'+pill(p)+'</td>'+C.map(function(c){var v=(V[p]||{})[c.n];return '<td class="'+(v?'':'e ')+(bn.indexOf(c.n)>=0?'win':'')+'">'+(v||'–')+'</td>';}).join("")+'</tr>';});
- h+='<tr class="tot"><td>Total</td>'+tot.map(function(t){return '<td class="'+(bn.indexOf(t.c.n)>=0?'win':'')+'">'+(t.n?t.s:'–')+'</td>';}).join("")+'</tr></tbody>';
+ NOMS.forEach(function(p){h+='<tr><td>'+pill(p)+'</td>'+C.map(function(c){var v=(V[p]||{})[c.n];return '<td class="'+(v?'':'e ')+(bn.indexOf(c.n)>=0?'win':'')+'">'+(v?ORD[v]:'–')+'</td>';}).join("")+'</tr>';});
+ h+='<tr class="tot"><td>Points</td>'+tot.map(function(t){return '<td class="'+(bn.indexOf(t.c.n)>=0?'win':'')+'">'+(t.n?t.s:'–')+'</td>';}).join("")+'</tr></tbody>';
  $("vt").innerHTML=h;}
 function group(){var ws=NOMS.filter(function(n){return has(PW[n]);});var w={};
  K.forEach(function(k){w[k.id]=ws.length?ws.reduce(function(a,n){return a+PW[n][k.id];},0)/ws.length:P.eq[k.id];});
@@ -391,10 +394,14 @@ function all(keepSliders){who();mine();if(!keepSliders)sliders();votes();group()
 /* --- événements --- */
 $("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;try{localStorage.setItem("chalets-moi",moi);}catch(x){}st("");all();});
 $("mine").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!moi)return;
- var c=b.dataset.c,k=+b.dataset.k,mv=V[moi]=V[moi]||{};var note=mv[c]===k?0:k;var who_=moi;
- if(note)mv[c]=note;else delete mv[c];all(true);st("Enregistrement…");
- fetch(BASE+"/votes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who_,chalet:+c,note:note})})
- .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){V=d;all(true);st("Vote enregistré.");})
+ var c=b.dataset.c,k=+b.dataset.k,mv=V[moi]=V[moi]||{},who_=moi,send=[];
+ if(mv[c]===k){delete mv[c];send.push([c,0]);}
+ else{var other=Object.keys(mv).filter(function(x){return x!==c&&mv[x]===k;})[0],old=mv[c];
+  if(other){if(old){mv[other]=old;send.push([other,old]);}else{delete mv[other];send.push([other,0]);}}
+  mv[c]=k;send.push([c,k]);}
+ all(true);st("Enregistrement…");
+ send.reduce(function(pr,x){return pr.then(function(){return fetch(BASE+"/votes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who_,chalet:+x[0],note:x[1]})}).then(function(r){if(!r.ok)throw 0;return r.json();});});},Promise.resolve())
+ .then(function(d){V=d;all(true);st("Vote enregistré.");})
  .catch(function(){st("Pas pu enregistrer. Vérifie ta connexion et réessaie.");});});
 function saveW(w,redraw){if(!moi)return;PW[moi]=w;var who_=moi;if(redraw)sliders();else rows($("res"),rank(w));who();group();st("Enregistrement…");clearTimeout(timer);
  timer=setTimeout(function(){fetch(BASE+"/priorites",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who_,poids:w})})
