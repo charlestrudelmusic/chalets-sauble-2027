@@ -109,6 +109,64 @@ footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max
 .vt .win{background:#eef8f2}
 .vstatus{font-size:13px;color:var(--soft);margin-top:12px;min-height:1em}
 @media(max-width:560px){.vote{padding:26px 18px}.pick button{width:36px;height:36px}}
+
+h2.first{margin-top:0}
+header{margin-bottom:56px}
+.strip{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:10px}
+.tile{display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:var(--card);border-radius:18px;padding:20px 18px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);border:2px solid transparent;transition:border-color .15s,transform .15s}
+.tile:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tile .num{width:36px;height:36px;font-size:17px;margin-bottom:6px}
+.tn{font-weight:600;font-size:16px;line-height:1.25}
+.tt{font-size:13.5px;color:var(--soft)}
+.tp{font-weight:600;font-size:17px;margin-top:6px}.tp small{font-weight:400;color:var(--soft);font-size:13px}
+.sub2{text-align:center;color:var(--soft);font-size:14px;margin:6px 0 40px}
+.card{scroll-margin-top:24px}
+.card h3{font-size:26px !important}
+.card .head .num{width:46px !important;height:46px !important;font-size:21px !important}
+.card:target{outline:3px solid var(--accent);outline-offset:4px}
+.band{background:#245f73;margin:96px -20px 0;padding:72px 20px 80px;border-radius:32px;color:#fff}
+.bandin{max-width:880px;margin:auto}
+.bandhead{text-align:center;margin-bottom:34px}
+.eyebrow2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:#bfe3ee;font-weight:600}
+.band h2.bh{color:#fff;font-size:34px;margin:10px 0 22px}
+.steps{list-style:none;padding:0;margin:0;display:flex;justify-content:center;gap:12px 28px;flex-wrap:wrap;font-size:15px;color:#e3f2f7}
+.steps b{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:#fff;color:#245f73;font-size:14px;margin-right:8px}
+.band .vote{box-shadow:0 20px 50px rgba(0,0,0,.18);color:var(--ink)}
+.vq{margin:0 0 4px;font-weight:600;font-size:17px}
+.scale{display:flex;justify-content:flex-end;gap:0;font-size:12.5px;color:var(--soft);margin:0 0 8px;padding-right:2px}
+.scale span:first-child::after{content:"  ·  "}
+.who button{font-size:15.5px;padding:10px 20px}
+@media(max-width:900px){.strip{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}}
+@media(max-width:560px){.band{margin:72px -20px 0;padding:52px 16px 56px;border-radius:24px}.band h2.bh{font-size:28px}.steps{flex-direction:column;align-items:flex-start;max-width:280px;margin:auto}.card h3{font-size:22px !important}}
+
+html{scroll-behavior:smooth}
+.topnav{position:sticky;top:12px;z-index:5;display:flex;justify-content:center;gap:6px;margin:0 auto 48px;padding:6px;background:rgba(255,255,255,.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:40px;box-shadow:0 4px 18px rgba(20,50,70,.10);width:max-content;max-width:100%}
+.topnav a{display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--ink);font-weight:600;font-size:14.5px;padding:9px 16px;border-radius:30px;white-space:nowrap}
+.topnav a:hover{background:var(--accentbg)}
+.topnav b{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-size:12px}
+.sec{scroll-margin-top:80px}
+#s1,#s3{margin-top:24px}
+#s3{margin-top:96px}
+.sechead{display:flex;align-items:center;gap:18px;margin:0 0 36px}
+.sechead h2{margin:0 !important;text-align:left !important;font-size:34px !important}
+.sechead p{margin:2px 0 0;color:var(--soft);font-size:15.5px}
+.secnum{display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:18px;background:var(--accent);color:#fff;font-size:26px;font-weight:600;flex:none}
+.sechead.light{justify-content:center;text-align:left}
+.sechead.light .secnum{background:#fff;color:#245f73}
+.sechead.light p{color:#cfe8f0}
+.band .bandhead{margin-bottom:30px}
+.band .steps{margin-top:6px}
+.subh{font-size:20px;font-weight:600;margin:64px 0 18px;text-align:center}
+.subh.left{text-align:left;margin:0 0 6px}
+.gnote,.pnote{color:var(--soft);font-size:14px;margin:0 0 20px}
+.ptabs{display:flex;gap:6px;flex-wrap:wrap;margin:14px 0 14px;border-bottom:1px solid var(--line)}
+.ptabs button{border:0;background:none;font:inherit;font-size:15px;padding:10px 16px;cursor:pointer;color:var(--soft);border-bottom:3px solid transparent;margin-bottom:-1px}
+.ptabs button[aria-selected="true"]{color:var(--ink);font-weight:600;border-bottom-color:var(--accent)}
+.ptabs .ck{color:#2a9d6b;font-size:13px}
+.mini{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin:0 0 12px}
+.pstatus{font-size:13px;color:var(--soft);margin-top:14px;min-height:1em}
+.band{margin-top:96px}
+@media(max-width:560px){.topnav{top:8px;gap:2px}.topnav a{padding:8px 10px;font-size:13px}.sechead h2{font-size:27px !important}.secnum{width:46px;height:46px;font-size:21px;border-radius:14px}}
 </style>
 </head>
 <body>
@@ -118,8 +176,51 @@ footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max
 <h1>Cinq chalets à comparer</h1>
 <p class="lead">7 nuits · 5 personnes · prix en dollars canadiens</p>
 </header>
+<nav class="topnav" aria-label="Sections"><a href="#s1"><b>1</b>Les chalets</a><a href="#s2"><b>2</b>Le vote</a><a href="#s3"><b>3</b>Nos priorités</a></nav>
 
-<h2>Comparaison</h2>
+<section class="sec" id="s1">
+<div class="sechead"><span class="secnum">1</span><div><h2>Les chalets</h2><p>Les 5 options, leurs fiches et la comparaison point par point.</p></div></div>
+<nav class="strip" aria-label="Les 5 chalets"><a href="#c1" class="tile"><span class="num">1</span><span class="tn">Chippewa Trail</span><span class="tt">La plage en face</span><span class="tp">766 $<small> / pers.</small></span></a><a href="#c2" class="tile"><span class="num">2</span><span class="tn">Sunset Villa</span><span class="tt">Bon compromis</span><span class="tp">614 $<small> / pers.</small></span></a><a href="#c3" class="tile"><span class="num">3</span><span class="tn">Four Season</span><span class="tt">Le moins cher</span><span class="tp">330 $<small> / pers.</small></span></a><a href="#c4" class="tile"><span class="num">4</span><span class="tn">Beach Lookout</span><span class="tt">Sur la plage</span><span class="tp">978 $<small> / pers.</small></span></a><a href="#c5" class="tile"><span class="num">5</span><span class="tn">Three Bears</span><span class="tt">Bien équipé</span><span class="tp">≈ 416 $<small> / pers.</small></span></a></nav>
+<p class="sub2">Clique sur un chalet pour voir sa fiche.</p>
+<div class="cards">
+<article class="card" id="c1"><div class="head"><span class="num">1</span><div><h3>Chippewa Trail</h3><div class="tag">La plage en face</div></div></div>
+<div class="cp">766 $ <small>/ personne · 3 830 $ au total</small></div>
+<ul class="rooms"><li>Chambre 1<span>Double</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Double</span></li><li>Chambre 4<span>Superposés</span></li></ul>
+<div class="lbl">Avantages</div><ul class="pros"><li>Plage juste de l'autre côté de la rue</li><li>2 kayaks, planche à pagaie, 4 vélos, chaises de plage</li><li>2 barbecues, table de 8, hamac</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Une seule toilette</li><li>Eau de puits, eau potable en cruches</li><li>2 places de stationnement seulement</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>4,76/5 sur 21 avis. Commentaires individuels non accessibles; propreté 4,5/5.</p><p><b>Bon à savoir</b><br>Courant fort au rivage, pas de sauveteurs. Loué aux familles et couples matures.</p><p><b>À vérifier</b><br>Climatisation, et lire les avis moins bons.</p></details>
+<a href="https://fr.airbnb.ca/rooms/49229179" target="_blank" rel="noopener">Voir l'annonce →</a></article>
+<article class="card" id="c2"><div class="head"><span class="num">2</span><div><h3>Sunset Villa</h3><div class="tag">Bon compromis, à vérifier</div></div></div>
+<div class="cp">614 $ <small>/ personne · 3 069 $ au total</small></div>
+<ul class="rooms"><li>Chambre 1<span>Taille ?</span></li><li>Chambre 2<span>Taille ?</span></li><li>Chambre 3<span>Taille ?</span></li></ul>
+<div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain</li><li>Cour privée : foyer, barbecue au gaz, repas dehors</li><li>Rue principale à pied, hôte Superhôte</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Tailles des lits inconnues</li><li>Climatisation non confirmée</li><li>Maximum 6 personnes</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>4,62/5 sur 13 avis. Un avis à 3 étoiles, motif inconnu. Qualité-prix 4,5/5.</p><p><b>À vérifier</b><br>Un grand lit dans chaque chambre, la clim, les avis moins bons.</p></details>
+<a href="https://fr.airbnb.ca/rooms/1433381894774584865" target="_blank" rel="noopener">Voir l'annonce →</a></article>
+<article class="card" id="c3"><div class="head"><span class="num">3</span><div><h3>Four Season Escape</h3><div class="tag">Le moins cher</div></div></div>
+<div class="cp">330 $ <small>/ personne · 1 651 $ au total</small></div>
+<ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>2 simples</span></li><li>Salon<span>Divan-lit queen</span></li></ul>
+<div class="lbl">Avantages</div><ul class="pros"><li>De loin le moins cher</li><li>Deux toilettes</li><li>Divan-lit queen en plus au salon</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Troisième chambre en lits simples</li><li>Clim et feu non confirmés</li><li>Seulement 4 avis</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>9,6/10 sur 4 avis : entretien, espace, hôtes réactifs.</p><p><b>Bon à savoir</b><br>Secteur South Sauble Beach. Barbecue, terrasse, stationnement. Animaux non admis.</p><p><b>À vérifier</b><br>Climatisation, feu extérieur, accepter les lits simples.</p></details>
+<a href="https://www.vrbo.com/en-ca/cottage-rental/p20193024" target="_blank" rel="noopener">Voir l'annonce →</a></article>
+<article class="card" id="c4"><div class="head"><span class="num">4</span><div><h3>Beach Lookout</h3><div class="tag">Sur la plage, au village</div></div></div>
+<div class="cp">978 $ <small>/ personne · 4 891 $ au total</small></div>
+<ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Superposés simples</span></li></ul>
+<div class="lbl">Avantages</div><ul class="pros"><li>Clim, foyer et feu sur la terrasse</li><li>Plage à une minute, au cœur du village</li><li>Grande terrasse, hamac, vue sur le lac</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Le plus cher</li><li>Une seule toilette, troisième chambre en superposés</li><li>Draps et serviettes à apporter</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>9,8/10 sur 19 avis : emplacement, cuisine, confort. Un 4/10 sur la communication (différend sur une chaise, selon l'hôte).</p><p><b>Bon à savoir</b><br>Maximum 6 personnes. Chiens acceptés.</p><p><b>À vérifier</b><br>Linge à apporter, couchages.</p></details>
+<a href="https://www.vrbo.com/en-ca/cottage-rental/p20265714" target="_blank" rel="noopener">Voir l'annonce →</a></article>
+<article class="card" id="c5"><div class="head"><span class="num">5</span><div><h3>Three Bears' Cottage</h3><div class="tag">Bien équipé, avis mitigés</div></div></div>
+<div class="cp">≈ 416 $ <small>/ personne · ≈ 2 080 $ au total</small></div>
+<ul class="rooms"><li>Lits annoncés<span>Queen, 2 doubles</span></li><li>En plus<span>2 simples, divan-lit</span></li><li>Répartition<span>Non précisée</span></li></ul>
+<div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain, clim, foyer et feu</li><li>Grande cour privée, gazebo, barbecue</li><li>Laveuse-sécheuse, cuisine complète</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Avis : matelas queen affaissé, photos dépassées</li><li>Lits par chambre non confirmés</li><li>Dépôt de 500 $ (remboursable) et 30 % à la réservation</li></ul>
+<details><summary>Plus de détails</summary><p><b>Avis</b><br>4/5 sur 8 avis. Juillet 2025 : matelas affaissé, sécheuse non branchée, frais contestés. 2023 : odeurs, différend. Le propriétaire conteste une partie. D'autres aiment l'espace et la cour.</p><p><b>Prix</b><br>Calculé : 5 nuits × 250 $ + 2 × 300 $ + ménage 150 $ + taxe 4 %. Pas un devis.</p><p><b>À vérifier</b><br>Prix exact, photos récentes, lits par chambre, état du matelas.</p></details>
+<a href="https://www.cottagesincanada.com/fr/27958" target="_blank" rel="noopener">Voir l'annonce →</a></article>
+</div>
+
+<h3 class="subh">Comparaison point par point</h3>
 <div class="wrap"><table>
 <thead><tr><th></th><th><span class="num" aria-label="Chalet 1">1</span>Chippewa Trail</th><th><span class="num" aria-label="Chalet 2">2</span>Sunset Villa</th><th><span class="num" aria-label="Chalet 3">3</span>Four Season</th><th><span class="num" aria-label="Chalet 4">4</span>Beach Lookout</th><th><span class="num" aria-label="Chalet 5">5</span>Three Bears</th></tr></thead>
 <tbody>
@@ -138,120 +239,56 @@ footer{margin:80px auto 0;font-size:13.5px;color:var(--soft);line-height:1.7;max
 <p class="legend">En gris : pas indiqué dans l'annonce. En rouge : ne correspond pas à ce qu'on cherche.</p>
 
 
-<h2>Lequel nous convient le mieux?</h2>
+</section>
+<section class="band sec" id="s2"><div class="bandin">
+<div class="bandhead"><div class="sechead light"><span class="secnum">2</span><div><h2 class="bh">Le vote</h2><p>Chacun donne sa note à chaque chalet.</p></div></div>
+<ol class="steps"><li><b>1</b>Choisis ton nom</li><li><b>2</b>Note chaque chalet de 1 à 5</li><li><b>3</b>Le choix du groupe se calcule tout seul</li></ol></div>
+<div class="vote">
+<div class="winner" id="winner"></div>
+<p class="vq">Qui es-tu?</p>
+<div class="who" id="who" role="group" aria-label="Choisir ton nom"></div>
+<div id="mineWrap" hidden>
+<p class="scale"><span>1 = non merci</span><span>5 = coup de cœur</span></p>
+<div class="mine" id="mine"></div>
+</div>
+<p class="vq">Les choix de tout le monde</p>
+<div style="overflow-x:auto"><table class="vt" id="vt"></table></div>
+<div class="vstatus" id="vstatus"></div>
+</div>
+</div></section>
+<section class="sec" id="s3">
+<div class="sechead"><span class="secnum">3</span><div><h2>Nos priorités</h2><p>Chacun indique ce qui compte pour lui. Le classement du groupe en tient compte.</p></div></div>
 <div class="rank">
+<h3 class="subh left">Classement selon les priorités du groupe</h3>
+<p class="gnote" id="gnote"></p>
+<div class="res" id="gres"></div>
+</div>
+<div class="rank" style="margin-top:24px">
+<h3 class="subh left">Mes priorités</h3>
+<div class="ptabs" id="ptabs" role="tablist" aria-label="Choisir la personne"></div>
+<p class="pnote">Glisse les curseurs selon ce qui compte pour toi. C'est enregistré automatiquement.</p>
+<div class="presets" role="group" aria-label="Préréglages"><button data-p="eq">Équilibré</button><button data-p="cash">Budget d'abord</button><button data-p="conf">Confort d'abord</button><button data-p="lieu">Plage et camping</button></div>
+<div class="rgrid"><div class="weights" id="weights"></div><div><p class="mini">Ton classement</p><div class="res" id="res"></div></div></div>
+<div class="pstatus" id="pstatus"></div>
+<details class="how"><summary>Comment c'est calculé</summary>
+<p>Chaque chalet reçoit une note de 0 à 10 par critère, puis on fait la moyenne selon l'importance choisie. Ce qui est « à confirmer » vaut 5 sur 10 : ni bonus ni pénalité. Prix : le moins cher a 10, le plus cher 0. Avis : tient compte de la note, du nombre d'avis et des plaintes (no 5 pénalisé, no 3 peu d'avis). Les temps vers Carson's Camp sont estimés.</p></details>
+
+</div>
+<div class="rank" style="margin-top:24px">
+<h3 class="subh left">Notre lecture</h3>
 <div class="verdict">
 <div><div class="k">Le plus probable</div><div class="t"><span class="num">5</span>Three Bears, ou <span class="num">2</span>Sunset Villa</div>
 <p>Le no 5 coche presque tout (2 salles de bain, clim, foyer, feu, grands lits) pour ≈ 416 $ chacun, mais ses avis obligent à poser des questions au propriétaire. Si ses réponses ne rassurent pas, le no 2 est le plan B : 2 salles de bain et une cour avec feu, à condition que les lits soient grands.</p></div>
 <div><div class="k">Le moins probable</div><div class="t"><span class="num">4</span>Beach Lookout</div>
 <p>Le plus cher (978 $ chacun) avec une seule toilette pour 5 et une chambre en lits superposés. Superbe emplacement, mais il rate deux de nos critères de base.</p></div>
 </div>
-<p style="margin:0 0 6px;font-weight:600">Teste selon ce qui compte pour vous</p>
-<p style="margin:0 0 16px;color:var(--soft);font-size:14.5px">Glisse les curseurs : le classement se refait tout seul.</p>
-<div class="presets" role="group" aria-label="Préréglages"><button data-p="eq" aria-pressed="true">Équilibré</button><button data-p="cash">Budget d'abord</button><button data-p="conf">Confort d'abord</button><button data-p="lieu">Plage et camping</button></div>
-<div class="rgrid"><div class="weights" id="weights"></div><div class="res" id="res"></div></div>
-<details class="how"><summary>Comment c'est calculé</summary>
-<p>Chaque chalet reçoit une note de 0 à 10 par critère, puis on fait la moyenne selon l'importance choisie. Ce qui est « à confirmer » vaut 5 sur 10 : ni bonus ni pénalité. Prix : le moins cher a 10, le plus cher 0. Avis : tient compte de la note, du nombre d'avis et des plaintes (no 5 pénalisé, no 3 peu d'avis). Les temps vers Carson's Camp sont estimés.</p></details>
 </div>
-
-
-<h2>Nos votes</h2>
-<div class="vote">
-<div class="winner" id="winner"></div>
-<p style="margin:0;font-weight:600">Qui es-tu?</p>
-<div class="who" id="who" role="group" aria-label="Choisir ton nom"></div>
-<div id="mineWrap" hidden>
-<p class="scale">Donne une note à chaque chalet : 1 = non merci, 5 = coup de cœur. Clique de nouveau sur ta note pour l'effacer.</p>
-<div class="mine" id="mine"></div>
-</div>
-<p style="margin:0 0 10px;font-weight:600">Les choix de tout le monde</p>
-<div style="overflow-x:auto"><table class="vt" id="vt"></table></div>
-<div class="vstatus" id="vstatus"></div>
-</div>
-
-<h2>Les chalets</h2>
-<div class="cards">
-<article class="card"><div class="head"><span class="num">1</span><div><h3>Chippewa Trail</h3><div class="tag">La plage en face</div></div></div>
-<div class="cp">766 $ <small>/ personne · 3 830 $ au total</small></div>
-<ul class="rooms"><li>Chambre 1<span>Double</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Double</span></li><li>Chambre 4<span>Superposés</span></li></ul>
-<div class="lbl">Avantages</div><ul class="pros"><li>Plage juste de l'autre côté de la rue</li><li>2 kayaks, planche à pagaie, 4 vélos, chaises de plage</li><li>2 barbecues, table de 8, hamac</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Une seule toilette</li><li>Eau de puits, eau potable en cruches</li><li>2 places de stationnement seulement</li></ul>
-<details><summary>Plus de détails</summary><p><b>Avis</b><br>4,76/5 sur 21 avis. Commentaires individuels non accessibles; propreté 4,5/5.</p><p><b>Bon à savoir</b><br>Courant fort au rivage, pas de sauveteurs. Loué aux familles et couples matures.</p><p><b>À vérifier</b><br>Climatisation, et lire les avis moins bons.</p></details>
-<a href="https://fr.airbnb.ca/rooms/49229179" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card"><div class="head"><span class="num">2</span><div><h3>Sunset Villa</h3><div class="tag">Bon compromis, à vérifier</div></div></div>
-<div class="cp">614 $ <small>/ personne · 3 069 $ au total</small></div>
-<ul class="rooms"><li>Chambre 1<span>Taille ?</span></li><li>Chambre 2<span>Taille ?</span></li><li>Chambre 3<span>Taille ?</span></li></ul>
-<div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain</li><li>Cour privée : foyer, barbecue au gaz, repas dehors</li><li>Rue principale à pied, hôte Superhôte</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Tailles des lits inconnues</li><li>Climatisation non confirmée</li><li>Maximum 6 personnes</li></ul>
-<details><summary>Plus de détails</summary><p><b>Avis</b><br>4,62/5 sur 13 avis. Un avis à 3 étoiles, motif inconnu. Qualité-prix 4,5/5.</p><p><b>À vérifier</b><br>Un grand lit dans chaque chambre, la clim, les avis moins bons.</p></details>
-<a href="https://fr.airbnb.ca/rooms/1433381894774584865" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card"><div class="head"><span class="num">3</span><div><h3>Four Season Escape</h3><div class="tag">Le moins cher</div></div></div>
-<div class="cp">330 $ <small>/ personne · 1 651 $ au total</small></div>
-<ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>2 simples</span></li><li>Salon<span>Divan-lit queen</span></li></ul>
-<div class="lbl">Avantages</div><ul class="pros"><li>De loin le moins cher</li><li>Deux toilettes</li><li>Divan-lit queen en plus au salon</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Troisième chambre en lits simples</li><li>Clim et feu non confirmés</li><li>Seulement 4 avis</li></ul>
-<details><summary>Plus de détails</summary><p><b>Avis</b><br>9,6/10 sur 4 avis : entretien, espace, hôtes réactifs.</p><p><b>Bon à savoir</b><br>Secteur South Sauble Beach. Barbecue, terrasse, stationnement. Animaux non admis.</p><p><b>À vérifier</b><br>Climatisation, feu extérieur, accepter les lits simples.</p></details>
-<a href="https://www.vrbo.com/en-ca/cottage-rental/p20193024" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card"><div class="head"><span class="num">4</span><div><h3>Beach Lookout</h3><div class="tag">Sur la plage, au village</div></div></div>
-<div class="cp">978 $ <small>/ personne · 4 891 $ au total</small></div>
-<ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Superposés simples</span></li></ul>
-<div class="lbl">Avantages</div><ul class="pros"><li>Clim, foyer et feu sur la terrasse</li><li>Plage à une minute, au cœur du village</li><li>Grande terrasse, hamac, vue sur le lac</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Le plus cher</li><li>Une seule toilette, troisième chambre en superposés</li><li>Draps et serviettes à apporter</li></ul>
-<details><summary>Plus de détails</summary><p><b>Avis</b><br>9,8/10 sur 19 avis : emplacement, cuisine, confort. Un 4/10 sur la communication (différend sur une chaise, selon l'hôte).</p><p><b>Bon à savoir</b><br>Maximum 6 personnes. Chiens acceptés.</p><p><b>À vérifier</b><br>Linge à apporter, couchages.</p></details>
-<a href="https://www.vrbo.com/en-ca/cottage-rental/p20265714" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card"><div class="head"><span class="num">5</span><div><h3>Three Bears' Cottage</h3><div class="tag">Bien équipé, avis mitigés</div></div></div>
-<div class="cp">≈ 416 $ <small>/ personne · ≈ 2 080 $ au total</small></div>
-<ul class="rooms"><li>Lits annoncés<span>Queen, 2 doubles</span></li><li>En plus<span>2 simples, divan-lit</span></li><li>Répartition<span>Non précisée</span></li></ul>
-<div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain, clim, foyer et feu</li><li>Grande cour privée, gazebo, barbecue</li><li>Laveuse-sécheuse, cuisine complète</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Avis : matelas queen affaissé, photos dépassées</li><li>Lits par chambre non confirmés</li><li>Dépôt de 500 $ (remboursable) et 30 % à la réservation</li></ul>
-<details><summary>Plus de détails</summary><p><b>Avis</b><br>4/5 sur 8 avis. Juillet 2025 : matelas affaissé, sécheuse non branchée, frais contestés. 2023 : odeurs, différend. Le propriétaire conteste une partie. D'autres aiment l'espace et la cour.</p><p><b>Prix</b><br>Calculé : 5 nuits × 250 $ + 2 × 300 $ + ménage 150 $ + taxe 4 %. Pas un devis.</p><p><b>À vérifier</b><br>Prix exact, photos récentes, lits par chambre, état du matelas.</p></details>
-<a href="https://www.cottagesincanada.com/fr/27958" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-</div>
+</section>
 
 <footer>
 Infos tirées des annonces le 17 novembre 2026. « À confirmer » veut dire que l'annonce n'en parle pas. Aucune annonce ne mentionne de bidet. Le prix du no 5 est calculé à partir du tarif affiché. Les temps vers Carson's Camp sont estimés, les adresses des chalets n'étant pas publiées. Disponibilité aux dates à confirmer.
 </footer>
-</main>
-<script>
-(function(){
-var C=[{n:1,nm:"Chippewa Trail"},{n:2,nm:"Sunset Villa"},{n:3,nm:"Four Season"},{n:4,nm:"Beach Lookout"},{n:5,nm:"Three Bears"}];
-// notes /10 par critère : [no1,no2,no3,no4,no5]
-var K=[
- {id:"prix",l:"Prix",v:[3.3,5.6,10,0,8.7],good:"le prix",bad:"le prix"},
- {id:"lits",l:"Grands lits",v:[10,5,3,2,6],good:"3 grands lits",bad:"les lits"},
- {id:"toil",l:"2 toilettes",v:[0,10,8.5,0,10],good:"2 toilettes",bad:"1 seule toilette"},
- {id:"clim",l:"Clim",v:[5,5,5,10,10],good:"la clim",bad:"clim non confirmée"},
- {id:"feu",l:"Feu (dehors et dedans)",v:[7.5,7.5,5,10,10],good:"feu dehors et foyer",bad:"feu non confirmé"},
- {id:"plage",l:"Plage proche",v:[10,6,6.5,10,5],good:"la plage tout près",bad:"plus loin de la plage"},
- {id:"camp",l:"Près de Carson's Camp",v:[4,7,7,10,4],good:"près du camping",bad:"distance du camping inconnue"},
- {id:"avis",l:"Avis fiables",v:[8.5,7,6,9.5,3],good:"de bons avis",bad:"des avis inquiétants"}
-];
-var P={eq:{prix:2,lits:3,toil:2,clim:2,feu:1,plage:1,camp:1,avis:2},
- cash:{prix:3,lits:1,toil:1,clim:1,feu:1,plage:1,camp:1,avis:1},
- conf:{prix:1,lits:3,toil:3,clim:3,feu:2,plage:1,camp:1,avis:2},
- lieu:{prix:1,lits:1,toil:1,clim:1,feu:1,plage:3,camp:3,avis:1}};
-var lab=["Pas important","Un peu","Important","Essentiel"];
-var W=Object.assign({},P.eq),wb=document.getElementById("weights"),rb=document.getElementById("res");
-K.forEach(function(k){var d=document.createElement("div");d.className="w";
- d.innerHTML='<label for="w-'+k.id+'">'+k.l+' <span id="t-'+k.id+'"></span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'">';
- wb.appendChild(d);var r=d.querySelector("input");r.value=W[k.id];
- r.addEventListener("input",function(){W[k.id]=+r.value;mark(null);draw();});});
-function draw(){
- K.forEach(function(k){document.getElementById("w-"+k.id).value=W[k.id];document.getElementById("t-"+k.id).textContent=lab[W[k.id]];});
- var tw=K.reduce(function(a,k){return a+W[k.id];},0)||1;
- var out=C.map(function(c,i){var sc=K.reduce(function(a,k){return a+W[k.id]*k.v[i];},0)/tw*10;
-  var imp=K.filter(function(k){return W[k.id]>0;});
-  var g=imp.filter(function(k){return k.v[i]>=8.5;}).sort(function(a,b){return W[b.id]*b.v[i]-W[a.id]*a.v[i];}).slice(0,3).map(function(k){return k.good;});
-  var b=imp.filter(function(k){return k.v[i]<=4;}).sort(function(a,b){return W[b.id]*(10-b.v[i])-W[a.id]*(10-a.v[i]);}).slice(0,2).map(function(k){return k.bad;});
-  return {c:c,sc:sc,g:g,b:b};}).sort(function(a,b){return b.sc-a.sc;});
- rb.innerHTML=out.map(function(o,j){return '<div class="row'+(j==0?' first':'')+'"><div class="top"><span class="num">'+o.c.n+'</span><span class="nm">'+o.c.nm+'</span><span class="pc">'+Math.round(o.sc)+' %</span></div><div class="bar"><i style="width:'+o.sc+'%"></i></div><div class="why">'+(o.g.length?'<b>Pour :</b> '+o.g.join(", ")+'. ':'')+(o.b.length?'<b>Contre :</b> '+o.b.join(", ")+'.':'')+'</div></div>';}).join("");
-}
-var pb=document.querySelectorAll(".presets button");
-function mark(btn){pb.forEach(function(x){x.setAttribute("aria-pressed",x===btn?"true":"false");});}
-pb.forEach(function(btn){btn.addEventListener("click",function(){W=Object.assign({},P[btn.dataset.p]);mark(btn);draw();});});
-draw();
-})();
-</script>
+
 <script>
 (function(){
 var API="https://chalets-votes.devoirs-theorie-serveur.workers.dev/votes";
@@ -291,6 +328,58 @@ function table(){
 function load(){return fetch(API,{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){V=d;mine();table();}).catch(function(){st("Votes indisponibles pour l'instant.");});}
 who();mine();table();load();
 setInterval(function(){if(!document.hidden)load();},20000);
+})();
+</script>
+<script>
+(function(){
+var API="https://chalets-votes.devoirs-theorie-serveur.workers.dev/priorites";
+var NOMS=["Charles","Marianne","Serge","Vickye","Vincent"];
+var C=[{n:1,nm:"Chippewa Trail"},{n:2,nm:"Sunset Villa"},{n:3,nm:"Four Season"},{n:4,nm:"Beach Lookout"},{n:5,nm:"Three Bears"}];
+var K=[
+ {id:"prix",l:"Prix",v:[3.3,5.6,10,0,8.7],good:"le prix",bad:"le prix"},
+ {id:"lits",l:"Grands lits",v:[10,5,3,2,6],good:"3 grands lits",bad:"les lits"},
+ {id:"toil",l:"2 toilettes",v:[0,10,8.5,0,10],good:"2 toilettes",bad:"1 seule toilette"},
+ {id:"clim",l:"Clim",v:[5,5,5,10,10],good:"la clim",bad:"clim non confirmée"},
+ {id:"feu",l:"Feu (dehors et dedans)",v:[7.5,7.5,5,10,10],good:"feu dehors et foyer",bad:"feu non confirmé"},
+ {id:"plage",l:"Plage proche",v:[10,6,6.5,10,5],good:"la plage tout près",bad:"plus loin de la plage"},
+ {id:"camp",l:"Près de Carson's Camp",v:[4,7,7,10,4],good:"près du camping",bad:"distance du camping inconnue"},
+ {id:"avis",l:"Avis fiables",v:[8.5,7,6,9.5,3],good:"de bons avis",bad:"des avis inquiétants"}];
+var P={eq:{prix:2,lits:3,toil:2,clim:2,feu:1,plage:1,camp:1,avis:2},
+ cash:{prix:3,lits:1,toil:1,clim:1,feu:1,plage:1,camp:1,avis:1},
+ conf:{prix:1,lits:3,toil:3,clim:3,feu:2,plage:1,camp:1,avis:2},
+ lieu:{prix:1,lits:1,toil:1,clim:1,feu:1,plage:3,camp:3,avis:1}};
+var lab=["Pas important","Un peu","Important","Essentiel"];
+var PW={},cur=null,timer=null,$=function(i){return document.getElementById(i);};
+try{cur=localStorage.getItem("chalets-moi");}catch(e){}
+if(NOMS.indexOf(cur)<0)cur=NOMS[0];
+function has(w){return w&&Object.keys(w).length===K.length;}
+function W(){return has(PW[cur])?PW[cur]:P.eq;}
+function rank(w){var tw=K.reduce(function(a,k){return a+w[k.id];},0)||1;
+ return C.map(function(c,i){var sc=K.reduce(function(a,k){return a+w[k.id]*k.v[i];},0)/tw*10;
+  var imp=K.filter(function(k){return w[k.id]>0;});
+  var g=imp.filter(function(k){return k.v[i]>=8.5;}).sort(function(a,b){return w[b.id]*b.v[i]-w[a.id]*a.v[i];}).slice(0,3).map(function(k){return k.good;});
+  var b=imp.filter(function(k){return k.v[i]<=4;}).sort(function(a,b){return w[b.id]*(10-b.v[i])-w[a.id]*(10-a.v[i]);}).slice(0,2).map(function(k){return k.bad;});
+  return {c:c,sc:sc,g:g,b:b};}).sort(function(a,b){return b.sc-a.sc;});}
+function rows(el,out){el.innerHTML=out.map(function(o,j){return '<div class="row'+(j==0?' first':'')+'"><div class="top"><span class="num">'+o.c.n+'</span><span class="nm">'+o.c.nm+'</span><span class="pc">'+Math.round(o.sc)+' %</span></div><div class="bar"><i style="width:'+o.sc+'%"></i></div><div class="why">'+(o.g.length?'<b>Pour :</b> '+o.g.join(", ")+'. ':'')+(o.b.length?'<b>Contre :</b> '+o.b.join(", ")+'.':'')+'</div></div>';}).join("");}
+function group(){var who=NOMS.filter(function(n){return has(PW[n]);});var w={};
+ K.forEach(function(k){w[k.id]=who.length?who.reduce(function(a,n){return a+PW[n][k.id];},0)/who.length:P.eq[k.id];});
+ $("gnote").textContent=who.length?"Moyenne des priorités de "+who.join(", ")+" ("+who.length+" sur 5).":"Personne n'a encore réglé ses priorités : réglage « Équilibré » en attendant.";
+ rows($("gres"),rank(w));}
+function tabs(){$("ptabs").innerHTML=NOMS.map(function(n){return '<button role="tab" data-n="'+n+'" aria-selected="'+(n===cur)+'">'+n+(has(PW[n])?' <span class="ck">✓</span>':'')+'</button>';}).join("");}
+function sliders(){var w=W();
+ $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
+ rows($("res"),rank(w));}
+function all(){tabs();sliders();group();}
+function set(w){PW[cur]=w;tabs();sliders();group();$("pstatus").textContent="Enregistrement…";clearTimeout(timer);
+ var who=cur;timer=setTimeout(function(){fetch(API,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who,poids:w})})
+ .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){PW=d;all();$("pstatus").textContent="Enregistré pour "+who+".";})
+ .catch(function(){$("pstatus").textContent="Pas pu enregistrer. Vérifie ta connexion et réessaie.";});},600);}
+$("ptabs").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;cur=b.dataset.n;$("pstatus").textContent="";all();});
+$("weights").addEventListener("input",function(e){var r=e.target;if(!r.dataset.k)return;var w=Object.assign({},W());w[r.dataset.k]=+r.value;
+ r.previousElementSibling.querySelector("span").textContent=lab[w[r.dataset.k]];set(w);});
+document.querySelectorAll(".presets button").forEach(function(b){b.addEventListener("click",function(){set(Object.assign({},P[b.dataset.p]));});});
+all();
+fetch(API,{cache:"no-store"}).then(function(r){return r.json();}).then(function(d){PW=d;all();}).catch(function(){$("gnote").textContent="Priorités indisponibles pour l'instant.";});
 })();
 </script>
 </body>
