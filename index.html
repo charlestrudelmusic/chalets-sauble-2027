@@ -278,7 +278,7 @@ html{scroll-behavior:auto}
 <div class="vote">
 <p class="vq">Qui es-tu?</p>
 <div class="who" id="who" role="group" aria-label="Choisir ton nom"></div>
-<p class="hint0" id="hint0">Choisis ton nom pour commencer.</p>
+<p class="hint0" id="hint0">Clique sur ton nom pour voir et remplir ta page.</p>
 <div id="mePanel" hidden>
 <p class="mename" id="meName"></p>
 <div class="block">
@@ -345,8 +345,7 @@ var P={eq:{prix:2,lits:3,toil:2,clim:2,feu:1,plage:1,camp:1,avis:2},
  lieu:{prix:1,lits:1,toil:1,clim:1,feu:1,plage:3,camp:3,avis:1}};
 var lab=["Pas important","Un peu","Important","Essentiel"];
 var V={},PW={},moi=null,timer=null,$=function(i){return document.getElementById(i);};
-try{moi=localStorage.getItem("chalets-moi");}catch(e){}
-if(NOMS.indexOf(moi)<0)moi=null;
+try{localStorage.removeItem("chalets-moi");}catch(e){}
 function has(w){return !!w&&Object.keys(w).length===K.length;}
 function voted(n){return Object.keys(V[n]||{}).length>0;}
 function myW(){return has(PW[moi])?PW[moi]:P.eq;}
@@ -390,7 +389,7 @@ function group(){var ws=NOMS.filter(function(n){return has(PW[n]);});var w={};
  $("ptable").innerHTML='<thead><tr><th></th>'+K.map(function(k){return '<th>'+k.l+'</th>';}).join("")+'</tr></thead><tbody>'+NOMS.map(function(n){var x=PW[n];return '<tr><td>'+pill(n)+'</td>'+K.map(function(k){var v=has(x)?x[k.id]:null;return '<td class="p'+(v==null?'e':v)+'">'+(v==null?'–':sh[v])+'</td>';}).join("")+'</tr>';}).join("")+'</tbody>';}
 function all(keepSliders){who();mine();if(!keepSliders)sliders();votes();group();}
 /* --- événements --- */
-$("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;try{localStorage.setItem("chalets-moi",moi);}catch(x){}st("");all();});
+$("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;st("");all();});
 $("mine").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!moi)return;
  var c=b.dataset.c,k=+b.dataset.k,mv=V[moi]=V[moi]||{},who_=moi,send=[];
  if(mv[c]===k){delete mv[c];send.push([c,0]);}
