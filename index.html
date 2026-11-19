@@ -228,6 +228,20 @@ dialog select,dialog input,dialog textarea{width:100%;font:inherit;font-size:15p
 .dbtn{display:flex;justify-content:flex-end;gap:10px;margin-top:14px}
 .dbtn button{font:inherit;font-weight:600;border-radius:30px;padding:9px 20px;cursor:pointer;border:0}
 .dno{background:var(--line);color:var(--ink)}.dyes{background:var(--accent);color:#fff}
+.cards .card.out{order:99;opacity:.55;filter:grayscale(.8)}
+.cards .card.out:hover{opacity:.85}
+.outban{background:#f6e3e1;color:#8a3a33;border-radius:14px;padding:12px 14px;margin:0 0 18px;font-size:14px;line-height:1.5}
+.outban b{display:block;font-size:15px}.outban span{display:block}
+.inb{margin-top:8px;border:0;background:#fff;color:#8a3a33;font:inherit;font-weight:600;font-size:13.5px;border-radius:20px;padding:6px 14px;cursor:pointer}
+.outb{display:block;margin-top:10px;border:0;background:none;color:var(--soft);font:inherit;font-size:13.5px;text-decoration:underline;cursor:pointer;padding:0}
+.outc{opacity:.35}
+th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no);font-weight:400;letter-spacing:0}
+.mine .r.out{opacity:.45}.mine .r.out em{font-style:normal;color:var(--no);font-size:13px}
+.pick button:disabled{cursor:default}
+.dwarn{background:#f6e3e1;color:#8a3a33;border-radius:12px;padding:10px 12px;font-size:14px;margin:0 0 4px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f2a30;color:#fff;border-radius:30px;padding:10px 12px 10px 20px;display:flex;gap:14px;align-items:center;font-size:15px;box-shadow:0 12px 40px rgba(0,0,0,.25);z-index:50;max-width:calc(100% - 32px)}
+.toast[hidden]{display:none}
+.toast button{border:0;background:#fff;color:#1f2a30;font:inherit;font-weight:600;border-radius:20px;padding:6px 14px;cursor:pointer}
 </style>
 </head>
 <body>
@@ -388,6 +402,7 @@ dialog select,dialog input,dialog textarea{width:100%;font:inherit;font-size:15p
 
 <dialog id="dlg"><form method="dialog" id="dform">
 <h3 id="dtitle">Ajouter une info</h3>
+<p class="dwarn" id="dwarn" hidden>Il sera grisé, placé à la fin et sorti du vote pour tout le monde. On peut le remettre en tout temps (bouton « Remettre ce chalet » ou Annuler).</p>
 <p class="dl">Qui ajoute?</p><div class="dwho" id="dwho"></div>
 <div id="dch"><label class="dl" for="dchamp">Sur quoi?</label><select id="dchamp"></select></div>
 <div id="dnew" hidden><label class="dl" for="dnom">Nom ou adresse du chalet</label><input id="dnom" maxlength="80" autocomplete="off"></div>
@@ -397,6 +412,7 @@ dialog select,dialog input,dialog textarea{width:100%;font:inherit;font-size:15p
 <div class="dbtn"><button value="annuler" class="dno">Annuler</button><button id="dok" value="ok" class="dyes">Enregistrer</button></div>
 </form></dialog>
 
+<div class="toast" id="toast" role="status" hidden></div>
 <footer>
 Infos tirées des annonces le 17 novembre 2026. « À confirmer » veut dire que l'annonce n'en parle pas. Aucune annonce ne mentionne de bidet. Le prix du no 5 est calculé à partir du tarif affiché; ceux des nos 6 et 7 ne sont pas publiés. Chalets 6 à 8 ajoutés le 18 novembre 2026 (no 6 remplacé par 22 Walker Way, l'ancien n'étant plus disponible). Temps vers Carson's Camp (110, Southampton Parkway) calculés sur la carte (OpenStreetMap) à partir de la position des annonces, qui peut être approximative de quelques centaines de mètres. Disponibilité aux dates à confirmer.
 </footer>
@@ -423,42 +439,42 @@ var P={eq:{prix:2,lits:3,toil:2,clim:2,feu:1,plage:1,camp:1,avis:2},
  conf:{prix:1,lits:3,toil:3,clim:3,feu:2,plage:1,camp:1,avis:2},
  lieu:{prix:1,lits:1,toil:1,clim:1,feu:1,plage:3,camp:3,avis:1}};
 var lab=["Pas important","Un peu","Important","Essentiel"];
-var V={},PW={},moi=null,timer=null,$=function(i){return document.getElementById(i);};
+var OUT={},V={},PW={},moi=null,timer=null,$=function(i){return document.getElementById(i);};
 try{localStorage.removeItem("chalets-moi");}catch(e){}
 function has(w){return !!w&&Object.keys(w).length===K.length;}
 function voted(n){return Object.keys(V[n]||{}).length>0;}
 function myW(){return has(PW[moi])?PW[moi]:P.eq;}
 function st(t){$("vstatus").textContent=t;}
 function rank(w){var tw=K.reduce(function(a,k){return a+w[k.id];},0)||1;
- return C.map(function(c,i){var sc=K.reduce(function(a,k){return a+w[k.id]*k.v[i];},0)/tw*10;
+ return C.map(function(c,i){if(OUT[c.n])return null;var sc=K.reduce(function(a,k){return a+w[k.id]*k.v[i];},0)/tw*10;
   var imp=K.filter(function(k){return w[k.id]>0;});
   var g=imp.filter(function(k){return k.v[i]>=8.5;}).sort(function(a,b){return w[b.id]*b.v[i]-w[a.id]*a.v[i];}).slice(0,3).map(function(k){return k.good;});
   var b=imp.filter(function(k){return k.v[i]<=4;}).sort(function(a,b){return w[b.id]*(10-b.v[i])-w[a.id]*(10-a.v[i]);}).slice(0,2).map(function(k){return k.bad;});
-  return {c:c,sc:sc,g:g,b:b};}).sort(function(a,b){return b.sc-a.sc;});}
+  return {c:c,sc:sc,g:g,b:b};}).filter(Boolean).sort(function(a,b){return b.sc-a.sc;});}
 function rows(el,out){el.innerHTML=out.map(function(o,j){return '<div class="row'+(j==0?' first':'')+'"><div class="top"><span class="num">'+o.c.n+'</span><span class="nm">'+o.c.nm+'</span><span class="pc">'+Math.round(o.sc)+' %</span></div><div class="bar"><i style="width:'+o.sc+'%"></i></div><div class="why">'+(o.g.length?'<b>Pour :</b> '+o.g.join(", ")+'. ':'')+(o.b.length?'<b>Contre :</b> '+o.b.join(", ")+'.':'')+'</div></div>';}).join("");}
 /* --- Ma page --- */
 function who(){$("who").innerHTML=NOMS.map(function(n){var d=(voted(n)?1:0)+(has(PW[n])?1:0);return '<button data-n="'+n+'" aria-pressed="'+(n===moi)+'" style="background:'+COL[n][0]+';border-color:'+(n===moi?COL[n][1]:'transparent')+'">'+n+(d?' <span class="ck" title="'+(d==2?'Vote et priorités faits':'En partie rempli')+'">'+(d==2?'✓':'·')+'</span>':'')+'</button>';}).join("");}
 function mine(){var on=!!moi;$("mePanel").hidden=!on;$("menu").hidden=on;var box=$("mePanel").closest(".vote");
  box.style.boxShadow=on?"0 0 0 3px "+COL[moi][1]+", 0 20px 50px rgba(0,0,0,.18)":"";box.style.background=on?"linear-gradient("+COL[moi][0]+",#fff 180px)":"";
  $("meName").innerHTML=on?"Fiche de "+pill(moi):"";if(!on)return;var mv=V[moi]||{};
- $("mine").innerHTML=C.map(function(c){return '<div class="r"><span class="num">'+c.n+'</span><span class="nm">'+c.nm+'</span><div class="pick">'+C.map(function(x){return x.n;}).map(function(k){return '<button data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+ORD[k]+' choix" aria-pressed="'+(mv[c.n]===k)+'">'+ORD[k]+'</button>';}).join("")+'</div></div>';}).join("");}
+ $("mine").innerHTML=C.map(function(c){var o=!!OUT[c.n];return '<div class="r'+(o?' out':'')+'"><span class="num">'+c.n+'</span><span class="nm">'+c.nm+(o?' <em>plus disponible</em>':'')+'</span><div class="pick">'+C.map(function(x){return x.n;}).map(function(k){return '<button'+(o?' disabled':'')+' data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+ORD[k]+' choix" aria-pressed="'+(mv[c.n]===k)+'">'+ORD[k]+'</button>';}).join("")+'</div></div>';}).join("");}
 function sliders(){if(!moi)return;var w=myW();
  $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
  rows($("res"),rank(w));}
 /* --- Le groupe --- */
 function votes(){
  var tot=C.map(function(c){var s=0,n=0;NOMS.forEach(function(p){var v=(V[p]||{})[c.n];if(v){s+=C.length+1-v;n++;}});return {c:c,s:s,n:n};});
- var any=tot.some(function(t){return t.n>0;});
- var top=any?Math.max.apply(null,tot.map(function(t){return t.s;})):-1;
- var best=tot.filter(function(t){return any&&t.s===top;});
+ var any=tot.some(function(t){return t.n>0&&!OUT[t.c.n];});
+ var top=any?Math.max.apply(null,tot.filter(function(t){return !OUT[t.c.n];}).map(function(t){return t.s;})):-1;
+ var best=tot.filter(function(t){return any&&!OUT[t.c.n]&&t.s===top;});
  var vs=NOMS.filter(voted);
  $("winner").innerHTML=!any?'<div class="k">Résultat du vote</div><div class="t">Personne n\'a encore voté</div><p>Chacun vote dans l\'onglet « Ma page ».</p>'
   :'<div class="k">Résultat du vote'+(best.length>1?' (égalité)':'')+(vs.length<5?' · provisoire':'')+'</div><div class="t">'+best.map(function(t){return '<span class="num">'+t.c.n+'</span>'+t.c.nm;}).join(' · ')+'</div><p>'+top+' points · '+vs.length+' personne'+(vs.length>1?'s ont':' a')+' voté sur 5'+(vs.length<5?' · en attente de '+NOMS.filter(function(n){return !voted(n);}).join(", "):'')+'</p>';
  $("vnote").textContent="Points : 1er choix = "+C.length+" points, 2e = "+(C.length-1)+", et ainsi de suite jusqu'au "+ORD[C.length]+" = 1."+(vs.length<5?"":" Tout le monde a voté.");
  var bn=best.map(function(t){return t.c.n;});
- var h='<thead><tr><th></th>'+C.map(function(c){return '<th class="'+(bn.indexOf(c.n)>=0?'win':'')+'" title="'+c.nm+'"><span class="num">'+c.n+'</span></th>';}).join("")+'</tr></thead><tbody>';
- NOMS.forEach(function(p){h+='<tr><td>'+pill(p)+'</td>'+C.map(function(c){var v=(V[p]||{})[c.n];return '<td class="'+(v?'':'e ')+(bn.indexOf(c.n)>=0?'win':'')+'">'+(v?ORD[v]:'–')+'</td>';}).join("")+'</tr>';});
- h+='<tr class="tot"><td>Points</td>'+tot.map(function(t){return '<td class="'+(bn.indexOf(t.c.n)>=0?'win':'')+'">'+(t.n?t.s:'–')+'</td>';}).join("")+'</tr></tbody>';
+ var h='<thead><tr><th></th>'+C.map(function(c){return '<th class="'+(bn.indexOf(c.n)>=0?'win':'')+(OUT[c.n]?' outc':'')+'" title="'+c.nm+(OUT[c.n]?' (plus disponible)':'')+'"><span class="num">'+c.n+'</span></th>';}).join("")+'</tr></thead><tbody>';
+ NOMS.forEach(function(p){h+='<tr><td>'+pill(p)+'</td>'+C.map(function(c){var v=(V[p]||{})[c.n];return '<td class="'+(v?'':'e ')+(bn.indexOf(c.n)>=0?'win':'')+(OUT[c.n]?' outc':'')+'">'+(v?ORD[v]:'–')+'</td>';}).join("")+'</tr>';});
+ h+='<tr class="tot"><td>Points</td>'+tot.map(function(t){return '<td class="'+(bn.indexOf(t.c.n)>=0?'win':'')+(OUT[t.c.n]?' outc':'')+'">'+(OUT[t.c.n]?'retiré':t.n?t.s:'–')+'</td>';}).join("")+'</tr></tbody>';
  $("vt").innerHTML=h;}
 function group(){var ws=NOMS.filter(function(n){return has(PW[n]);});var w={};
  K.forEach(function(k){w[k.id]=ws.length?ws.reduce(function(a,n){return a+PW[n][k.id];},0)/ws.length:P.eq[k.id];});
@@ -470,7 +486,7 @@ function all(keepSliders){who();mine();if(!keepSliders)sliders();votes();group()
 /* --- événements --- */
 $("back").addEventListener("click",function(){moi=null;st("");all();var b=$("s2");window.scrollTo(0,b.offsetTop-20);});
 $("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;st("");all();});
-$("mine").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!moi)return;
+$("mine").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!moi||b.disabled)return;
  var c=b.dataset.c,k=+b.dataset.k,mv=V[moi]=V[moi]||{},who_=moi,send=[];
  if(mv[c]===k){delete mv[c];send.push([c,0]);}
  else{var other=Object.keys(mv).filter(function(x){return x!==c&&mv[x]===k;})[0],old=mv[c];
@@ -496,19 +512,26 @@ function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp
 function dt(ms){var d=new Date(ms);return d.getDate()+" "+["janv.","févr.","mars","avr.","mai","juin","juil.","août","sept.","oct.","nov.","déc."][d.getMonth()];}
 function lienH(u){return u?' · <a href="'+esc(u)+'" target="_blank" rel="noopener">lien</a>':'';}
 function pp(v){var m=String(v).replace(/[\s ]/g,"").match(/(\d{3,6})(?:[.,]\d+)?/);if(!m)return "";var x=+m[1];return x>=300?" (≈ "+Math.round(x/5).toLocaleString("fr-CA")+" $ / personne)":"";}
-function liste(){return Object.keys(I).map(function(k){var x=I[k];x.id=k;return x;}).filter(function(x){return !x.retire;}).sort(function(a,b){return a.le-b.le;});}
-function infosH(){var L=liste();
+function liste(){return Object.keys(I).map(function(k){var x=I[k];x.id=k;return x;}).filter(function(x){return !x.retire&&x.champ!=="horsjeu";}).sort(function(a,b){return a.le-b.le;});}
+function horsjeu(){var o={};Object.keys(I).forEach(function(k){var x=I[k];if(x.champ==="horsjeu"&&!x.retire){x.id=k;o[x.chalet]=x;}});return o;}
+function infosH(){var L=liste();OUT=horsjeu();
  document.querySelectorAll(".gi").forEach(function(el){var c=+el.dataset.c,mine=L.filter(function(x){return x.chalet===c;});
-  el.innerHTML=(mine.length?'<div class="lbl">Ajouté par le groupe</div><ul>'+mine.map(function(x){return '<li><span class="gk">'+pill(x.nom)+' · '+esc(CH[x.champ]||"")+' · '+dt(x.le)+lienH(x.lien)+'</span>'+esc(x.valeur)+(x.champ==="prix"?esc(pp(x.valeur)):"")+'<button class="xr" data-x="'+x.id+'" title="Retirer cette info" aria-label="Retirer cette info">×</button></li>';}).join("")+'</ul>':'')+'<button class="addi" data-add="'+c+'">+ Ajouter une info</button>';});
+  el.innerHTML=(mine.length?'<div class="lbl">Ajouté par le groupe</div><ul>'+mine.map(function(x){return '<li><span class="gk">'+pill(x.nom)+' · '+esc(CH[x.champ]||"")+' · '+dt(x.le)+lienH(x.lien)+'</span>'+esc(x.valeur)+(x.champ==="prix"?esc(pp(x.valeur)):"")+'<button class="xr" data-x="'+x.id+'" title="Retirer cette info" aria-label="Retirer cette info">×</button></li>';}).join("")+'</ul>':'')+'<button class="addi" data-add="'+c+'">+ Ajouter une info</button>'+(OUT[c]?'':'<button class="outb" data-out="'+c+'">Plus disponible?</button>');
+  var card=el.closest(".card"),o=OUT[c],ban=card.querySelector(".outban");card.classList.toggle("out",!!o);if(ban)ban.remove();
+  if(o){ban=document.createElement("div");ban.className="outban";ban.innerHTML='<b>Plus disponible</b><span>Signalé par '+esc(o.nom)+' le '+dt(o.le)+(o.valeur?' : '+esc(o.valeur):'')+'</span><button class="inb" data-in="'+o.id+'">Remettre ce chalet</button>';card.insertBefore(ban,card.firstChild);}});
+ var hr=document.querySelector(".wrap table thead tr");[].slice.call(hr.children,1).forEach(function(th,i){th.classList.toggle("outc",!!OUT[i+1]);});
+ document.querySelectorAll(".wrap table tbody tr").forEach(function(tr){[].slice.call(tr.children,1).forEach(function(td,i){td.classList.toggle("outc",!!OUT[i+1]);});});
  document.querySelectorAll(".wrap table tbody tr[data-f]").forEach(function(tr){var f=tr.dataset.f;
   [].slice.call(tr.children,1).forEach(function(td,i){var old=td.querySelector(".ga");if(old)old.remove();
    var last=L.filter(function(x){return x.chalet===i+1&&x.champ===f;}).pop();
    if(last){var g=document.createElement("span");g.className="ga";g.textContent=last.nom+" : "+last.valeur+(f==="prix"?pp(last.valeur):"");td.appendChild(g);}});});
  var P0=L.filter(function(x){return x.chalet===0;});
+ all(true);
  $("propList").innerHTML=P0.length?P0.map(function(x){return '<div class="pc"><div class="k0">Proposé</div><h4>'+esc(x.nomChalet)+'</h4><div class="gk">'+pill(x.nom)+' · '+dt(x.le)+lienH(x.lien)+'</div>'+(x.valeur?'<p>'+esc(x.valeur)+'</p>':'')+'<button class="xr" data-x="'+x.id+'" title="Retirer" aria-label="Retirer">×</button></div>';}).join(""):"";}
-function ouvrir(c){dState={c:c,qui:null};var nv=c===0;
+function ouvrir(c,hj){dState={c:c,qui:null,hj:!!hj};var nv=c===0;
  $("dtitle").textContent=nv?"Proposer un autre chalet":"Ajouter une info · chalet "+c+" ("+C[c-1].nm+")";
- $("dch").hidden=nv;$("dnew").hidden=!nv;$("dvall").textContent=nv?"Ce que tu sais (prix, lits, clim, distance…)":"L'info";
+ $("dch").hidden=nv||!!hj;$("dnew").hidden=!nv;$("dvall").textContent=hj?"Pourquoi? (facultatif)":nv?"Ce que tu sais (prix, lits, clim, distance…)":"L'info";
+ if(hj)$("dtitle").textContent="Retirer le chalet "+c+" ("+C[c-1].nm+")?";$("dwarn").hidden=!hj;$("dok").textContent=hj?"Retirer de la liste":"Enregistrer";
  $("dchamp").innerHTML=Object.keys(CH).map(function(k){return '<option value="'+k+'">'+CH[k]+'</option>';}).join("");
  $("dval").value="";$("dnom").value="";$("dlien").value="";$("derr").textContent="";
  try{var q=localStorage.getItem("chalets-qui");if(NOMS.indexOf(q)>=0)dState.qui=q;}catch(e){}
@@ -516,20 +539,34 @@ function ouvrir(c){dState={c:c,qui:null};var nv=c===0;
 function dwho(){$("dwho").innerHTML=NOMS.map(function(n){var on=dState.qui===n;return '<button type="button" data-q="'+n+'" aria-pressed="'+on+'" style="background:'+COL[n][0]+';border-color:'+(on?COL[n][1]:'transparent')+';font-weight:'+(on?600:400)+'">'+n+'</button>';}).join("");}
 $("dwho").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;dState.qui=b.dataset.q;dwho();});
 document.addEventListener("click",function(e){var a=e.target.closest(".addi");if(a){ouvrir(+a.dataset.add);return;}
+ var ob=e.target.closest(".outb");if(ob){ouvrir(+ob.dataset.out,true);return;}
+ var ib=e.target.closest(".inb");if(ib&&I[ib.dataset.in]){var it0=I[ib.dataset.in];if(!confirm("Remettre ce chalet dans la liste?"))return;
+  action({nom:it0.nom,retirer:ib.dataset.in},"Chalet "+it0.chalet+" remis dans la liste.",{nom:it0.nom,remettre:ib.dataset.in},"Chalet "+it0.chalet+" retiré de nouveau.").catch(function(){alert("Pas pu enregistrer. Vérifie ta connexion.");});return;}
  var x=e.target.closest(".xr");if(x&&I[x.dataset.x]){var it=I[x.dataset.x];if(!confirm("Retirer cette info ajoutée par "+it.nom+"?"))return;
-  fetch(BASE+"/infos",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:it.nom,retirer:x.dataset.x})}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){I=d;infosH();}).catch(function(){alert("Pas pu retirer. Vérifie ta connexion.");});}});
+  action({nom:it.nom,retirer:x.dataset.x},"Info retirée.",{nom:it.nom,remettre:x.dataset.x},"Info remise.").catch(function(){alert("Pas pu retirer. Vérifie ta connexion.");});}});
 $("addChalet").addEventListener("click",function(){ouvrir(0);});
 $("dok").addEventListener("click",function(e){e.preventDefault();var c=dState.c,v=$("dval").value.trim(),nm=$("dnom").value.trim(),l=$("dlien").value.trim();
  if(!dState.qui){$("derr").textContent="Clique sur ton nom.";return;}
  if(c===0&&!nm){$("derr").textContent="Écris le nom ou l'adresse du chalet.";return;}
- if(c!==0&&!v){$("derr").textContent="Écris l'info.";return;}
+ if(c!==0&&!v&&!dState.hj){$("derr").textContent="Écris l'info.";return;}
  if(l&&!/^https:\/\/\S+$/.test(l)){$("derr").textContent="Le lien doit commencer par https://";return;}
  try{localStorage.setItem("chalets-qui",dState.qui);}catch(e2){}
  $("dok").disabled=true;$("derr").textContent="Enregistrement…";
- fetch(BASE+"/infos",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:dState.qui,chalet:c,champ:c===0?"nouveau":$("dchamp").value,valeur:v,lien:l,nomChalet:nm})})
- .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){I=d;infosH();$("dlg").close();})
+ var msg=dState.hj?"Chalet "+c+" retiré de la liste.":c===0?"Chalet proposé.":"Info ajoutée.",um=dState.hj?"Chalet "+c+" remis dans la liste.":c===0?"Proposition retirée.":"Info retirée.";
+ action({nom:dState.qui,chalet:c,champ:dState.hj?"horsjeu":c===0?"nouveau":$("dchamp").value,valeur:v,lien:l,nomChalet:nm},msg,null,um).then(function(){$("dlg").close();})
  .catch(function(){$("derr").textContent="Pas pu enregistrer. Vérifie ta connexion et réessaie.";})
  .then(function(){$("dok").disabled=false;});});
+var UNDO=[],toastT=null;
+function postI(body){return fetch(BASE+"/infos",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(r){if(!r.ok)throw 0;return r.json();});}
+function toast(msg,undo){var t=$("toast");t.innerHTML='<span>'+esc(msg)+'</span>'+(undo?'<button id="tundo">Annuler</button>':'');t.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){t.hidden=true;},12000);}
+function action(body,msg,undoBody,undoMsg){var avant=Object.keys(I);
+ return postI(body).then(function(d){I=d;infosH();
+  if(!undoBody){var neu=Object.keys(d).filter(function(k){return avant.indexOf(k)<0;})[0];if(neu)undoBody={nom:body.nom,retirer:neu};}
+  if(undoBody)UNDO.push({b:undoBody,m:undoMsg||"Annulé."});toast(msg,!!undoBody);});}
+function annuler(){var u=UNDO.pop();if(!u)return;$("toast").hidden=true;
+ postI(u.b).then(function(d){I=d;infosH();toast(u.m,false);}).catch(function(){UNDO.push(u);toast("Pas pu annuler. Vérifie ta connexion.",false);});}
+$("toast").addEventListener("click",function(e){if(e.target.id==="tundo")annuler();});
+document.addEventListener("keydown",function(e){if((e.metaKey||e.ctrlKey)&&!e.shiftKey&&e.key.toLowerCase()==="z"){var tg=e.target.tagName;if(tg==="INPUT"||tg==="TEXTAREA"||$("dlg").open||!UNDO.length)return;e.preventDefault();annuler();}});
 function loadI(){return fetch(BASE+"/infos",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){I=d;infosH();}).catch(function(){});}
 all();load(true);infosH();loadI();
 setInterval(function(){if(!document.hidden){load(false);if(!$("dlg").open)loadI();}},20000);
