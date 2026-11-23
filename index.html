@@ -242,6 +242,15 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 .toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#1f2a30;color:#fff;border-radius:30px;padding:10px 12px 10px 20px;display:flex;gap:14px;align-items:center;font-size:15px;box-shadow:0 12px 40px rgba(0,0,0,.25);z-index:50;max-width:calc(100% - 32px)}
 .toast[hidden]{display:none}
 .toast button{border:0;background:#fff;color:#1f2a30;font:inherit;font-weight:600;border-radius:20px;padding:6px 14px;cursor:pointer}
+.fb{all:unset;cursor:pointer;color:var(--ink);text-decoration:underline;text-decoration-color:#c9d6dc;text-underline-offset:3px}
+.fb:hover{color:var(--accent);text-decoration-color:var(--accent)}
+.ann{font-size:12.5px;color:var(--accent);text-decoration:none;white-space:nowrap;margin-left:4px}
+.ann:hover{text-decoration:underline}
+.band .ann{color:var(--accent)}
+.integ{display:block;font-size:12px;color:#2a9d6b;margin-top:2px}
+.fdlg{max-width:520px;padding:0;background:transparent;box-shadow:none;max-height:90vh;overflow:auto}
+.fdlg .card{box-shadow:0 30px 80px rgba(0,0,0,.25)}
+.fclose{position:sticky;top:10px;float:right;margin:10px 10px -46px 0;z-index:2;width:36px;height:36px;border-radius:50%;border:0;background:var(--line);font-size:22px;cursor:pointer;color:var(--ink)}
 </style>
 </head>
 <body>
@@ -260,7 +269,7 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 <div class="cp">766 $ <small>/ personne · 3 830 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Double</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>Double</span></li><li>Chambre 4<span>Superposés</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>Plage juste de l'autre côté de la rue</li><li>2 kayaks, planche à pagaie, 4 vélos, chaises de plage</li><li>2 barbecues, table de 8, hamac</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Une seule toilette</li><li>Eau de puits, eau potable en cruches</li><li>2 places de stationnement seulement</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Pas de climatisation (selon Marianne)</li><li>Une seule toilette</li><li>Eau de puits, eau potable en cruches</li><li>2 places de stationnement seulement</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>4,76/5 sur 21 avis. Commentaires individuels non accessibles; propreté 4,5/5.</p><p><b>Bon à savoir</b><br>Courant fort au rivage, pas de sauveteurs. Loué aux familles et couples matures.</p><p><b>À vérifier</b><br>Climatisation, et lire les avis moins bons.</p></details>
 <div class="gi" data-c="1"></div>
 <a href="https://fr.airbnb.ca/rooms/49229179" target="_blank" rel="noopener">Voir l'annonce →</a></article>
@@ -268,7 +277,7 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 <div class="cp">614 $ <small>/ personne · 3 069 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Taille ?</span></li><li>Chambre 2<span>Taille ?</span></li><li>Chambre 3<span>Taille ?</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain</li><li>Cour privée : foyer, barbecue au gaz, repas dehors</li><li>Rue principale à pied, hôte Superhôte</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Tailles des lits inconnues</li><li>Climatisation non confirmée</li><li>Maximum 6 personnes</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Pas de climatisation (selon Marianne)</li><li>Tailles des lits inconnues</li><li>Maximum 6 personnes</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>4,62/5 sur 13 avis. Un avis à 3 étoiles, motif inconnu. Qualité-prix 4,5/5.</p><p><b>À vérifier</b><br>Un grand lit dans chaque chambre, la clim, les avis moins bons.</p></details>
 <div class="gi" data-c="2"></div>
 <a href="https://fr.airbnb.ca/rooms/1433381894774584865" target="_blank" rel="noopener">Voir l'annonce →</a></article>
@@ -276,7 +285,7 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 <div class="cp">330 $ <small>/ personne · 1 651 $ au total</small></div>
 <ul class="rooms"><li>Chambre 1<span>Queen</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3<span>2 simples</span></li><li>Salon<span>Divan-lit queen</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>De loin le moins cher</li><li>Deux toilettes</li><li>Divan-lit queen en plus au salon</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Troisième chambre en lits simples</li><li>Clim et feu non confirmés</li><li>Seulement 4 avis</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Troisième chambre en lits simples</li><li>Pas de clim (selon Marianne), feu non confirmé</li><li>Seulement 4 avis</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>9,6/10 sur 4 avis : entretien, espace, hôtes réactifs.</p><p><b>Bon à savoir</b><br>Secteur South Sauble Beach. Barbecue, terrasse, stationnement. Animaux non admis.</p><p><b>À vérifier</b><br>Climatisation, feu extérieur, accepter les lits simples.</p></details>
 <div class="gi" data-c="3"></div>
 <a href="https://www.vrbo.com/en-ca/cottage-rental/p20193024" target="_blank" rel="noopener">Voir l'annonce →</a></article>
@@ -288,28 +297,28 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>9,8/10 sur 19 avis : emplacement, cuisine, confort. Un 4/10 sur la communication (différend sur une chaise, selon l'hôte).</p><p><b>Bon à savoir</b><br>Maximum 6 personnes. Chiens acceptés.</p><p><b>À vérifier</b><br>Linge à apporter, couchages.</p></details>
 <div class="gi" data-c="4"></div>
 <a href="https://www.vrbo.com/en-ca/cottage-rental/p20265714" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card" id="c5"><div class="head"><span class="num">5</span><div><h3>Three Bears' Cottage</h3><div class="tag">Bien équipé, avis mitigés</div></div></div>
+<article class="card" id="c5"><div class="head"><span class="num">5</span><div><h3>Three Bears' Cottage</h3><div class="tag">Bien équipé, le plus près du camping</div></div></div>
 <div class="cp">≈ 416 $ <small>/ personne · ≈ 2 080 $ au total</small></div>
 <ul class="rooms"><li>Lits annoncés<span>Queen, 2 doubles</span></li><li>En plus<span>2 simples, divan-lit</span></li><li>Répartition<span>Non précisée</span></li></ul>
-<div class="lbl">Avantages</div><ul class="pros"><li>Deux salles de bain, clim, foyer et feu</li><li>Grande cour privée, gazebo, barbecue</li><li>Laveuse-sécheuse, cuisine complète</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Avis : matelas queen affaissé, photos dépassées</li><li>Lits par chambre non confirmés</li><li>Dépôt de 500 $ (remboursable) et 30 % à la réservation</li></ul>
+<div class="lbl">Avantages</div><ul class="pros"><li>Le plus près de Carson's Camp : 9 min à pied</li><li>Deux salles de bain, clim, foyer et feu</li><li>Grande cour privée, gazebo, barbecue</li><li>Laveuse-sécheuse, cuisine complète</li></ul>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Vieux avis : matelas affaissé, photos dépassées (les avis récents sont meilleurs, selon Marianne)</li><li>Lits par chambre non confirmés</li><li>Dépôt de 500 $ (remboursable) et 30 % à la réservation</li></ul>
 <details><summary>Plus de détails</summary><p><b>Avis</b><br>4/5 sur 8 avis. Juillet 2025 : matelas affaissé, sécheuse non branchée, frais contestés. 2023 : odeurs, différend. Le propriétaire conteste une partie. D'autres aiment l'espace et la cour.</p><p><b>Prix</b><br>Calculé : 5 nuits × 250 $ + 2 × 300 $ + ménage 150 $ + taxe 4 %. Pas un devis.</p><p><b>À vérifier</b><br>Prix exact, photos récentes, lits par chambre, état du matelas.</p></details>
 <div class="gi" data-c="5"></div>
 <a href="https://www.cottagesincanada.com/fr/27958" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card" id="c6"><div class="head"><span class="num">6</span><div><h3>22, Walker Way</h3><div class="tag">Maison haut de gamme, prix à demander</div></div></div>
-<div class="cp">Prix à demander <small>pas affiché dans l'annonce</small></div>
+<article class="card" id="c6"><div class="head"><span class="num">6</span><div><h3>22, Walker Way</h3><div class="tag">Maison haut de gamme</div></div></div>
+<div class="cp">680 $ <small>/ personne · 3 400 $ au total (trouvé par Marianne)</small></div>
 <ul class="rooms"><li>Chambre 1<span>King + salle de bain privée</span></li><li>Chambre 2<span>King</span></li><li>Chambres 3 et 4 (sous-sol)<span>Queen · Queen</span></li><li>En plus<span>Superposés (simple sur double)</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>2 kings + 2 queens, 3 salles de bain et demie</li><li>Clim centrale, foyer au gaz, feu dehors</li><li>Grande terrasse, table de 8, ping-pong et baby-foot</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Prix inconnu</li><li>Plage à 17 min à pied (3 min en auto)</li><li>« Familles seulement », du dimanche au dimanche</li></ul>
-<details><summary>Plus de détails</summary><p><b>Bon à savoir</b><br>Maximum 8 personnes. Laveuse-sécheuse, lave-vaisselle, barbecue au gaz, wifi, 4 stationnements. Garage non accessible. Chiens non admis. Aucun avis publié.</p><p><b>À vérifier</b><br>Si l'agence accepte un groupe d'amis (annonce : « familles seulement »), le prix, les dates (25 juillet au 1er août?), draps et serviettes. Agence Sauble Beach Cottage Rentals : 519-422-1313.</p></details>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Parmi les plus chers (680 $ chacun)</li><li>Plage à 17 min à pied (3 min en auto)</li><li>« Familles seulement », du dimanche au dimanche</li></ul>
+<details><summary>Plus de détails</summary><p><b>Bon à savoir</b><br>Maximum 8 personnes. Laveuse-sécheuse, lave-vaisselle, barbecue au gaz, wifi, 4 stationnements. Garage non accessible. Chiens non admis. Aucun avis publié.</p><p><b>À vérifier</b><br>Si l'agence accepte un groupe d'amis (annonce : « familles seulement »), les dates (25 juillet au 1er août?), draps et serviettes. Agence Sauble Beach Cottage Rentals : 519-422-1313.</p></details>
 <div class="gi" data-c="6"></div>
 <a href="https://saublebeachcottagerentals.ca/rentals/22-walker-way/" target="_blank" rel="noopener">Voir l'annonce →</a></article>
-<article class="card" id="c7"><div class="head"><span class="num">7</span><div><h3>710, Second Avenue South</h3><div class="tag">4 chambres, prix à demander</div></div></div>
-<div class="cp">Prix à demander <small>pas affiché dans l'annonce</small></div>
+<article class="card" id="c7"><div class="head"><span class="num">7</span><div><h3>710, Second Avenue South</h3><div class="tag">4 chambres, clim, 12 min du camping</div></div></div>
+<div class="cp">495 $ <small>/ personne · 2 475 $ au total (site de l'agence, trouvé par Marianne)</small></div>
 <ul class="rooms"><li>Chambre 1<span>Queen + salle de bain privée</span></li><li>Chambre 2<span>Double</span></li><li>Chambre 3 (étage)<span>Queen + 1 simple</span></li><li>Chambre 4 (étage)<span>Double</span></li></ul>
 <div class="lbl">Avantages</div><ul class="pros"><li>4 chambres, deux salles de bain (douches)</li><li>Clim centrale en bas, feu dans la cour</li><li>Plage à 2-3 min à pied, grande galerie</li></ul>
-<div class="lbl">Désavantages</div><ul class="cons"><li>Prix inconnu</li><li>Location du dimanche au dimanche (dates à décaler)</li><li>Pas de foyer mentionné, clim portative à l'étage</li></ul>
-<details><summary>Plus de détails</summary><p><b>Bon à savoir</b><br>Maximum 9 personnes. Laveuse-sécheuse, lave-vaisselle, barbecue au propane, 4 stationnements. Chiens acceptés (frais). Aucun avis publié.</p><p><b>À vérifier</b><br>Prix, dates (25 juillet au 1er août?), draps et serviettes. Même agence que le no 6 : 519-422-1313.</p></details>
+<div class="lbl">Désavantages</div><ul class="cons"><li>Location du dimanche au dimanche (dates à décaler)</li><li>Pas de foyer mentionné, clim portative à l'étage</li></ul>
+<details><summary>Plus de détails</summary><p><b>Bon à savoir</b><br>Maximum 9 personnes. Laveuse-sécheuse, lave-vaisselle, barbecue au propane, 4 stationnements. Chiens acceptés (frais). Aucun avis publié.</p><p><b>À vérifier</b><br>Dates (25 juillet au 1er août?), draps et serviettes. Même agence que le no 6 : 519-422-1313.</p></details>
 <div class="gi" data-c="7"></div>
 <a href="https://saublebeachcottagerentals.ca/rentals/710-second-ave-south/" target="_blank" rel="noopener">Voir l'annonce →</a></article>
 <article class="card" id="c8"><div class="head"><span class="num">8</span><div><h3>Becker's Beachhouse</h3><div class="tag">3 queens, plage à 30 secondes</div></div></div>
@@ -328,29 +337,29 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 <div class="wrap"><table>
 <thead><tr><th></th><th><span class="num" aria-label="Chalet 1">1</span>Chippewa Trail</th><th><span class="num" aria-label="Chalet 2">2</span>Sunset Villa</th><th><span class="num" aria-label="Chalet 3">3</span>Four Season</th><th><span class="num" aria-label="Chalet 4">4</span>Beach Lookout</th><th><span class="num" aria-label="Chalet 5">5</span>Three Bears</th><th><span class="num" aria-label="Chalet 6">6</span>Walker Way</th><th><span class="num" aria-label="Chalet 7">7</span>Second Ave</th><th><span class="num" aria-label="Chalet 8">8</span>Becker's</th></tr></thead>
 <tbody>
-<tr data-f="prix"><td>Par personne</td><td><span class="price">766 $</span><span class="tot">3 830 $ au total</span></td><td><span class="price">614 $</span><span class="tot">3 069 $ au total</span></td><td><span class="price">330 $</span><span class="tot">1 651 $ au total</span></td><td><span class="price">978 $</span><span class="tot">4 891 $ au total</span></td><td><span class="price">≈ 416 $</span><span class="tot">≈ 2 080 $ au total</span></td><td class="may">À demander</td><td class="may">À demander</td><td><span class="price">400 $</span><span class="tot">2 000 $ la semaine</span></td></tr>
+<tr data-f="prix"><td>Par personne</td><td><span class="price">766 $</span><span class="tot">3 830 $ au total</span></td><td><span class="price">614 $</span><span class="tot">3 069 $ au total</span></td><td><span class="price">330 $</span><span class="tot">1 651 $ au total</span></td><td><span class="price">978 $</span><span class="tot">4 891 $ au total</span></td><td><span class="price">≈ 416 $</span><span class="tot">≈ 2 080 $ au total</span></td><td><span class="price">680 $</span><span class="tot">3 400 $ au total</span></td><td><span class="price">495 $</span><span class="tot">2 475 $ au total</span></td><td><span class="price">400 $</span><span class="tot">2 000 $ la semaine</span></td></tr>
 <tr data-f="lits"><td>Chambres</td><td class="ok">3 doubles<span class="n">+ 1 ch. superposés</span></td><td class="may">3 lits<span class="n">tailles inconnues</span></td><td class="no">Queen, double, 2 simples<span class="n">+ divan-lit au salon</span></td><td class="no">Queen, double, superposés</td><td class="may">Queen, 2 doubles<span class="n">répartition inconnue</span></td><td class="ok">2 kings, 2 queens<span class="n">+ superposés</span></td><td class="ok">2 queens, 2 doubles<span class="n">4 chambres</span></td><td class="ok">3 queens<span class="n">+ 2 petits lits, divan-lit</span></td></tr>
 <tr data-f="toil"><td>Toilettes</td><td class="no">1</td><td class="ok">2</td><td class="ok">2</td><td class="no">1</td><td class="ok">2</td><td class="ok">4<span class="n">3 salles de bain + 1 salle d'eau</span></td><td class="ok">2</td><td class="no">1</td></tr>
-<tr data-f="clim"><td>Climatisation</td><td class="may">À confirmer</td><td class="may">À confirmer</td><td class="may">À confirmer</td><td class="ok">Oui</td><td class="ok">Oui</td><td class="ok">Oui<span class="n">centrale</span></td><td class="ok">Oui<span class="n">portative à l'étage</span></td><td class="ok">Oui</td></tr>
+<tr data-f="clim"><td>Climatisation</td><td class="no">Non</td><td class="no">Non</td><td class="no">Non</td><td class="ok">Oui</td><td class="ok">Oui</td><td class="ok">Oui<span class="n">centrale</span></td><td class="ok">Oui<span class="n">portative à l'étage</span></td><td class="ok">Oui</td></tr>
 <tr data-f="feu"><td>Feu extérieur</td><td class="ok">Oui</td><td class="ok">Oui</td><td class="may">À confirmer</td><td class="ok">Oui</td><td class="ok">Oui</td><td class="ok">Oui</td><td class="ok">Oui</td><td class="ok">Oui</td></tr>
 <tr><td>Foyer intérieur</td><td class="may">À confirmer</td><td class="may">À confirmer</td><td class="may">À confirmer</td><td class="ok">Oui</td><td class="ok">Oui</td><td class="ok">Oui<span class="n">au gaz</span></td><td class="may">À confirmer</td><td class="ok">Oui</td></tr>
 <tr><td>Bidet</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td><td class="may">Non mentionné</td></tr>
 <tr data-f="plage"><td>Plage</td><td class="ok">En face</td><td class="ok">10 min à pied</td><td class="ok">8 min à pied</td><td class="ok">1 min à pied</td><td class="ok">≈ 8 min à pied</td><td class="no">≈ 17 min à pied<span class="n">3 min en auto</span></td><td class="ok">2-3 min à pied</td><td class="ok">30 secondes</td></tr>
-<tr data-f="camp"><td>Carson's Camp</td><td>27 min à pied<span class="n">4 min en auto</span></td><td>17 min à pied<span class="n">2 min en auto</span></td><td>19 min à pied<span class="n">2 min en auto</span></td><td>25 min à pied<span class="n">3 min en auto</span></td><td class="ok">9 min à pied<span class="n">1 min en auto</span></td><td>26 min à pied<span class="n">3 min en auto</span></td><td class="ok">11 min à pied<span class="n">2 min en auto</span></td><td>25 min à pied<span class="n">4 min en auto</span></td></tr>
+<tr data-f="camp"><td>Carson's Camp</td><td>30 min à pied<span class="n">4 min en auto</span></td><td>20 min à pied<span class="n">2 min en auto</span></td><td>25 min à pied<span class="n">2 min en auto</span></td><td>27 min à pied<span class="n">3 min en auto</span></td><td class="ok">9 min à pied<span class="n">1 min en auto</span></td><td>24 min à pied<span class="n">3 min en auto</span></td><td class="ok">12 min à pied<span class="n">2 min en auto</span></td><td>30 min à pied<span class="n">4 min en auto</span></td></tr>
 <tr><td>Capacité</td><td>8</td><td>6</td><td>8</td><td>6</td><td>8</td><td>8</td><td>9</td><td>6</td></tr>
 <tr><td>Avis</td><td>4,8 / 5<span class="n">21 avis</span></td><td>4,6 / 5<span class="n">13 avis</span></td><td>9,6 / 10<span class="n">4 avis</span></td><td>9,8 / 10<span class="n">19 avis</span></td><td>4 / 5<span class="n">8 avis, plaintes</span></td><td class="may">Aucun avis</td><td class="may">Aucun avis</td><td class="may">Aucun avis</td></tr>
 </tbody></table></div>
-<p class="legend">En gris : pas indiqué dans l'annonce. En rouge : ne correspond pas à ce qu'on cherche. Sur fond jaune : ajouté par quelqu'un du groupe.</p>
+<p class="legend">Mis à jour le 23 novembre avec les infos du groupe (clim, prix des nos 6 et 7, temps à pied mesurés par Marianne). En gris : pas indiqué dans l'annonce. En rouge : ne correspond pas à ce qu'on cherche. Sur fond jaune : ajouté par quelqu'un du groupe.</p>
 
 
 <div class="rank" style="margin-top:64px">
 <h3 class="subh left">Première analyse</h3>
 <p class="gnote">Mon avis de départ, avec un réglage « équilibré ». Ce n'est pas le résultat : le résultat, c'est votre vote (onglet 3).</p>
 <div class="verdict">
-<div><div class="k">Le plus probable</div><div class="t"><span class="num">5</span>Three Bears ou <span class="num">2</span>Sunset Villa</div>
-<p>Le no 5 coche presque tout (2 salles de bain, clim, foyer, feu, grands lits) pour ≈ 416 $ chacun, mais ses avis obligent à poser des questions au propriétaire. Si ses réponses ne rassurent pas, le no 2 est le plan B : 2 salles de bain et une cour avec feu, à condition que les lits soient grands.</p></div>
+<div><div class="k">Le plus probable</div><div class="t"><span class="num">5</span>Three Bears ou <span class="num">7</span>Second Ave</div>
+<p>Le no 5 coche presque tout (2 salles de bain, clim, foyer, feu, grands lits) pour ≈ 416 $ chacun, et c'est le plus près du camping (9 min à pied). Ses avis récents sont meilleurs, selon Marianne. Le no 7 est le plan B : 4 chambres, 2 salles de bain, clim et 12 min du camping pour 495 $ chacun, mais du dimanche au dimanche.</p></div>
 <div><div class="k">Le moins probable</div><div class="t"><span class="num">4</span>Beach Lookout</div>
-<p>Le plus cher (978 $ chacun) avec une seule toilette pour 5 et une chambre en lits superposés. Superbe emplacement, mais il rate deux de nos critères de base. Le no 6 (Walker Way) est le plus luxueux, mais loin de la plage, prix inconnu et « familles seulement ». Le no 8 est une belle aubaine (400 $ chacun, 3 queens, plage à 30 s), mais une seule salle de bain et aucun remboursement.</p></div>
+<p>Le plus cher (978 $ chacun) avec une seule toilette pour 5 et une chambre en lits superposés. Superbe emplacement, mais il rate deux de nos critères de base. Les nos 1, 2 et 3 n'ont pas de clim, selon Marianne. Le no 6 (Walker Way) est le plus luxueux, mais 680 $ chacun, loin de la plage et « familles seulement ». Le no 8 est une belle aubaine (400 $ chacun, 3 queens, plage à 30 s), mais une seule salle de bain et aucun remboursement.</p></div>
 </div>
 </div>
 <div class="next"><a href="#s2">Étape suivante : Ma page →</a></div>
@@ -412,9 +421,10 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 <div class="dbtn"><button value="annuler" class="dno">Annuler</button><button id="dok" value="ok" class="dyes">Enregistrer</button></div>
 </form></dialog>
 
+<dialog id="fdlg" class="fdlg"><button class="fclose" id="fclose" aria-label="Fermer">×</button><div id="fbody"></div></dialog>
 <div class="toast" id="toast" role="status" hidden></div>
 <footer>
-Infos tirées des annonces le 17 novembre 2026. « À confirmer » veut dire que l'annonce n'en parle pas. Aucune annonce ne mentionne de bidet. Le prix du no 5 est calculé à partir du tarif affiché; ceux des nos 6 et 7 ne sont pas publiés. Chalets 6 à 8 ajoutés le 18 novembre 2026 (no 6 remplacé par 22 Walker Way, l'ancien n'étant plus disponible). Temps vers Carson's Camp (110, Southampton Parkway) calculés sur la carte (OpenStreetMap) à partir de la position des annonces, qui peut être approximative de quelques centaines de mètres. Disponibilité aux dates à confirmer.
+Infos tirées des annonces le 17 novembre 2026, complétées le 23 novembre avec les infos ajoutées par le groupe. « À confirmer » veut dire que l'annonce n'en parle pas. Aucune annonce ne mentionne de bidet. Le prix du no 5 est calculé à partir du tarif affiché; ceux des nos 6 et 7 ont été trouvés par Marianne. Chalets 6 à 8 ajoutés le 18 novembre 2026 (no 6 remplacé par 22 Walker Way, l'ancien n'étant plus disponible). Temps vers Carson's Camp (110, Southampton Parkway) calculés sur la carte (OpenStreetMap) à partir de la position des annonces, qui peut être approximative de quelques centaines de mètres. Disponibilité aux dates à confirmer.
 </footer>
 
 <script>
@@ -426,18 +436,20 @@ function pill(n){return '<span class="np" style="background:'+COL[n][0]+';border
 var ORD=["","1er","2e","3e","4e","5e","6e","7e","8e"];
 var C=[{n:1,nm:"Chippewa Trail"},{n:2,nm:"Sunset Villa"},{n:3,nm:"Four Season"},{n:4,nm:"Beach Lookout"},{n:5,nm:"Three Bears"},{n:6,nm:"Walker Way"},{n:7,nm:"Second Ave"},{n:8,nm:"Becker's"}];
 var K=[
- {id:"prix",l:"Prix",v:[3.3,5.6,10,0,8.7,5,5,8.9],good:"le prix",bad:"le prix"},
+ {id:"prix",l:"Prix",v:[3.3,5.6,10,0,8.7,4.6,7.5,8.9],good:"le prix",bad:"le prix"},
  {id:"lits",l:"Grands lits",v:[10,5,3,2,6,10,10,10],good:"3 grands lits",bad:"les lits"},
  {id:"toil",l:"2 toilettes",v:[0,10,8.5,0,10,10,10,0],good:"2 toilettes",bad:"1 seule toilette"},
- {id:"clim",l:"Clim",v:[5,5,5,10,10,10,9,10],good:"la clim",bad:"clim non confirmée"},
+ {id:"clim",l:"Clim",v:[0,0,0,10,10,10,9,10],good:"la clim",bad:"pas de clim"},
  {id:"feu",l:"Feu",v:[7.5,7.5,5,10,10,10,7.5,10],good:"feu dehors et foyer",bad:"feu non confirmé"},
  {id:"plage",l:"Plage proche",v:[10,6,6.5,10,6.5,3,9,10],good:"la plage tout près",bad:"plus loin de la plage"},
- {id:"camp",l:"Carson's Camp",v:[4.6,7.6,7.0,5.2,10.0,4.9,9.4,5.2],good:"près du camping à pied",bad:"loin du camping à pied"},
- {id:"avis",l:"Avis fiables",v:[8.5,7,6,9.5,3,5,5,5],good:"de bons avis",bad:"des avis inquiétants"}];
+ {id:"camp",l:"Carson's Camp",v:[3.7,6.7,5.2,4.6,10.0,5.5,9.1,3.7],good:"près du camping à pied",bad:"loin du camping à pied"},
+ {id:"avis",l:"Avis fiables",v:[8.5,7,6,9.5,5,5,5,5],good:"de bons avis",bad:"des avis inquiétants"}];
 var P={eq:{prix:2,lits:3,toil:2,clim:2,feu:1,plage:1,camp:1,avis:2},
  cash:{prix:3,lits:1,toil:1,clim:1,feu:1,plage:1,camp:1,avis:1},
  conf:{prix:1,lits:3,toil:3,clim:3,feu:2,plage:1,camp:1,avis:2},
  lieu:{prix:1,lits:1,toil:1,clim:1,feu:1,plage:3,camp:3,avis:1}};
+C.forEach(function(c){var a=document.querySelector("#c"+c.n+" > a[href]");c.url=a?a.href:"";});
+function nmH(c){return '<button class="fb" data-fiche="'+c.n+'" title="Voir la fiche">'+c.nm+'</button>'+(c.url?' <a class="ann" href="'+c.url+'" target="_blank" rel="noopener" title="Ouvrir l\'annonce dans un nouvel onglet">annonce ↗</a>':'');}
 var lab=["Pas important","Un peu","Important","Essentiel"];
 var OUT={},V={},PW={},moi=null,timer=null,$=function(i){return document.getElementById(i);};
 try{localStorage.removeItem("chalets-moi");}catch(e){}
@@ -451,13 +463,13 @@ function rank(w){var tw=K.reduce(function(a,k){return a+w[k.id];},0)||1;
   var g=imp.filter(function(k){return k.v[i]>=8.5;}).sort(function(a,b){return w[b.id]*b.v[i]-w[a.id]*a.v[i];}).slice(0,3).map(function(k){return k.good;});
   var b=imp.filter(function(k){return k.v[i]<=4;}).sort(function(a,b){return w[b.id]*(10-b.v[i])-w[a.id]*(10-a.v[i]);}).slice(0,2).map(function(k){return k.bad;});
   return {c:c,sc:sc,g:g,b:b};}).filter(Boolean).sort(function(a,b){return b.sc-a.sc;});}
-function rows(el,out){el.innerHTML=out.map(function(o,j){return '<div class="row'+(j==0?' first':'')+'"><div class="top"><span class="num">'+o.c.n+'</span><span class="nm">'+o.c.nm+'</span><span class="pc">'+Math.round(o.sc)+' %</span></div><div class="bar"><i style="width:'+o.sc+'%"></i></div><div class="why">'+(o.g.length?'<b>Pour :</b> '+o.g.join(", ")+'. ':'')+(o.b.length?'<b>Contre :</b> '+o.b.join(", ")+'.':'')+'</div></div>';}).join("");}
+function rows(el,out){el.innerHTML=out.map(function(o,j){return '<div class="row'+(j==0?' first':'')+'"><div class="top"><span class="num">'+o.c.n+'</span><span class="nm">'+nmH(o.c)+'</span><span class="pc">'+Math.round(o.sc)+' %</span></div><div class="bar"><i style="width:'+o.sc+'%"></i></div><div class="why">'+(o.g.length?'<b>Pour :</b> '+o.g.join(", ")+'. ':'')+(o.b.length?'<b>Contre :</b> '+o.b.join(", ")+'.':'')+'</div></div>';}).join("");}
 /* --- Ma page --- */
 function who(){$("who").innerHTML=NOMS.map(function(n){var d=(voted(n)?1:0)+(has(PW[n])?1:0);return '<button data-n="'+n+'" aria-pressed="'+(n===moi)+'" style="background:'+COL[n][0]+';border-color:'+(n===moi?COL[n][1]:'transparent')+'">'+n+(d?' <span class="ck" title="'+(d==2?'Vote et priorités faits':'En partie rempli')+'">'+(d==2?'✓':'·')+'</span>':'')+'</button>';}).join("");}
 function mine(){var on=!!moi;$("mePanel").hidden=!on;$("menu").hidden=on;var box=$("mePanel").closest(".vote");
  box.style.boxShadow=on?"0 0 0 3px "+COL[moi][1]+", 0 20px 50px rgba(0,0,0,.18)":"";box.style.background=on?"linear-gradient("+COL[moi][0]+",#fff 180px)":"";
  $("meName").innerHTML=on?"Fiche de "+pill(moi):"";if(!on)return;var mv=V[moi]||{};
- $("mine").innerHTML=C.map(function(c){var o=!!OUT[c.n];return '<div class="r'+(o?' out':'')+'"><span class="num">'+c.n+'</span><span class="nm">'+c.nm+(o?' <em>plus disponible</em>':'')+'</span><div class="pick">'+C.map(function(x){return x.n;}).map(function(k){return '<button'+(o?' disabled':'')+' data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+ORD[k]+' choix" aria-pressed="'+(mv[c.n]===k)+'">'+ORD[k]+'</button>';}).join("")+'</div></div>';}).join("");}
+ $("mine").innerHTML=C.map(function(c){var o=!!OUT[c.n];return '<div class="r'+(o?' out':'')+'"><span class="num">'+c.n+'</span><span class="nm">'+nmH(c)+(o?' <em>plus disponible</em>':'')+'</span><div class="pick">'+C.map(function(x){return x.n;}).map(function(k){return '<button'+(o?' disabled':'')+' data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+ORD[k]+' choix" aria-pressed="'+(mv[c.n]===k)+'">'+ORD[k]+'</button>';}).join("")+'</div></div>';}).join("");}
 function sliders(){if(!moi)return;var w=myW();
  $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
  rows($("res"),rank(w));}
@@ -486,7 +498,7 @@ function all(keepSliders){who();mine();if(!keepSliders)sliders();votes();group()
 /* --- événements --- */
 $("back").addEventListener("click",function(){moi=null;st("");all();var b=$("s2");window.scrollTo(0,b.offsetTop-20);});
 $("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;st("");all();});
-$("mine").addEventListener("click",function(e){var b=e.target.closest("button");if(!b||!moi||b.disabled)return;
+$("mine").addEventListener("click",function(e){var b=e.target.closest("button[data-k]");if(!b||!moi||b.disabled)return;
  var c=b.dataset.c,k=+b.dataset.k,mv=V[moi]=V[moi]||{},who_=moi,send=[];
  if(mv[c]===k){delete mv[c];send.push([c,0]);}
  else{var other=Object.keys(mv).filter(function(x){return x!==c&&mv[x]===k;})[0],old=mv[c];
@@ -506,6 +518,7 @@ document.querySelectorAll(".presets button").forEach(function(b){b.addEventListe
 function load(first){return Promise.all([fetch(BASE+"/votes",{cache:"no-store"}).then(function(r){return r.json();}),fetch(BASE+"/priorites",{cache:"no-store"}).then(function(r){return r.json();})])
  .then(function(d){V=d[0];if(first||!timer)PW=d[1];all(!first);}).catch(function(){st("Données indisponibles pour l'instant.");});}
 /* --- Infos ajoutées par le groupe --- */
+var INTEG=["i:1795469256855-apvc3w","i:1795469274516-vmq5wa","i:1795469661401-nd43v9","i:1795469973060-0tz88g","i:1795470375290-2obm3n","i:1795470551811-pwdi74","i:1795470639205-26h3qp","i:1795470806757-j8jbea","i:1795470839287-wez6vf","i:1795471018459-mrag88","i:1795471039934-vpvs9w","i:1795471060963-9uajc8","i:1795471082181-5ckxz3","i:1795471222769-g0ljle","i:1795471283333-6eeloj","i:1795471521494-a0gruu"];
 var I={},CH={prix:"Prix total (7 nuits)",clim:"Climatisation",camp:"Distance du camping",plage:"Distance de la plage",lits:"Lits et chambres",toil:"Toilettes",feu:"Feu et foyer",dispo:"Disponible à nos dates?",autre:"Autre info"};
 var dState=null;
 function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
@@ -516,14 +529,14 @@ function liste(){return Object.keys(I).map(function(k){var x=I[k];x.id=k;return 
 function horsjeu(){var o={};Object.keys(I).forEach(function(k){var x=I[k];if(x.champ==="horsjeu"&&!x.retire){x.id=k;o[x.chalet]=x;}});return o;}
 function infosH(){var L=liste();OUT=horsjeu();
  document.querySelectorAll(".gi").forEach(function(el){var c=+el.dataset.c,mine=L.filter(function(x){return x.chalet===c;});
-  el.innerHTML=(mine.length?'<div class="lbl">Ajouté par le groupe</div><ul>'+mine.map(function(x){return '<li><span class="gk">'+pill(x.nom)+' · '+esc(CH[x.champ]||"")+' · '+dt(x.le)+lienH(x.lien)+'</span>'+esc(x.valeur)+(x.champ==="prix"?esc(pp(x.valeur)):"")+'<button class="xr" data-x="'+x.id+'" title="Retirer cette info" aria-label="Retirer cette info">×</button></li>';}).join("")+'</ul>':'')+'<button class="addi" data-add="'+c+'">+ Ajouter une info</button>'+(OUT[c]?'':'<button class="outb" data-out="'+c+'">Plus disponible?</button>');
+  el.innerHTML=(mine.length?'<div class="lbl">Ajouté par le groupe</div><ul>'+mine.map(function(x){return '<li><span class="gk">'+pill(x.nom)+' · '+esc(CH[x.champ]||"")+' · '+dt(x.le)+lienH(x.lien)+'</span>'+esc(x.valeur)+(x.champ==="prix"?esc(pp(x.valeur)):"")+(INTEG.indexOf(x.id)>=0?'<span class="integ">✓ intégré à la fiche</span>':'')+'<button class="xr" data-x="'+x.id+'" title="Retirer cette info" aria-label="Retirer cette info">×</button></li>';}).join("")+'</ul>':'')+'<button class="addi" data-add="'+c+'">+ Ajouter une info</button>'+(OUT[c]?'':'<button class="outb" data-out="'+c+'">Plus disponible?</button>');
   var card=el.closest(".card"),o=OUT[c],ban=card.querySelector(".outban");card.classList.toggle("out",!!o);if(ban)ban.remove();
   if(o){ban=document.createElement("div");ban.className="outban";ban.innerHTML='<b>Plus disponible</b><span>Signalé par '+esc(o.nom)+' le '+dt(o.le)+(o.valeur?' : '+esc(o.valeur):'')+'</span><button class="inb" data-in="'+o.id+'">Remettre ce chalet</button>';card.insertBefore(ban,card.firstChild);}});
  var hr=document.querySelector(".wrap table thead tr");[].slice.call(hr.children,1).forEach(function(th,i){th.classList.toggle("outc",!!OUT[i+1]);});
  document.querySelectorAll(".wrap table tbody tr").forEach(function(tr){[].slice.call(tr.children,1).forEach(function(td,i){td.classList.toggle("outc",!!OUT[i+1]);});});
  document.querySelectorAll(".wrap table tbody tr[data-f]").forEach(function(tr){var f=tr.dataset.f;
   [].slice.call(tr.children,1).forEach(function(td,i){var old=td.querySelector(".ga");if(old)old.remove();
-   var last=L.filter(function(x){return x.chalet===i+1&&x.champ===f;}).pop();
+   var last=L.filter(function(x){return x.chalet===i+1&&x.champ===f&&INTEG.indexOf(x.id)<0;}).pop();
    if(last){var g=document.createElement("span");g.className="ga";g.textContent=last.nom+" : "+last.valeur+(f==="prix"?pp(last.valeur):"");td.appendChild(g);}});});
  var P0=L.filter(function(x){return x.chalet===0;});
  all(true);
@@ -567,6 +580,11 @@ function annuler(){var u=UNDO.pop();if(!u)return;$("toast").hidden=true;
  postI(u.b).then(function(d){I=d;infosH();toast(u.m,false);}).catch(function(){UNDO.push(u);toast("Pas pu annuler. Vérifie ta connexion.",false);});}
 $("toast").addEventListener("click",function(e){if(e.target.id==="tundo")annuler();});
 document.addEventListener("keydown",function(e){if((e.metaKey||e.ctrlKey)&&!e.shiftKey&&e.key.toLowerCase()==="z"){var tg=e.target.tagName;if(tg==="INPUT"||tg==="TEXTAREA"||$("dlg").open||!UNDO.length)return;e.preventDefault();annuler();}});
+function fiche(n){var card=$("c"+n).cloneNode(true);card.removeAttribute("id");card.querySelectorAll(".addi,.outb,.xr,.inb").forEach(function(b){b.remove();});
+ card.querySelectorAll("details").forEach(function(d){d.open=true;});var f=$("fbody");f.innerHTML="";f.appendChild(card);$("fdlg").showModal();$("fdlg").scrollTop=0;}
+document.addEventListener("click",function(e){var b=e.target.closest(".fb");if(b){fiche(+b.dataset.fiche);}});
+$("fclose").addEventListener("click",function(){$("fdlg").close();});
+$("fdlg").addEventListener("click",function(e){if(e.target===$("fdlg"))$("fdlg").close();});
 function loadI(){return fetch(BASE+"/infos",{cache:"no-store"}).then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){I=d;infosH();}).catch(function(){});}
 all();load(true);infosH();loadI();
 setInterval(function(){if(!document.hidden){load(false);if(!$("dlg").open)loadI();}},20000);
