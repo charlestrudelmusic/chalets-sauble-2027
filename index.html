@@ -251,6 +251,26 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 .fdlg{max-width:520px;padding:0;background:transparent;box-shadow:none;max-height:90vh;overflow:auto}
 .fdlg .card{box-shadow:0 30px 80px rgba(0,0,0,.25)}
 .fclose{position:sticky;top:10px;float:right;margin:10px 10px -46px 0;z-index:2;width:36px;height:36px;border-radius:50%;border:0;background:var(--line);font-size:22px;cursor:pointer;color:var(--ink)}
+.tray{display:flex;flex-wrap:wrap;align-items:center;gap:8px;background:var(--bg);border-radius:16px;padding:12px 14px;margin:4px 0 8px;min-height:62px}
+.tray .tl{font-size:13px;color:var(--soft);margin-right:4px}
+.tray .done{font-size:14.5px;color:#2a9d6b;font-weight:600}
+.tok{min-width:46px;height:36px;padding:0 10px;border-radius:10px;border:2px solid var(--pc);background:var(--pb);color:var(--ink);font:600 15px/1 var(--body);cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none}
+.tok.sel{background:var(--ink);border-color:var(--ink);color:#fff;box-shadow:0 0 0 4px var(--pc)}
+.tok.lift{opacity:.3}
+.tok.ghost{position:fixed;z-index:99;pointer-events:none;transform:translate(-50%,-50%) scale(1.15);box-shadow:0 10px 24px rgba(0,0,0,.25);cursor:grabbing}
+body.dragging,body.dragging *{cursor:grabbing !important}
+.vhint{font-size:14px;color:var(--soft);margin:0 0 12px;min-height:1.4em}
+.vhint b{color:var(--ink)}
+.mine .r{border-radius:14px;padding:8px 10px;flex-wrap:nowrap;border:2px solid transparent}
+.mine .r.can{cursor:pointer}
+.mine .r.can:hover,.mine .r.over{background:var(--accentbg);border-color:var(--accent)}
+.mine .r.can:focus-visible{outline:3px solid var(--accent)}
+.slot{flex:none;width:58px;display:flex;justify-content:center}
+.slot .empty{width:46px;height:36px;border:2px dashed #c9d6dc;border-radius:10px}
+.mine .r.can .slot .empty{border-color:var(--accent)}
+.vfoot{text-align:right;margin:-22px 0 30px}
+.vclear{border:0;background:none;color:var(--soft);font:inherit;font-size:13.5px;text-decoration:underline;cursor:pointer}
+@media(max-width:560px){.slot{width:52px}.tok{min-width:42px;height:34px;font-size:14px;padding:0 8px}.slot .empty{width:42px;height:34px}.mine .r{gap:8px;padding:6px 4px}}
 </style>
 </head>
 <body>
@@ -373,9 +393,11 @@ th.outc::after{content:"Plus dispo";display:block;font-size:12px;color:var(--no)
 <div id="mePanel" hidden>
 <div class="mebar"><button class="back" id="back">← Changer de personne</button><p class="mename" id="meName"></p></div>
 <div class="block">
-<div class="bt"><span class="bn">A</span><div><b>Mon vote : mon ordre de préférence</b><span>Classe les chalets du 1er (ton préféré) au 8e. Chaque rang une seule fois. Pas obligé de tous les classer.</span></div></div>
-<p class="scale"><span>1er = mon premier choix</span><span>8e = mon dernier choix</span></p>
+<div class="bt"><span class="bn">A</span><div><b>Mon vote : mon ordre de préférence</b><span>Mets la pastille 1er sur ton chalet préféré, puis la 2e, la 3e… Pas obligé de tous les classer.</span></div></div>
+<div class="tray" id="tray"></div>
+<p class="vhint" id="vhint"></p>
 <div class="mine" id="mine"></div>
+<div class="vfoot"><button type="button" class="vclear" id="vclear">Tout retirer</button></div>
 </div>
 <div class="block">
 <div class="bt"><span class="bn">B</span><div><b>Mes priorités</b><span>Ce qui compte pour toi. Un préréglage ou les curseurs.</span></div></div>
@@ -451,9 +473,11 @@ var P={eq:{prix:2,lits:3,toil:2,clim:2,feu:1,plage:1,camp:1,avis:2},
 C.forEach(function(c){var a=document.querySelector("#c"+c.n+" > a[href]");c.url=a?a.href:"";});
 function nmH(c){return '<button class="fb" data-fiche="'+c.n+'" title="Voir la fiche">'+c.nm+'</button>'+(c.url?' <a class="ann" href="'+c.url+'" target="_blank" rel="noopener" title="Ouvrir l\'annonce dans un nouvel onglet">annonce ↗</a>':'');}
 var lab=["Pas important","Un peu","Important","Essentiel"];
-var OUT={},V={},PW={},moi=null,timer=null,$=function(i){return document.getElementById(i);};
+var SEL=null,DRAG=null,SAVING=0,OUT={},V={},PW={},moi=null,timer=null,$=function(i){return document.getElementById(i);};
 try{localStorage.removeItem("chalets-moi");}catch(e){}
 function has(w){return !!w&&Object.keys(w).length===K.length;}
+function freeK(mv){var used={};Object.keys(mv).forEach(function(c){used[mv[c]]=1;});var f=[];for(var k=1;k<=C.length;k++)if(!used[k])f.push(k);return f;}
+function tokH(k,cls){return '<button type="button" class="tok '+cls+'" data-k="'+k+'" style="--pc:'+COL[moi][1]+';--pb:'+COL[moi][0]+'" title="'+(cls==='placed'?'Clique pour retirer, ou glisse ailleurs':ORD[k]+' choix')+'">'+ORD[k]+'</button>';}
 function voted(n){return Object.keys(V[n]||{}).length>0;}
 function myW(){return has(PW[moi])?PW[moi]:P.eq;}
 function st(t){$("vstatus").textContent=t;}
@@ -469,7 +493,11 @@ function who(){$("who").innerHTML=NOMS.map(function(n){var d=(voted(n)?1:0)+(has
 function mine(){var on=!!moi;$("mePanel").hidden=!on;$("menu").hidden=on;var box=$("mePanel").closest(".vote");
  box.style.boxShadow=on?"0 0 0 3px "+COL[moi][1]+", 0 20px 50px rgba(0,0,0,.18)":"";box.style.background=on?"linear-gradient("+COL[moi][0]+",#fff 180px)":"";
  $("meName").innerHTML=on?"Fiche de "+pill(moi):"";if(!on)return;var mv=V[moi]||{};
- $("mine").innerHTML=C.map(function(c){var o=!!OUT[c.n];return '<div class="r'+(o?' out':'')+'"><span class="num">'+c.n+'</span><span class="nm">'+nmH(c)+(o?' <em>plus disponible</em>':'')+'</span><div class="pick">'+C.map(function(x){return x.n;}).map(function(k){return '<button'+(o?' disabled':'')+' data-c="'+c.n+'" data-k="'+k+'" aria-label="'+c.nm+' : '+ORD[k]+' choix" aria-pressed="'+(mv[c.n]===k)+'">'+ORD[k]+'</button>';}).join("")+'</div></div>';}).join("");}
+ if(DRAG)return;var free=freeK(mv);if(free.indexOf(SEL)<0)SEL=free[0]||null;
+ $("tray").innerHTML=free.length?'<span class="tl">'+(free.length===C.length?'Tes pastilles':'Il reste')+'</span>'+free.map(function(k){return tokH(k,k===SEL?'sel':'');}).join(""):'<span class="done">✓ Tes '+C.length+' choix sont placés. Clique sur une pastille pour la retirer.</span>';
+ $("vhint").innerHTML=SEL?'Clique sur le chalet qui sera ton <b>'+ORD[SEL]+' choix</b>. Tu peux aussi glisser la pastille.':'';
+ $("vclear").hidden=!Object.keys(mv).length;
+ $("mine").innerHTML=C.map(function(c){var o=!!OUT[c.n],k=mv[c.n];return '<div class="r'+(o?' out':'')+(SEL&&!o?' can':'')+(k?' has':'')+'" data-c="'+c.n+'"'+(SEL&&!o?' role="button" tabindex="0" aria-label="Mettre '+ORD[SEL]+' sur '+c.nm+'"':'')+'><span class="slot">'+(k?tokH(k,'placed'):'<span class="empty"></span>')+'</span><span class="num">'+c.n+'</span><span class="nm">'+nmH(c)+(o?' <em>plus disponible</em>':'')+'</span></div>';}).join("");}
 function sliders(){if(!moi)return;var w=myW();
  $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
  rows($("res"),rank(w));}
@@ -497,17 +525,40 @@ function group(){var ws=NOMS.filter(function(n){return has(PW[n]);});var w={};
 function all(keepSliders){who();mine();if(!keepSliders)sliders();votes();group();}
 /* --- événements --- */
 $("back").addEventListener("click",function(){moi=null;st("");all();var b=$("s2");window.scrollTo(0,b.offsetTop-20);});
-$("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;st("");all();});
-$("mine").addEventListener("click",function(e){var b=e.target.closest("button[data-k]");if(!b||!moi||b.disabled)return;
- var c=b.dataset.c,k=+b.dataset.k,mv=V[moi]=V[moi]||{},who_=moi,send=[];
- if(mv[c]===k){delete mv[c];send.push([c,0]);}
- else{var other=Object.keys(mv).filter(function(x){return x!==c&&mv[x]===k;})[0],old=mv[c];
-  if(other){if(old){mv[other]=old;send.push([other,old]);}else{delete mv[other];send.push([other,0]);}}
-  mv[c]=k;send.push([c,k]);}
- all(true);st("Enregistrement…");
+$("who").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;moi=b.dataset.n;SEL=null;st("");all();});
+/* --- vote : pastilles 1er…8e (cliquer ou glisser) --- */
+function envoyer(send){var who_=moi;SAVING++;all(true);st("Enregistrement…");
  send.reduce(function(pr,x){return pr.then(function(){return fetch(BASE+"/votes",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who_,chalet:+x[0],note:x[1]})}).then(function(r){if(!r.ok)throw 0;return r.json();});});},Promise.resolve())
- .then(function(d){V=d;all(true);st("Vote enregistré.");})
- .catch(function(){st("Pas pu enregistrer. Vérifie ta connexion et réessaie.");});});
+ .then(function(d){SAVING--;if(!SAVING){V=d;all(true);}st("Vote enregistré.");})
+ .catch(function(){SAVING--;st("Pas pu enregistrer. Vérifie ta connexion et réessaie.");load(false);});}
+function placer(k,c){if(!moi||OUT[c])return;var mv=V[moi]=V[moi]||{},send=[];c=String(c);
+ if(mv[c]===k)return;
+ Object.keys(mv).forEach(function(x){if(x!==c&&mv[x]===k){delete mv[x];send.push([x,0]);}});
+ mv[c]=k;send.push([c,k]);SEL=null;envoyer(send);}
+function retirer(c){if(!moi)return;var mv=V[moi]=V[moi]||{};c=String(c);if(!mv[c])return;var k=mv[c];delete mv[c];SEL=k;envoyer([[c,0]]);}
+var PD=null;
+function cible(x,y){var el=document.elementFromPoint(x,y);return el?{r:el.closest("#mine .r[data-c]"),t:el.closest("#tray")}:{};}
+document.addEventListener("pointerdown",function(e){var t=e.target.closest(".tok");if(!t||!moi||e.button>0)return;
+ var r=t.closest(".r[data-c]");PD={k:+t.dataset.k,from:r?r.dataset.c:null,x:e.clientX,y:e.clientY,el:t,id:e.pointerId};});
+document.addEventListener("pointermove",function(e){if(!PD||e.pointerId!==PD.id)return;
+ if(!DRAG){if(Math.abs(e.clientX-PD.x)+Math.abs(e.clientY-PD.y)<7)return;
+  DRAG=PD.el.cloneNode(true);DRAG.className="tok ghost";document.body.appendChild(DRAG);PD.el.classList.add("lift");document.body.classList.add("dragging");}
+ e.preventDefault();DRAG.style.left=e.clientX+"px";DRAG.style.top=e.clientY+"px";
+ var g=cible(e.clientX,e.clientY);document.querySelectorAll("#mine .r.over").forEach(function(x){x.classList.remove("over");});
+ if(g.r&&!g.r.classList.contains("out"))g.r.classList.add("over");},{passive:false});
+function finDrag(e,annule){if(!PD)return;var p=PD;PD=null;
+ if(!DRAG){if(annule)return;if(p.from)retirer(p.from);else{SEL=p.k;all(true);}return;}
+ DRAG.remove();DRAG=null;document.body.classList.remove("dragging");
+ var g=annule?{}:cible(e.clientX,e.clientY);
+ if(g.r&&!g.r.classList.contains("out"))placer(p.k,g.r.dataset.c);
+ else if(p.from&&(g.t||!g.r))retirer(p.from);
+ else all(true);}
+document.addEventListener("pointerup",function(e){if(PD&&e.pointerId===PD.id)finDrag(e,false);});
+document.addEventListener("pointercancel",function(e){if(PD&&e.pointerId===PD.id)finDrag(e,true);});
+$("mine").addEventListener("click",function(e){if(e.target.closest(".tok,.fb,.ann"))return;var r=e.target.closest(".r[data-c]");if(!r||!SEL||r.classList.contains("out"))return;placer(SEL,r.dataset.c);});
+$("mine").addEventListener("keydown",function(e){if(e.key!=="Enter"&&e.key!==" ")return;var r=e.target.closest(".r[data-c]");if(!r||e.target!==r||!SEL)return;e.preventDefault();placer(SEL,r.dataset.c);});
+document.addEventListener("keydown",function(e){var t=e.target.closest&&e.target.closest(".tok");if(!t||(e.key!=="Enter"&&e.key!==" "))return;e.preventDefault();var r=t.closest(".r[data-c]");if(r)retirer(r.dataset.c);else{SEL=+t.dataset.k;all(true);}});
+$("vclear").addEventListener("click",function(){var mv=V[moi]||{},ks=Object.keys(mv);if(!ks.length||!confirm("Retirer toutes tes pastilles? Ton vote sera vide."))return;V[moi]={};SEL=null;envoyer(ks.map(function(c){return [c,0];}));});
 function saveW(w,redraw){if(!moi)return;PW[moi]=w;var who_=moi;if(redraw)sliders();else rows($("res"),rank(w));who();group();st("Enregistrement…");clearTimeout(timer);
  timer=setTimeout(function(){fetch(BASE+"/priorites",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({nom:who_,poids:w})})
  .then(function(r){if(!r.ok)throw 0;return r.json();}).then(function(d){PW=d;who();group();st("Priorités enregistrées.");})
@@ -516,7 +567,7 @@ $("weights").addEventListener("input",function(e){var r=e.target;if(!r.dataset.k
  r.previousElementSibling.querySelector("span").textContent=lab[w[r.dataset.k]];saveW(w,false);});
 document.querySelectorAll(".presets button").forEach(function(b){b.addEventListener("click",function(){saveW(Object.assign({},P[b.dataset.p]),true);});});
 function load(first){return Promise.all([fetch(BASE+"/votes",{cache:"no-store"}).then(function(r){return r.json();}),fetch(BASE+"/priorites",{cache:"no-store"}).then(function(r){return r.json();})])
- .then(function(d){V=d[0];if(first||!timer)PW=d[1];all(!first);}).catch(function(){st("Données indisponibles pour l'instant.");});}
+ .then(function(d){if(SAVING&&moi)d[0][moi]=V[moi];V=d[0];if(first||!timer)PW=d[1];all(!first);}).catch(function(){st("Données indisponibles pour l'instant.");});}
 /* --- Infos ajoutées par le groupe --- */
 var INTEG=["i:1795469256855-apvc3w","i:1795469274516-vmq5wa","i:1795469661401-nd43v9","i:1795469973060-0tz88g","i:1795470375290-2obm3n","i:1795470551811-pwdi74","i:1795470639205-26h3qp","i:1795470806757-j8jbea","i:1795470839287-wez6vf","i:1795471018459-mrag88","i:1795471039934-vpvs9w","i:1795471060963-9uajc8","i:1795471082181-5ckxz3","i:1795471222769-g0ljle","i:1795471283333-6eeloj","i:1795471521494-a0gruu"];
 var I={},CH={prix:"Prix total (7 nuits)",clim:"Climatisation",camp:"Distance du camping",plage:"Distance de la plage",lits:"Lits et chambres",toil:"Toilettes",feu:"Feu et foyer",dispo:"Disponible à nos dates?",autre:"Autre info"};
