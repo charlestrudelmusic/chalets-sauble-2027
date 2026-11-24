@@ -274,6 +274,9 @@ body.dragging,body.dragging *{cursor:grabbing !important}
 .vfoot{text-align:right;margin:-22px 0 30px}
 .vclear{border:0;background:none;color:var(--soft);font:inherit;font-size:13.5px;text-decoration:underline;cursor:pointer}
 @media(max-width:560px){.slot{width:52px}.tok{min-width:42px;height:34px;font-size:14px;padding:0 8px}.slot .empty{width:42px;height:34px}.mine .r{gap:8px;padding:6px 4px}}
+.tok.placed.top{background:var(--pc);border-color:var(--pc);font-size:16px}
+.tok.placed:not(.top){color:var(--soft);font-weight:500}
+.mine .r.top3 .fb{font-weight:600}
 </style>
 </head>
 <body>
@@ -478,7 +481,7 @@ var SELP=null,SEL=null,DRAG=null,SAVING=0,OUT={},V={},PW={},moi=null,timer=null,
 try{localStorage.removeItem("chalets-moi");}catch(e){}
 function has(w){return !!w&&Object.keys(w).length===K.length;}
 function freeK(mv){var used={};Object.keys(mv).forEach(function(c){used[mv[c]]=1;});var f=[];for(var k=1;k<=C.length;k++)if(!used[k])f.push(k);return f;}
-function tokH(k,cls){return '<button type="button" class="tok '+cls+'" data-k="'+k+'" style="--pc:'+COL[moi][1]+';--pb:'+COL[moi][0]+'" title="'+(cls==='placed'?'Clique pour retirer, ou glisse ailleurs':ORD[k]+' choix')+'">'+ORD[k]+'</button>';}
+function tokH(k,cls){return '<button type="button" class="tok '+cls+(k<=3?' top':'')+'" data-k="'+k+'" style="--pc:'+COL[moi][1]+';--pb:'+COL[moi][0]+'" title="'+(cls==='placed'?'Clique pour retirer, ou glisse ailleurs':ORD[k]+' choix')+'">'+ORD[k]+'</button>';}
 function voted(n){return Object.keys(V[n]||{}).length>0;}
 function myW(){return has(PW[moi])?PW[moi]:P.eq;}
 function st(t){$("vstatus").textContent=t;}
@@ -499,7 +502,7 @@ function mine(){var on=!!moi;$("mePanel").hidden=!on;$("menu").hidden=on;var box
  var hint=SELP?'<b>'+ORD[SEL]+'</b> choisie : clique sur un autre chalet pour l\'y mettre (échange si déjà pris), ou reclique dessus pour la retirer.':SEL?'Clique sur le chalet qui sera ton <b>'+ORD[SEL]+' choix</b>.':'';
  if(hint)$("tray").insertAdjacentHTML("beforeend",'<span class="tl2">'+hint+'</span>');$("vhint").innerHTML="";
  $("vclear").hidden=!Object.keys(mv).length;
- $("mine").innerHTML=C.map(function(c){var o=!!OUT[c.n],k=mv[c.n];return '<div class="r'+(o?' out':'')+(SEL&&!o?' can':'')+(k?' has':'')+'" data-c="'+c.n+'"'+(SEL&&!o?' role="button" tabindex="0" aria-label="Mettre '+ORD[SEL]+' sur '+c.nm+'"':'')+'><span class="slot">'+(k?tokH(k,'placed'+(SELP===String(c.n)?' sel':'')):'<span class="empty"></span>')+'</span><span class="num">'+c.n+'</span><span class="nm">'+nmH(c)+(o?' <em>plus disponible</em>':'')+'</span></div>';}).join("");}
+ $("mine").innerHTML=C.map(function(c){var o=!!OUT[c.n],k=mv[c.n];return '<div class="r'+(o?' out':'')+(SEL&&!o?' can':'')+(k?' has':'')+(k&&k<=3?' top3':'')+'" data-c="'+c.n+'"'+(SEL&&!o?' role="button" tabindex="0" aria-label="Mettre '+ORD[SEL]+' sur '+c.nm+'"':'')+'><span class="slot">'+(k?tokH(k,'placed'+(SELP===String(c.n)?' sel':'')):'<span class="empty"></span>')+'</span><span class="num">'+c.n+'</span><span class="nm">'+nmH(c)+(o?' <em>plus disponible</em>':'')+'</span></div>';}).join("");}
 function sliders(){if(!moi)return;var w=myW();
  $("weights").innerHTML=K.map(function(k){return '<div class="w"><label for="w-'+k.id+'">'+k.l+' <span>'+lab[w[k.id]]+'</span></label><input type="range" min="0" max="3" step="1" id="w-'+k.id+'" data-k="'+k.id+'" value="'+w[k.id]+'"></div>';}).join("");
  rows($("res"),rank(w));}
